@@ -1,0 +1,17 @@
+@import "../../../scss/variables";
+@import "../../../scss/utilities";
+
+.discover {
+	width: 98%;
+	margin: 0 auto;
+
+	.headerForm {
+		width: 88%;
+		margin: $spacing-14 auto;
+
+		@include tab-screen {
+			width: 28%;
+			margin-left: $spacing-24;
+		}
+	}
+}

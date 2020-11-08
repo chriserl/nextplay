@@ -43,3 +43,47 @@
 .large-icon {
 	@include large-icon;
 }
+
+//Buttons
+.icon-button {
+	@extend .button;
+	@include flex;
+	padding: 0.28rem;
+	border-radius: $spacing-4;
+	color: hsl(0, 0%, 100%);
+	background: hsl(16, 100%, 50%);
+	transition: all 0.25s ease;
+
+	span {
+		@include small-icon;
+	}
+
+	&:hover {
+		box-shadow: 2px 8px 24px hsl(16, 100%, 80%);
+	}
+}
+
+//Forms
+.search-control {
+	@include flex;
+	border-radius: $spacing-3;
+	background-color: hsl(0, 0%, 96%);
+
+	.search-input {
+		width: 100%;
+		border: none;
+		padding: $spacing-3 0 $spacing-3 $spacing-6;
+		background: transparent;
+		color: hsl(0, 0%, 18%);
+		@include ps;
+
+		&::placeholder {
+			@include ps;
+			color: hsl(0, 0%, 56%);
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+}

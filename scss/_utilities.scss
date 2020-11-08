@@ -109,6 +109,11 @@
 	cursor: pointer;
 }
 
+//Buttons
+.button {
+	border: none;
+}
+
 //Hide Scrollbar
 @mixin scroll-hide {
 	scrollbar-width: none;

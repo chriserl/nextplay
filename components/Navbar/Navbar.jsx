@@ -34,7 +34,7 @@ const Navbar = (props) => {
 			<ul className={navbarStyles.navItems}>
 				{navbarRoutes.map((navbarRoute) => (
 					<li className={`${navbarStyles.navItem}`} key={navbarRoute.routePath}>
-						<Link href={`views/${navbarRoute.routePath}`}>
+						<Link href={`/views/${navbarRoute.routePath}`}>
 							<a
 								className={`pl ${
 									navbarRoute.routePath === activeLink
