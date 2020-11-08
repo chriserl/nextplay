@@ -1,37 +1,52 @@
-import React from "react";
 import Link from "next/link";
 import navbarStyles from "./navbar.module.scss";
 
-const Navbar = () => {
+const Navbar = (props) => {
+	let navbarRoutes = [
+		{ routePath: "discover" },
+		{ routePath: "feed" },
+		{ routePath: "games" },
+		{ routePath: "chats" },
+	];
+
+	let activeLink;
+
+	const setActivePath = () => {
+		let currentRoute = navbarRoutes.filter(
+			(route) => route["routePath"] === props.activePath
+		);
+
+		let { routePath } = currentRoute.length !== 0 && currentRoute[0];
+		activeLink = routePath;
+		console.log(activeLink);
+	};
+
+	setActivePath();
+
 	return (
 		<nav className={navbarStyles.navbar}>
-			<Link href="./">
+			<Link href="/">
 				<a className={navbarStyles.brand}>
 					<span className="lab la-forumbee large-icon"></span>
 					<p className={`${navbarStyles.brandText} ph`}>nextPlay</p>
 				</a>
 			</Link>
 			<ul className={navbarStyles.navItems}>
-				<li className={navbarStyles.navItem}>
-					<Link href="./">
-						<a className="nav-link pl">Discover</a>
-					</Link>
-				</li>
-				<li className={navbarStyles.navItem}>
-					<Link href="./">
-						<a className="nav-link pl">Feed</a>
-					</Link>
-				</li>
-				<li className={navbarStyles.navItem}>
-					<Link href="./">
-						<a className="nav-link pl">Games</a>
-					</Link>
-				</li>
-				<li className={navbarStyles.navItem}>
-					<Link href="./">
-						<a className="nav-link pl">Chats</a>
-					</Link>
-				</li>
+				{navbarRoutes.map((navbarRoute) => (
+					<li className={`${navbarStyles.navItem}`} key={navbarRoute.routePath}>
+						<Link href={`/views/${navbarRoute.routePath}`}>
+							<a
+								className={`pl  ${
+									navbarRoute.routePath === activeLink
+										? navbarStyles.activeLink
+										: navbarStyles.navLink
+								}`}
+							>
+								{navbarRoute.routePath}
+							</a>
+						</Link>
+					</li>
+				))}
 			</ul>
 
 			<div className={navbarStyles.userActions}>

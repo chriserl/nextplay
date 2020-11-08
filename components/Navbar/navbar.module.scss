@@ -32,8 +32,13 @@
 			margin: 0 $spacing-4;
 			color: gray;
 
-			&:first-child {
+			.navLink {
+				text-transform: capitalize;
+			}
+
+			.activeLink {
 				color: black;
+				text-transform: capitalize;
 			}
 		}
 	}
