@@ -1,0 +1,93 @@
+//Flexbox
+@mixin flex($direction: row, $align: center, $justify: null) {
+	display: flex;
+	flex-direction: $direction;
+	align-items: $align;
+	justify-content: $justify;
+}
+
+//Grid
+@mixin grid($align: null, $justify: null) {
+	display: grid;
+	align-items: $align;
+	justify-content: $justify;
+}
+
+//Display none
+@mixin d-none {
+	display: none;
+}
+
+//Media Queries
+
+//Big Smartphone devices
+@mixin phone-lg {
+	@media screen and (min-width: 414px) {
+		@content;
+	}
+}
+
+//Tablet devices
+@mixin tab-screen {
+	@media screen and (min-width: 600px) {
+		@content;
+	}
+}
+
+//Small screen laptops
+@mixin laptop-small {
+	@media screen and (min-width: 1024px) {
+		@content;
+	}
+}
+
+//Large screen laptops
+@mixin laptop-large {
+	@media screen and (min-width: 1440px) {
+		@content;
+	}
+}
+
+//Text
+@mixin ph {
+	font-size: 1.24rem;
+}
+
+@mixin pl {
+	font-size: 1rem;
+}
+
+@mixin ps {
+	font-size: 0.88rem;
+}
+
+@mixin px {
+	font-size: 0.8 rem;
+}
+
+//Icons
+@mixin small-icon {
+	font-size: 1rem;
+	padding: 0.26rem;
+}
+
+@mixin regular-icon {
+	font-size: 1.32rem;
+	padding: 0.24rem;
+}
+
+@mixin large-icon {
+	font-size: 1.64rem;
+	padding: 0.2rem;
+}
+
+//Hide Scrollbar
+@mixin scroll-hide {
+	scrollbar-width: none;
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}

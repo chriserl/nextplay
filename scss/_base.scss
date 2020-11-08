@@ -1,0 +1,36 @@
+//Simple Reset
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+//Root font size
+:root {
+	font-size: calc(14px + 0.72vw);
+
+	@media screen and (min-width: 600px) {
+		font-size: calc(14px + 0.096vw);
+	}
+}
+
+//Remove bullet from li
+li {
+	list-style-type: none;
+}
+
+//Reset links
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+//Hide Focus Styles
+:focus:not(:focus-visible) {
+	outline: 0;
+}
+
+//Root font family
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
