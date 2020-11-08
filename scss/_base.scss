@@ -1,11 +1,10 @@
-//Simple Reset
+/*Simple Reset */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-//Root font size
 :root {
 	font-size: calc(14px + 0.72vw);
 
@@ -14,23 +13,40 @@
 	}
 }
 
-//Remove bullet from li
 li {
 	list-style-type: none;
 }
 
-//Reset links
 a {
 	text-decoration: none;
 	color: inherit;
 }
 
-//Hide Focus Styles
+/* Hide Focus Styles */
 :focus:not(:focus-visible) {
 	outline: 0;
 }
 
-//Root font family
 body {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+	font-family: Poppins;
+	src: url("../public/fonts/Poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+	font-family: PoppinsMedium;
+	src: url("../public/fonts/Poppins/Poppins-Medium.ttf");
+}
+
+@font-face {
+	font-family: PoppinsSemibold;
+	src: url("../public/fonts/Poppins/Poppins-SemiBold.ttf");
+}
+
+@font-face {
+	font-family: PoppinsBold;
+	src: url("../public/fonts/Poppins/Poppins-Bold.ttf");
 }

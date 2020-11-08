@@ -9,7 +9,7 @@ export default function Home() {
 			</Head>
 
 			<main>
-				<p>This is the starter for this project</p>
+				<p className="ph">This is the starter for this project</p>
 			</main>
 		</div>
 	);
