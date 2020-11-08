@@ -10,7 +10,7 @@
 
 	.brand {
 		@include flex;
-		color: orangered;
+		color: hsl(16, 100%, 50%);
 
 		.brandText {
 			margin-left: $spacing-1;
@@ -30,14 +30,14 @@
 
 		.navItem {
 			margin: 0 $spacing-4;
-			color: gray;
+			color: hsl(0, 0%, 50%);
 
 			.navLink {
 				text-transform: capitalize;
 			}
 
 			.activeLink {
-				color: black;
+				color: hsl(0, 0%, 0%);
 				text-transform: capitalize;
 			}
 		}
