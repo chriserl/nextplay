@@ -1,10 +1,14 @@
+import { useRouter } from "next/router";
 import { Navbar } from "../../../components/Navbar/Navbar";
 import discoverStyles from "./discover.module.scss";
 
 const Discover = () => {
+	let longPath = useRouter().route;
+	let shortPath = longPath.slice(7);
+
 	return (
 		<div>
-			<Navbar />
+			<Navbar activePath={shortPath} />
 
 			<main className={discoverStyles.discover}>
 				<form className={discoverStyles.headerForm}>

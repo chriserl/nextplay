@@ -9,20 +9,6 @@ const Navbar = (props) => {
 		{ routePath: "chats" },
 	];
 
-	let activeLink;
-
-	const setActivePath = () => {
-		let currentRoute = navbarRoutes.filter(
-			(route) => route["routePath"] === props.activePath
-		);
-
-		let { routePath } = currentRoute.length !== 0 && currentRoute[0];
-		activeLink = routePath;
-		console.log(activeLink);
-	};
-
-	setActivePath();
-
 	return (
 		<nav className={navbarStyles.navbar}>
 			<Link href="/">
@@ -36,10 +22,9 @@ const Navbar = (props) => {
 					<li className={`${navbarStyles.navItem}`} key={navbarRoute.routePath}>
 						<Link href={`/views/${navbarRoute.routePath}`}>
 							<a
-								className={`pl ${
-									navbarRoute.routePath === activeLink
-										? navbarStyles.activeLink
-										: navbarStyles.navLink
+								className={`pl ${navbarStyles.navLink} ${
+									navbarRoute.routePath === props.activePath &&
+									navbarStyles.activeLink
 								}`}
 							>
 								{navbarRoute.routePath}
