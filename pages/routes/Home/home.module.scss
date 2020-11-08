@@ -12,7 +12,12 @@
 		padding-top: $spacing-4;
 
 		.brand {
+			@include flex;
 			color: orangered;
+
+			.brandText {
+				margin-left: $spacing-1;
+			}
 		}
 
 		.navItems {
@@ -39,9 +44,23 @@
 		.userActions {
 			@include flex;
 			margin-left: auto;
+			margin-right: $spacing-6;
 
 			.activeUsers {
 				margin-right: $spacing-4;
+
+				.activeUsers {
+					width: $spacing-10;
+					border-radius: $spacing-4;
+				}
+			}
+
+			.loggedInUser {
+				.activeUser {
+					width: $spacing-10;
+					border-radius: $spacing-4;
+					box-shadow: 2px 8px 18px hsl(0, 0%, 90%);
+				}
 			}
 		}
 	}

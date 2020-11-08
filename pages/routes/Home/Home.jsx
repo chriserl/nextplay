@@ -6,7 +6,10 @@ const Home = () => {
 		<div className={homeStyles.home}>
 			<nav className={homeStyles.nav}>
 				<Link href="./">
-					<a className={`${homeStyles.brand} ph`}>nextPlay</a>
+					<a className={homeStyles.brand}>
+						<span className="lab la-forumbee large-icon"></span>
+						<p className={`${homeStyles.brandText} ph`}>nextPlay</p>
+					</a>
 				</Link>
 				<ul className={homeStyles.navItems}>
 					<li className={homeStyles.navItem}>
@@ -32,9 +35,21 @@ const Home = () => {
 				</ul>
 
 				<div className={homeStyles.userActions}>
-					<div className={homeStyles.activeUsers}>chats</div>
-					<div className="logged-in-user">
-						<span className="las la-user large-icon"></span>
+					<div className={homeStyles.activeUsers}>
+						<img
+							src="/images/jade.jpg"
+							alt="jade"
+							className={homeStyles.activeUsers}
+							layout="fill"
+						/>
+					</div>
+					<div className={homeStyles.loggedInUser}>
+						<img
+							src="/images/jade.jpg"
+							alt="jade"
+							className={homeStyles.activeUser}
+							layout="fill"
+						/>
 					</div>
 				</div>
 			</nav>
