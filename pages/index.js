@@ -1,16 +1,14 @@
 import Head from "next/head";
+import { Home } from "./routes/Home/Home";
 
-export default function Home() {
+export default function IndexPage() {
 	return (
-		<div>
+		<div className="index-page">
 			<Head>
-				<title>Create Next App</title>
+				<title>NextPlay App</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-
-			<main>
-				<p className="ph">This is the starter for this project</p>
-			</main>
+			<Home />
 		</div>
 	);
 }

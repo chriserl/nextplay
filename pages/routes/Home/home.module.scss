@@ -1,0 +1,48 @@
+@import "../../../scss/variables";
+@import "../../../scss/utilities";
+
+.home {
+	width: 100%;
+
+	.nav {
+		@include flex;
+		flex-wrap: wrap;
+		width: 96%;
+		margin: 0 auto;
+		padding-top: $spacing-4;
+
+		.brand {
+			color: orangered;
+		}
+
+		.navItems {
+			@include flex;
+			order: 3;
+			margin-top: $spacing-8;
+
+			@include tab-screen {
+				order: initial;
+				margin-left: $spacing-12;
+				margin-top: 0;
+			}
+
+			.navItem {
+				margin: 0 $spacing-4;
+				color: gray;
+
+				&:first-child {
+					color: black;
+				}
+			}
+		}
+
+		.userActions {
+			@include flex;
+			margin-left: auto;
+
+			.activeUsers {
+				margin-right: $spacing-4;
+			}
+		}
+	}
+}

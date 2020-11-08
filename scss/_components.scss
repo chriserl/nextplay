@@ -1,32 +1,45 @@
 //Text
 .ph {
-	font-size: 1.24rem;
+	@include ph;
+}
+
+.phb {
+	@include phb;
 }
 
 .pl {
-	font-size: 1rem;
+	@include pl;
+}
+
+.plb {
+	@include plb;
 }
 
 .ps {
-	font-size: 0.88rem;
+	@include ps;
+}
+
+.psb {
+	@include psb;
 }
 
 .px {
-	font-size: 0.8 rem;
+	@include px;
+}
+
+.pxb {
+	@include pxb;
 }
 
 //Icons
 .small-icon {
-	font-size: 1rem;
-	padding: 0.26rem;
+	@include small-icon;
 }
 
 .regular-icon {
-	font-size: 1.32rem;
-	padding: 0.24rem;
+	@include regular-icon;
 }
 
 .large-icon {
-	font-size: 1.64rem;
-	padding: 0.2rem;
+	@include large-icon;
 }

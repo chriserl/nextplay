@@ -1,4 +1,10 @@
-const withSass = require("@zeit/next-sass");
 const withFonts = require("next-fonts");
+const withStyles = require("@webdeb/next-styles");
 
-module.exports = [withSass(), withFonts({enableSvg = true})];
+module.exports = [
+	withStyles({
+		sass: true,
+		modules: true,
+	}),
+	withFonts(),
+];
