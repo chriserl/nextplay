@@ -33,15 +33,15 @@
 
 .tab {
 	padding: $spacing-1 $spacing-4;
-	background: hsl(16, 100%, 96%);
-	color: hsl(16, 100%, 56%);
+	background: $theme-light;
+	color: $theme-primary;
 	border-radius: $spacing-12;
 	cursor: pointer;
 	transition: all 0.25s ease;
 
 	&:hover {
-		color: hsl(16, 100%, 96%);
-		background: hsl(16, 100%, 50%);
+		color: $theme-light;
+		background: $theme-primary;
 	}
 }
 
@@ -64,12 +64,12 @@
 	@include flex;
 	padding: 0.32rem;
 	border-radius: $spacing-4;
-	color: hsl(0, 0%, 100%);
-	background: hsl(16, 100%, 56%);
+	color: $theme-light;
+	background: $theme-primary;
 	transition: all 0.25s ease;
 
 	&:hover {
-		box-shadow: 2px 8px 24px hsl(16, 100%, 80%);
+		box-shadow: 2px 8px 24px $primary-shadow;
 	}
 }
 
@@ -78,12 +78,12 @@
 	@include flex;
 	padding: 0.32rem;
 	border-radius: $spacing-4;
-	color: hsl(16, 100%, 56%);
-	background: hsl(16, 100%, 96%);
+	color: $theme-primary;
+	background: $theme-light;
 	transition: all 0.25s ease;
 
 	&:hover {
-		background: hsl(16, 100%, 94%);
+		background: $primary-hover;
 	}
 }
 
@@ -91,19 +91,19 @@
 .search-control {
 	@include flex;
 	border-radius: $spacing-3;
-	background-color: hsl(0, 0%, 96%);
+	background-color: $component-light;
 
 	.search-input {
 		width: 100%;
 		border: none;
 		padding: $spacing-3 0 $spacing-3 $spacing-6;
 		background: transparent;
-		color: hsl(0, 0%, 18%);
+		color: $dark-text;
 		@include ps;
 
 		&::placeholder {
 			@include ps;
-			color: hsl(0, 0%, 56%);
+			color: $lighter-text;
 		}
 
 		&:focus {

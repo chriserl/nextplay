@@ -10,7 +10,7 @@
 
 	.brand {
 		@include flex;
-		color: hsl(16, 100%, 50%);
+		color: $theme-primary;
 
 		.brandText {
 			margin-left: $spacing-1;
@@ -30,7 +30,7 @@
 
 		.navItem {
 			margin: 0 $spacing-4;
-			color: hsl(0, 0%, 50%);
+			color: $light-text;
 
 			.navLink {
 				text-transform: capitalize;
@@ -38,7 +38,7 @@
 
 			.activeLink {
 				@include plb;
-				color: hsl(0, 0%, 0%);
+				color: $dark-text;
 				text-transform: capitalize;
 			}
 		}
@@ -62,7 +62,7 @@
 			.activeUser {
 				width: $spacing-10;
 				border-radius: $spacing-4;
-				box-shadow: 2px 8px 18px hsl(0, 0%, 90%);
+				box-shadow: 2px 8px 18px $primary-hover;
 			}
 		}
 	}
