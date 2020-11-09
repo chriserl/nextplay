@@ -31,6 +31,20 @@
 	@include pxb;
 }
 
+.tab {
+	padding: $spacing-1 $spacing-4;
+	background: hsl(16, 100%, 96%);
+	color: hsl(16, 100%, 56%);
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	&:hover {
+		color: hsl(16, 100%, 96%);
+		background: hsl(16, 100%, 50%);
+	}
+}
+
 //Icons
 .small-icon {
 	@include small-icon;
@@ -48,18 +62,28 @@
 .icon-button {
 	@extend .button;
 	@include flex;
-	padding: 0.28rem;
+	padding: 0.32rem;
 	border-radius: $spacing-4;
 	color: hsl(0, 0%, 100%);
-	background: hsl(16, 100%, 50%);
+	background: hsl(16, 100%, 56%);
 	transition: all 0.25s ease;
-
-	span {
-		@include small-icon;
-	}
 
 	&:hover {
 		box-shadow: 2px 8px 24px hsl(16, 100%, 80%);
+	}
+}
+
+.light-icon-button {
+	@extend .button;
+	@include flex;
+	padding: 0.32rem;
+	border-radius: $spacing-4;
+	color: hsl(16, 100%, 56%);
+	background: hsl(16, 100%, 96%);
+	transition: all 0.25s ease;
+
+	&:hover {
+		background: hsl(16, 100%, 94%);
 	}
 }
 
