@@ -37,6 +37,7 @@
 			}
 
 			.activeLink {
+				@include plb;
 				color: hsl(0, 0%, 0%);
 				text-transform: capitalize;
 			}
