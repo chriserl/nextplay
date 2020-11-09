@@ -31,10 +31,28 @@
 	@include pxb;
 }
 
-.tab {
-	padding: $spacing-1 $spacing-4;
+.primary-tab {
+	@extend .button;
+	@include flex;
+	padding: $spacing-1 $spacing-6;
 	background: $theme-light;
 	color: $theme-primary;
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	&:hover {
+		color: $theme-light;
+		background: $theme-primary;
+	}
+}
+
+.light-tab {
+	@extend .button;
+	@include flex;
+	padding: $spacing-1 $spacing-6;
+	background: $theme-light;
+	color: $light-text;
 	border-radius: $spacing-12;
 	cursor: pointer;
 	transition: all 0.25s ease;
@@ -123,11 +141,8 @@
 		margin-bottom: $spacing-4;
 	}
 
-	.game-title {
-		margin-bottom: $spacing-1;
-	}
-
 	.game-downloads {
+		margin-top: $spacing-2;
 		word-spacing: $spacing-2;
 	}
 }

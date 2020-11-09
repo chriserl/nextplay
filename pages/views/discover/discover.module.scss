@@ -39,7 +39,24 @@
 		}
 
 		.filtersHeader {
-			color: $light-text;
+			@include flex;
+
+			.headerTitle {
+				color: $light-text;
+				margin-right: $spacing-6;
+			}
+
+			.filterForm {
+				.filterSearch {
+					@include d-none;
+				}
+
+				.openFilterSearch {
+				}
+				.hideFilterButton {
+					@include d-none;
+				}
+			}
 		}
 
 		.filterItems {
@@ -49,9 +66,13 @@
 
 			.filterItem {
 				margin-right: $spacing-4;
-				margin-top: $spacing-6;
+				margin-top: $spacing-8;
 			}
 		}
+	}
+
+	.filtersInvisible {
+		@include d-none;
 	}
 
 	.games {
@@ -73,9 +94,6 @@
 			@include tab-screen {
 				column-gap: $spacing-12;
 				row-gap: $spacing-18;
-			}
-
-			.gameItem {
 			}
 		}
 	}

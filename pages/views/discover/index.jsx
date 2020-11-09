@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Navbar from "../../../components/Navbar/Navbar";
@@ -6,7 +7,6 @@ import discoverStyles from "./discover.module.scss";
 const Discover = () => {
 	let longPath = useRouter().route;
 	let shortPath = longPath.slice(7);
-	let filters = ["action", "adventure", "military", "sports", "movie"];
 	let games = [
 		{
 			gameName: "Call of Duty",
@@ -46,6 +46,45 @@ const Discover = () => {
 		},
 	];
 
+	let [filtersVisible, setFiltersVisible] = useState(() => false);
+
+	let [filters, setFilters] = useState(() => []);
+
+	let [filterSearchState, setFilterSearchState] = useState(() => {
+		return { searchbarStatus: true };
+	});
+
+	let [filterItem, setFilterItem] = useState(() => {
+		return { currentFilter: "" };
+	});
+
+	let handleFiltersVisible = () => {
+		setFiltersVisible(() => (filtersVisible ? false : true));
+	};
+
+	let handleFilterButton = () => {
+		setFilterSearchState(() => ({
+			searchbarStatus: filterSearchState.searchbarStatus ? false : true,
+		}));
+	};
+
+	let handleFilterInput = (event) => {
+		event.preventDefault();
+		setFilterItem(() => {
+			return { currentFilter: event.target.value };
+		});
+	};
+
+	let handleFilterSubmit = (event) => {
+		event.preventDefault();
+		if (filterItem.currentFilter !== "") {
+			setFilters(() => filters.concat(filterItem.currentFilter));
+			setFilterItem(() => {
+				return { currentFilter: "" };
+			});
+		}
+	};
+
 	return (
 		<div>
 			<Navbar activePath={shortPath} />
@@ -67,17 +106,61 @@ const Discover = () => {
 					</form>
 
 					<button
+						onClick={() => handleFiltersVisible()}
 						className={`light-icon-button ${discoverStyles.filterButton}`}
 					>
 						<span className="las la-sliders-h small-icon"></span>
 					</button>
 				</div>
-				<div className={discoverStyles.filters}>
-					<p className={`ph ${discoverStyles.filtersHeader}`}>Filters</p>
+				<div
+					className={discoverStyles.filters}
+					className={`${
+						filtersVisible
+							? discoverStyles.filters
+							: discoverStyles.filtersInvisible
+					}`}
+				>
+					<div className={discoverStyles.filtersHeader}>
+						<p className={`ph ${discoverStyles.headerTitle}`}>Filters</p>
+
+						<form
+							onSubmit={(submitEvent) => handleFilterSubmit(submitEvent)}
+							className={discoverStyles.filterForm}
+						>
+							<div className={`search-control`}>
+								<input
+									onChange={(changeEvent) => handleFilterInput(changeEvent)}
+									type="search"
+									value={filterItem.currentFilter}
+									placeholder="type keyword and press enter"
+									className={`search-input ${
+										filterSearchState.searchbarStatus
+											? discoverStyles.filterSearch
+											: discoverStyles.openFilterSearch
+									}`}
+								/>
+
+								<button
+									onClick={() => handleFilterButton()}
+									className={`light-tab ${
+										filterSearchState.searchbarStatus
+											? discoverStyles.filterButton
+											: discoverStyles.hideFilterButton
+									}`}
+								>
+									<span className="las la-plus small-icon"></span>
+									<p className="px">Add filter</p>
+								</button>
+							</div>
+						</form>
+					</div>
+
 					<div className={discoverStyles.filterItems}>
 						{filters.map((filterItem) => (
 							<div className={discoverStyles.filterItem} key={filterItem}>
-								<p className="tab ps">{filterItem}</p>
+								<button className="primary-tab">
+									<p className="ps">{filterItem}</p>
+								</button>
 							</div>
 						))}
 					</div>
