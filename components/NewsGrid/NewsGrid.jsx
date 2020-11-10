@@ -1,3 +1,4 @@
+import Link from "next/link";
 import newsgridStyles from "./newsgrid.module.scss";
 import NewsCard from "../UIComponents/NewsCard";
 
@@ -16,9 +17,11 @@ const NewsGrid = ({ gridTitle, moreLink }) => {
 			<div className={`${newsgridStyles.gridTitle}`}>
 				<p className={`h1 ${newsgridStyles.titleText}`}>{gridTitle}</p>
 				{moreLink === "link" && (
-					<button className={`primary-tab ps ${newsgridStyles.seemoreLink}`}>
-						See more
-					</button>
+					<Link href="/views/news">
+						<a className={`primary-tab ps ${newsgridStyles.seemoreLink}`}>
+							See more
+						</a>
+					</Link>
 				)}
 			</div>
 			<div className={newsgridStyles.gridContainer}>

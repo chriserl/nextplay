@@ -1,7 +1,6 @@
 import Navbar from "../../../components/Navbar/Navbar";
 import StreamersSlider from "../../../components/StreamersSlider/StreamersSlider";
 import LivestreamCard from "../../../components/UIComponents/LivestreamCard";
-import NewsCard from "../../../components/UIComponents/NewsCard";
 import StreamerCard from "../../../components/UIComponents/StreamerCard";
 import NewsGrid from "../../../components/NewsGrid/NewsGrid";
 import homeStyles from "./home.module.scss";
@@ -18,7 +17,7 @@ const Home = () => {
 	];
 	return (
 		<div className={homeStyles.home}>
-			<Navbar />
+			<Navbar activePath="home" />
 			<main>
 				<div className={homeStyles.streamers}>
 					<StreamersSlider>
