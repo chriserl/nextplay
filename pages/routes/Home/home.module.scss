@@ -3,4 +3,12 @@
 
 .home {
 	width: 100%;
+
+	main {
+		margin: $spacing-8 $spacing-5 0;
+
+		@include tab-screen {
+			margin: 0 $spacing-18;
+		}
+	}
 }

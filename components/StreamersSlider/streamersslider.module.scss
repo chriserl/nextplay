@@ -1,0 +1,23 @@
+@import "./scss/variables";
+@import "./scss/utilities";
+
+.streamersSlider {
+	width: 100%;
+
+	.sliderContainer {
+		width: 100%;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		@include scroll-hide;
+
+		.sliderItems {
+			@include flex;
+			width: max-content;
+			padding: $spacing-12 $spacing-6;
+
+			.sliderItem {
+				margin-right: $spacing-12;
+			}
+		}
+	}
+}

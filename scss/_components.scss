@@ -200,3 +200,38 @@
 		}
 	}
 }
+
+//StreamerCard
+.streamer-card {
+	@include flex;
+	max-width: 256px;
+	padding: $spacing-4 $spacing-8 $spacing-4 $spacing-4;
+	background: $component-light;
+	border-radius: $spacing-6;
+	transition: all 0.25s ease;
+
+	&:hover {
+		background: $component-white;
+		box-shadow: 2px 8px 18px $dark-shadow;
+	}
+
+	.streamer-image {
+		width: 2.8rem;
+		height: 2.8rem;
+		object-fit: cover;
+		border-radius: $spacing-5;
+	}
+
+	.streamer-card-info {
+		margin-left: $spacing-4;
+
+		.streamer-name {
+			color: $dark-text;
+			margin-bottom: $spacing-1;
+		}
+
+		.followers {
+			color: $theme-primary;
+		}
+	}
+}
