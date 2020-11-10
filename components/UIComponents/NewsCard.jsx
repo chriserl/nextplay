@@ -13,7 +13,7 @@ const NewsCard = () => {
 				<div className="news-info">
 					<p className="news-headline psb">Are we ready to launch?</p>
 				</div>
-				<button className="icon-button-shadowless">
+				<button className="light-icon-button">
 					<span className="las la-link"></span>
 				</button>
 			</div>
