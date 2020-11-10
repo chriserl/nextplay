@@ -175,6 +175,7 @@ const Discover = () => {
 										src={`/images/games/${game.imagePath}`}
 										alt="game"
 										className="game-image"
+										loading="lazy"
 									/>
 									<Link href={`/games/${game.gameKey}`}>
 										<a className="game-title plb">

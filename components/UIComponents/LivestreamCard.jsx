@@ -11,6 +11,7 @@ const LivestreamCard = () => {
 				src="/images/streams/strange.jpg"
 				alt="stream"
 				className="stream-image"
+				loading="lazy"
 			/>
 			<div className="stream-card-body">
 				<p className="stream-channel plb">Ninja</p>

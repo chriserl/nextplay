@@ -10,6 +10,7 @@ const NewsCard = () => {
 				src="/images/streams/blackpanther.jpg"
 				alt="news"
 				className="news-image"
+				loading="lazy"
 			/>
 			<div className="news-body">
 				<div className="news-info">

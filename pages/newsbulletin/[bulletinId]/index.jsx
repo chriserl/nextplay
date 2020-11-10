@@ -27,21 +27,25 @@ const NewsBulletin = () => {
 								src="/images/games/fortnite.jpg"
 								alt="rdr"
 								className={bulletinStyles.detailsImage}
+								loading="lazy"
 							/>
 							<img
 								src="/images/games/redredemptionred.jpg"
 								alt="rdr"
 								className={bulletinStyles.detailsImage}
+								loading="lazy"
 							/>
 							<img
 								src="/images/games/callofduty.jpg"
 								alt="rdr"
 								className={bulletinStyles.detailsImage}
+								loading="lazy"
 							/>
 							<img
 								src="/images/games/ghostoftsushima.jpg"
 								alt="rdr"
 								className={bulletinStyles.detailsImage}
+								loading="lazy"
 							/>
 						</div>
 					</div>
