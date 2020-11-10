@@ -5,7 +5,7 @@ import navbarStyles from "./navbar.module.scss";
 const Navbar = ({ activePath }) => {
 	let navbarRoutes = [
 		{ routePath: "discover" },
-		{ routePath: "feed" },
+		{ routePath: "news" },
 		{ routePath: "games" },
 		{ routePath: "chats" },
 	];
