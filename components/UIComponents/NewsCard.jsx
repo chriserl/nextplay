@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const NewsCard = () => {
 	return (
 		<div className="news-card">
@@ -13,9 +15,11 @@ const NewsCard = () => {
 				<div className="news-info">
 					<p className="news-headline psb">Are we ready to launch?</p>
 				</div>
-				<button className="light-icon-button">
-					<span className="las la-link"></span>
-				</button>
+				<Link href="/newsbulletin/bulletinpage">
+					<a className="light-icon-button">
+						<span className="las la-link"></span>
+					</a>
+				</Link>
 			</div>
 		</div>
 	);
