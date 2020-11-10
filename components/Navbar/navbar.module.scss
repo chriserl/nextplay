@@ -40,6 +40,17 @@
 				@include plb;
 				color: $dark-text;
 				text-transform: capitalize;
+
+				&::before {
+					content: "";
+					position: relative;
+					left: 50%;
+					top: 26px;
+					width: 5px;
+					height: 5.2px;
+					background: $theme-primary;
+					border-radius: $spacing-4;
+				}
 			}
 		}
 	}
