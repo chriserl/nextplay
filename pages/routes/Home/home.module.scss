@@ -28,10 +28,20 @@
 			margin: 0 auto;
 
 			.gridTitle {
-				margin-left: $spacing-8;
+				width: 100%;
+				text-align: center;
 				margin-bottom: $spacing-12;
 				text-transform: capitalize;
 				color: $dark-text;
+
+				.titleText {
+					margin-bottom: $spacing-8;
+				}
+
+				.seemoreLink {
+					width: max-content;
+					margin: 0 auto;
+				}
 			}
 
 			.gridContainer {
