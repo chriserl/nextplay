@@ -4,6 +4,12 @@
 .streamersSlider {
 	width: 100%;
 
+	.sliderTitle {
+		margin-left: $spacing-8;
+		text-transform: capitalize;
+		color: $dark-text;
+	}
+
 	.sliderContainer {
 		width: 100%;
 		overflow-x: scroll;
@@ -13,7 +19,7 @@
 		.sliderItems {
 			@include flex;
 			width: max-content;
-			padding: $spacing-12 $spacing-6;
+			padding: $spacing-6 $spacing-6 $spacing-12;
 
 			.sliderItem {
 				margin-right: $spacing-12;

@@ -5,10 +5,23 @@
 	width: 100%;
 
 	main {
-		margin: $spacing-8 $spacing-5 0;
+		margin: $spacing-8 $spacing-2;
 
 		@include tab-screen {
-			margin: 0 $spacing-18;
+			margin: 0 $spacing-12;
+		}
+
+		.streamers {
+			margin-top: $spacing-8;
+		}
+
+		.liveStreams {
+			margin-top: $spacing-8;
+			@include tab-screen {
+				width: 90%;
+				margin: 0 auto;
+				margin-top: $spacing-8;
+			}
 		}
 	}
 }
