@@ -12,15 +12,33 @@
 		}
 
 		.streamers {
-			margin-top: $spacing-8;
+			margin: $spacing-8 0;
 		}
 
 		.liveStreams {
 			margin-top: $spacing-8;
 			@include tab-screen {
 				width: 90%;
-				margin: 0 auto;
-				margin-top: $spacing-8;
+				margin: $spacing-8 auto;
+			}
+		}
+
+		.news {
+			width: 96%;
+			margin: 0 auto;
+
+			.gridTitle {
+				margin-left: $spacing-8;
+				margin-bottom: $spacing-12;
+				text-transform: capitalize;
+				color: $dark-text;
+			}
+
+			.gridContainer {
+				@include grid;
+				grid-template-columns: repeat(auto-fit, 264px);
+				column-gap: $spacing-12;
+				row-gap: $spacing-8;
 			}
 		}
 	}
