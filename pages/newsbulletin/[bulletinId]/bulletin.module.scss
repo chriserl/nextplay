@@ -23,7 +23,7 @@
 			width: 100%;
 
 			.articleHeader {
-				width: 94%;
+				width: 88%;
 				margin: $spacing-10 0 $spacing-12 auto;
 
 				.articleHeadline {
@@ -62,12 +62,13 @@
 			}
 
 			.articlePassage {
-				width: 96%;
+				width: 92%;
 				margin: $spacing-16 auto $spacing-24;
 
 				@include tab-screen {
+					width: 96%;
 					max-width: 720px;
-					margin-left: $spacing-20;
+					margin-left: 12rem;
 				}
 
 				.passageText {
@@ -75,6 +76,8 @@
 
 					&::first-letter {
 						@include h1;
+						font-family: Billabong;
+						margin-right: $spacing-1;
 					}
 				}
 			}
