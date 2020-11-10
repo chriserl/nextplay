@@ -67,7 +67,13 @@
 
 				@include tab-screen {
 					width: 96%;
-					max-width: 720px;
+					max-width: 480px;
+					margin-left: 12rem;
+				}
+
+				@include laptop-small {
+					width: 96%;
+					max-width: 640px;
 					margin-left: 12rem;
 				}
 
