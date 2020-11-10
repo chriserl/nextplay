@@ -1,7 +1,7 @@
 import newsgridStyles from "./newsgrid.module.scss";
 import NewsCard from "../UIComponents/NewsCard";
 
-const NewsGrid = () => {
+const NewsGrid = ({ gridTitle, moreLink }) => {
 	let streamers = [
 		"ninja",
 		"davelee",
@@ -14,16 +14,16 @@ const NewsGrid = () => {
 	return (
 		<div className={newsgridStyles.newsGrid}>
 			<div className={`${newsgridStyles.gridTitle}`}>
-				<p className={`h1 ${newsgridStyles.titleText}`}>
-					News from the gaming world
-				</p>
-				<button className={`primary-tab ps ${newsgridStyles.seemoreLink}`}>
-					See more
-				</button>
+				<p className={`h1 ${newsgridStyles.titleText}`}>{gridTitle}</p>
+				{moreLink === "link" && (
+					<button className={`primary-tab ps ${newsgridStyles.seemoreLink}`}>
+						See more
+					</button>
+				)}
 			</div>
 			<div className={newsgridStyles.gridContainer}>
 				{streamers.map((streamer) => (
-					<NewsCard />
+					<NewsCard key={streamer} />
 				))}
 			</div>
 		</div>

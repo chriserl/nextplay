@@ -311,8 +311,11 @@
 }
 
 .news-card {
-	//min-width: 316px;
-	max-width: 264px;
+	width: 100%;
+
+	@include tab-screen {
+		max-width: 264px;
+	}
 
 	.news-date {
 		position: relative;

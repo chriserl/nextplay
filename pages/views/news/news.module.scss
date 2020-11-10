@@ -1,0 +1,47 @@
+@import "../../../scss/variables";
+@import "../../../scss/utilities";
+
+.newsPage {
+	width: 100%;
+
+	.newsHeader {
+		width: 88%;
+		margin: $spacing-12 auto;
+
+		@include tab-screen {
+			width: 80%;
+		}
+
+		.newsTitle {
+			margin-bottom: $spacing-6;
+			color: $dark-text;
+		}
+
+		.topicsSection {
+			width: 100%;
+
+			.topicsTitle {
+				color: $light-text;
+			}
+
+			.topics {
+				margin-top: $spacing-6;
+				@include flex;
+
+				.topicItem {
+					margin: 0 $spacing-4;
+				}
+			}
+		}
+	}
+
+	.newsGrid {
+		width: 96%;
+		margin: 0 auto;
+
+		@include tab-screen {
+			width: 94%;
+			margin: 0 auto;
+		}
+	}
+}

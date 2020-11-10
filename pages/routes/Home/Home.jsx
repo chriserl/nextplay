@@ -32,7 +32,7 @@ const Home = () => {
 				</div>
 
 				<div className={homeStyles.news}>
-					<NewsGrid />
+					<NewsGrid gridTitle="News from the gaming world" moreLink="link" />
 				</div>
 			</main>
 		</div>
