@@ -1,13 +1,18 @@
 import Link from "next/link";
+import PropTypes from "prop-types";
 import navbarStyles from "./navbar.module.scss";
 
-const Navbar = (props) => {
+const Navbar = ({ activePath }) => {
 	let navbarRoutes = [
 		{ routePath: "discover" },
 		{ routePath: "feed" },
 		{ routePath: "games" },
 		{ routePath: "chats" },
 	];
+
+	Navbar.propTypes = {
+		activePath: PropTypes.string,
+	};
 
 	return (
 		<nav className={navbarStyles.navbar}>
@@ -23,7 +28,7 @@ const Navbar = (props) => {
 						<Link href={`/views/${navbarRoute.routePath}`}>
 							<a
 								className={`pl ${navbarStyles.navLink} ${
-									navbarRoute.routePath === props.activePath &&
+									navbarRoute.routePath === activePath &&
 									navbarStyles.activeLink
 								}`}
 							>
