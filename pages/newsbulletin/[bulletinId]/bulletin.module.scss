@@ -2,5 +2,82 @@
 @import "../../../scss/utilities";
 
 .newsBulletin {
-	color: red;
+	width: 100%;
+
+	.newsArticle {
+		width: 100%;
+		margin-top: $spacing-8;
+
+		.imageContainer {
+			width: 94%;
+			margin-left: auto;
+			.articleImage {
+				width: 100%;
+				height: 24rem;
+				object-fit: cover;
+				border-radius: $spacing-4 $spacing-4 $spacing-4 $spacing-18;
+			}
+		}
+
+		.articleActual {
+			width: 100%;
+
+			.articleHeader {
+				width: 94%;
+				margin: $spacing-10 0 $spacing-12 auto;
+
+				.articleHeadline {
+					color: $dark-text;
+				}
+
+				.headlineDetails {
+					@include flex;
+					margin-top: $spacing-4;
+
+					.source {
+						margin-right: $spacing-8;
+					}
+
+					.date {
+						color: $light-text;
+					}
+				}
+
+				.detailsImages {
+					@include flex;
+					width: 100%;
+					margin-top: $spacing-12;
+					overflow-x: scroll;
+					overflow-y: hidden;
+					@include scroll-hide;
+
+					.detailsImage {
+						width: 12rem;
+						height: 8rem;
+						margin-right: $spacing-12;
+						object-fit: cover;
+						border-radius: $spacing-8;
+					}
+				}
+			}
+
+			.articlePassage {
+				width: 96%;
+				margin: $spacing-16 auto $spacing-24;
+
+				@include tab-screen {
+					max-width: 720px;
+					margin-left: $spacing-20;
+				}
+
+				.passageText {
+					color: $dark-text;
+
+					&::first-letter {
+						@include h1;
+					}
+				}
+			}
+		}
+	}
 }
