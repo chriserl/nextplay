@@ -1,0 +1,31 @@
+@import "./scss/variables";
+@import "./scss/utilities";
+
+.newsGrid {
+	width: 96%;
+	margin: 0 auto;
+
+	.gridTitle {
+		width: 100%;
+		text-align: center;
+		margin-bottom: $spacing-12;
+		text-transform: capitalize;
+		color: $dark-text;
+
+		.titleText {
+			margin-bottom: $spacing-8;
+		}
+
+		.seemoreLink {
+			width: max-content;
+			margin: 0 auto;
+		}
+	}
+
+	.gridContainer {
+		@include grid;
+		grid-template-columns: repeat(auto-fit, 264px);
+		column-gap: $spacing-12;
+		row-gap: $spacing-8;
+	}
+}

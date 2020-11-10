@@ -3,6 +3,7 @@ import StreamersSlider from "../../../components/StreamersSlider/StreamersSlider
 import LivestreamCard from "../../../components/UIComponents/LivestreamCard";
 import NewsCard from "../../../components/UIComponents/NewsCard";
 import StreamerCard from "../../../components/UIComponents/StreamerCard";
+import NewsGrid from "../../../components/NewsGrid/NewsGrid";
 import homeStyles from "./home.module.scss";
 
 const Home = () => {
@@ -31,19 +32,7 @@ const Home = () => {
 				</div>
 
 				<div className={homeStyles.news}>
-					<div className={`${homeStyles.gridTitle}`}>
-						<p className={`h1 ${homeStyles.titleText}`}>
-							News from the gaming world
-						</p>
-						<button className={`primary-tab ps ${homeStyles.seemoreLink}`}>
-							See more
-						</button>
-					</div>
-					<div className={homeStyles.gridContainer}>
-						{streamers.map((streamer) => (
-							<NewsCard />
-						))}
-					</div>
+					<NewsGrid />
 				</div>
 			</main>
 		</div>
