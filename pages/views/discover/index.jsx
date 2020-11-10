@@ -11,38 +11,38 @@ const Discover = () => {
 		{
 			gameName: "Call of Duty",
 			gameDowloads: "45k",
-			imagePath: "cod.jpg",
-			gameKey: "cod",
+			imagePath: "callofduty.jpg",
+			gameKey: "callofduty",
 		},
 		{
 			gameName: "Counter Strike",
 			gameDowloads: "10k",
-			imagePath: "cs.jpg",
-			gameKey: "cs",
+			imagePath: "counterstrike.jpg",
+			gameKey: "counterstrike",
 		},
 		{
 			gameName: "Fortnite",
 			gameDowloads: "150k",
-			imagePath: "fn.jpg",
-			gameKey: "fn",
+			imagePath: "fortnite.jpg",
+			gameKey: "fortnite",
 		},
 		{
 			gameName: "Ghost of Tsushima",
 			gameDowloads: "16k",
-			imagePath: "got.jpg",
-			gameKey: "got",
+			imagePath: "ghostoftsushima.jpg",
+			gameKey: "ghostoftsushima",
 		},
 		{
 			gameName: "Ghost Recon Breakpoint",
 			gameDowloads: "170k",
-			imagePath: "grb.jpg",
-			gameKey: "grb",
+			imagePath: "ghostreconbreakpoint.jpg",
+			gameKey: "ghostreconbreakpoint",
 		},
 		{
 			gameName: "Red Redemption Red",
 			gameDowloads: "15k",
-			imagePath: "rdr.jpg",
-			gameKey: "rdr",
+			imagePath: "redredemptionred.jpg",
+			gameKey: "redredemptionred",
 		},
 	];
 
@@ -176,7 +176,7 @@ const Discover = () => {
 										alt="game"
 										className="game-image"
 									/>
-									<Link href="/">
+									<Link href={`/games/${game.gameKey}`}>
 										<a className="game-title plb">
 											{game.gameName.length > 14
 												? `${game.gameName.slice(0, 14)}...`

@@ -1,0 +1,81 @@
+@import "../../../scss/variables";
+@import "../../../scss/utilities";
+
+.gamePage {
+	main {
+		width: 100%;
+		margin-top: $spacing-14;
+
+		@include tab-screen {
+			width: 72%;
+			margin: $spacing-14 auto 0;
+		}
+
+		.gameInfo {
+			@include tab-screen {
+				@include flex($align: flex-start);
+			}
+
+			.gamecardSection {
+				width: max-content;
+				margin: 0 auto;
+
+				@include tab-screen {
+					width: max-content;
+					margin: 0;
+				}
+			}
+
+			.gameStats {
+				margin-top: $spacing-14;
+
+				@include tab-screen {
+					margin-top: 0;
+					margin-left: $spacing-24;
+				}
+
+				.statsActual {
+					@include flex;
+					width: max-content;
+					margin: 0 auto;
+
+					@include tab-screen {
+						margin: 0;
+					}
+
+					.statItem {
+						margin-right: $spacing-6;
+						text-align: center;
+
+						.statValue {
+							color: $dark-text;
+						}
+
+						.statType {
+							margin-bottom: $spacing-2;
+							color: $light-text;
+						}
+					}
+				}
+			}
+
+			.gameAbout {
+				width: 90%;
+				margin: $spacing-14 auto;
+
+				@include tab-screen {
+					margin: $spacing-14 0;
+				}
+
+				.aboutTitle {
+					margin-bottom: $spacing-6;
+					color: $dark-text;
+				}
+
+				.aboutText {
+					color: $dark-text;
+				}
+			}
+		}
+	}
+}

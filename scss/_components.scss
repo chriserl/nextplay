@@ -1,4 +1,8 @@
 //Text
+.h1 {
+	@include h1;
+}
+
 .ph {
 	@include ph;
 }
@@ -34,12 +38,17 @@
 .primary-tab {
 	@extend .button;
 	@include flex;
+	width: max-content;
 	padding: $spacing-1 $spacing-6;
 	background: $theme-light;
 	color: $theme-primary;
 	border-radius: $spacing-12;
 	cursor: pointer;
 	transition: all 0.25s ease;
+
+	span {
+		margin-left: $spacing-2;
+	}
 
 	&:hover {
 		color: $theme-light;
@@ -56,6 +65,10 @@
 	border-radius: $spacing-12;
 	cursor: pointer;
 	transition: all 0.25s ease;
+
+	span {
+		margin-left: $spacing-2;
+	}
 
 	&:hover {
 		color: $theme-light;
@@ -105,6 +118,26 @@
 	}
 }
 
+.link-button {
+	@extend .button;
+	@include flex;
+	padding: $spacing-1 $spacing-6;
+	background: $theme-light;
+	color: $theme-primary;
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	span {
+		margin-left: $spacing-2;
+	}
+
+	&:hover {
+		color: $theme-light;
+		background: $theme-primary;
+	}
+}
+
 //Forms
 .search-control {
 	@include flex;
@@ -144,5 +177,26 @@
 	.game-downloads {
 		margin-top: $spacing-2;
 		word-spacing: $spacing-2;
+	}
+}
+
+.large-game-card {
+	.game-image {
+		max-width: 248px;
+		height: 296px;
+		object-fit: cover;
+		border-radius: $spacing-6;
+	}
+
+	.game-details {
+		margin-top: $spacing-6;
+
+		.game-company {
+			margin-bottom: $spacing-1;
+		}
+
+		.game-name {
+			margin-bottom: $spacing-8;
+		}
 	}
 }

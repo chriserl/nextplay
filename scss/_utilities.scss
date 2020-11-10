@@ -49,6 +49,12 @@
 }
 
 //Text
+@mixin h1 {
+	font-size: 1.6rem;
+	font-family: PoppinsBold;
+	line-height: calc(1.6rem * 1.5);
+}
+
 @mixin ph {
 	font-size: 1.24rem;
 	font-family: PoppinsMedium;
@@ -62,7 +68,7 @@
 
 @mixin pl {
 	font-size: 1rem;
-	line-height: calc(1rem * 1.5);
+	line-height: calc(1rem * 1.8);
 }
 
 @mixin plb {
@@ -72,7 +78,7 @@
 
 @mixin ps {
 	font-size: 0.88rem;
-	line-height: calc(0.88rem * 1.5);
+	line-height: calc(0.88rem * 1.64);
 }
 
 @mixin psb {
@@ -82,7 +88,7 @@
 
 @mixin px {
 	font-size: 0.8rem;
-	line-height: calc(0.8rem * 1.5);
+	line-height: calc(0.8rem * 1.56);
 }
 
 @mixin pxb {
