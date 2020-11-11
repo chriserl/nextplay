@@ -109,6 +109,7 @@
 .icon-button {
 	@extend .button;
 	@include flex;
+	width: max-content;
 	padding: 0.32rem;
 	border-radius: $spacing-4;
 	color: $theme-light;
@@ -133,6 +134,7 @@
 .light-icon-button {
 	@extend .button;
 	@include flex;
+	width: max-content;
 	padding: 0.32rem;
 	border-radius: $spacing-4;
 	color: $theme-primary;
@@ -147,6 +149,7 @@
 .link-button {
 	@extend .button;
 	@include flex;
+	width: max-content;
 	padding: $spacing-1 $spacing-6;
 	background: $theme-light;
 	color: $theme-primary;

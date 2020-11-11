@@ -6,8 +6,7 @@ const Navbar = ({ activePath }) => {
 	let navbarRoutes = [
 		{ routePath: "discover" },
 		{ routePath: "news" },
-		{ routePath: "games" },
-		{ routePath: "chats" },
+		{ routePath: "account" },
 	];
 
 	Navbar.propTypes = {
@@ -49,12 +48,16 @@ const Navbar = ({ activePath }) => {
 					/>
 				</div>
 				<div className={navbarStyles.loggedInUser}>
-					<img
-						src="/images/jade.jpg"
-						alt="jade"
-						className={navbarStyles.activeUser}
-						layout="fill"
-					/>
+					<Link href="/account/jade">
+						<a>
+							<img
+								src="/images/jade.jpg"
+								alt="jade"
+								className={navbarStyles.activeUser}
+								layout="fill"
+							/>
+						</a>
+					</Link>
 				</div>
 			</div>
 		</nav>
