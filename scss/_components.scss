@@ -328,9 +328,13 @@
 
 	img {
 		width: 100%;
-		height: 12rem;
+		height: 14rem;
 		object-fit: cover;
 		border-radius: $spacing-12 $spacing-4 $spacing-12 $spacing-4;
+
+		@include tab-screen {
+			height: 12rem;
+		}
 	}
 
 	.news-body {
