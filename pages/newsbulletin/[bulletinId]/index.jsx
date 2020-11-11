@@ -20,7 +20,10 @@ const NewsBulletin = () => {
 						</p>
 						<div className={`${bulletinStyles.headlineDetails}`}>
 							<p className={`pl primary-tab ${bulletinStyles.source}`}>verge</p>
-							<p className={`pl ${bulletinStyles.date}`}>12 . 09 . 2020</p>
+							<p className={`pl ${bulletinStyles.date}`}>
+								<span className="md-icon">date_range</span>
+								12 . 09 . 2020
+							</p>
 						</div>
 						<div className={bulletinStyles.detailsImages}>
 							<img

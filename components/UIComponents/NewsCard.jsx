@@ -18,7 +18,7 @@ const NewsCard = () => {
 				</div>
 				<Link href="/newsbulletin/bulletinpage">
 					<a className="light-icon-button">
-						<span className="las la-link small-icon"></span>
+						<span className="mdo-icon small-icon">link</span>
 					</a>
 				</Link>
 			</div>

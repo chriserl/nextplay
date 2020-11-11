@@ -24,7 +24,7 @@ const GamePage = () => {
 								<Link href="/">
 									<a className="primary-tab">
 										<p className="ps">Official Website</p>
-										<span className="las la-long-arrow-alt-right"></span>
+										<span className="mdo-icon small-icon">arrow_right_alt</span>
 									</a>
 								</Link>
 							</div>

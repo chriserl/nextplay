@@ -45,7 +45,12 @@
 					}
 
 					.date {
+						@include flex;
 						color: $light-text;
+
+						span {
+							margin-right: $spacing-2;
+						}
 					}
 				}
 

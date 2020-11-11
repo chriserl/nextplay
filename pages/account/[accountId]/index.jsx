@@ -9,16 +9,16 @@ const Account = () => {
 				<p className={`ph ${accountStyles.title}`}>Your nextPlay account</p>
 				<div className={accountStyles.accountSummary}>
 					<div className={accountStyles.imageContainer}>
-						<p className="icon-button">
-							<span className="las la-edit small-icon"></span>
+						<p className="light-icon-button">
+							<span className="md-icon small-icon">edit</span>
 						</p>
 						<img
 							src="/images/jade.jpg"
 							alt="jade"
 							className={accountStyles.accountImage}
 						/>
-						<p className="icon-button">
-							<span className="las la-edit small-icon"></span>
+						<p className="light-icon-button">
+							<span className="md-icon small-icon">edit</span>
 						</p>
 					</div>
 					<div className={accountStyles.accountDetails}>

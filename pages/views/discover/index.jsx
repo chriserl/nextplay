@@ -100,7 +100,7 @@ const Discover = () => {
 								placeholder="search for games"
 							/>
 							<button className="icon-button">
-								<span className="las la-search small-icon"></span>
+								<span className="md-icon small-icon">search</span>
 							</button>
 						</div>
 					</form>
@@ -109,7 +109,7 @@ const Discover = () => {
 						onClick={() => handleFiltersVisible()}
 						className={`light-icon-button ${discoverStyles.filterButton}`}
 					>
-						<span className="las la-sliders-h small-icon"></span>
+						<span className="md-icon small-icon">sort</span>
 					</button>
 				</div>
 				<div
@@ -148,7 +148,7 @@ const Discover = () => {
 											: discoverStyles.hideFilterButton
 									}`}
 								>
-									<span className="las la-plus small-icon"></span>
+									<span className="md-icon small-icon">add</span>
 									<p className="px">Add filter</p>
 								</button>
 							</div>

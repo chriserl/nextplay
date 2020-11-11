@@ -4,7 +4,7 @@ const LivestreamCard = () => {
 			<div className="stream-stats">
 				<p className="pxb live-tab">Live</p>
 				<p className="psb watching">
-					<span className="las la-user"></span> 15k
+					<span className="mdo-icon">account_circle</span> 15k
 				</p>
 			</div>
 			<img
@@ -16,7 +16,7 @@ const LivestreamCard = () => {
 			<div className="stream-card-body">
 				<p className="stream-channel plb">Ninja</p>
 				<button className="icon-button-shadowless">
-					<span className="small-icon las la-paper-plane"></span>
+					<span className="small-icon mdo-icon">send</span>
 				</button>
 			</div>
 		</div>

@@ -278,7 +278,12 @@
 		@include flex($justify: space-between);
 
 		.watching {
+			@include flex;
 			color: $theme-light;
+
+			span {
+				margin-right: $spacing-1;
+			}
 		}
 	}
 
