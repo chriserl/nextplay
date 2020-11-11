@@ -16,7 +16,8 @@
 		}
 
 		.headerForm {
-			width: 100%;
+			width: 96%;
+			margin: 0 auto;
 		}
 
 		.filterButton {
@@ -35,7 +36,7 @@
 		@include tab-screen {
 			width: 40%;
 			margin: 0;
-			margin-left: $spacing-24;
+			margin-left: 8.4rem;
 		}
 
 		.filtersHeader {
@@ -51,8 +52,6 @@
 					@include d-none;
 				}
 
-				.openFilterSearch {
-				}
 				.hideFilterButton {
 					@include d-none;
 				}
@@ -69,10 +68,6 @@
 				margin-top: $spacing-8;
 			}
 		}
-	}
-
-	.filtersInvisible {
-		@include d-none;
 	}
 
 	.games {

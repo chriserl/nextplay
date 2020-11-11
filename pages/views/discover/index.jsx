@@ -46,8 +46,6 @@ const Discover = () => {
 		},
 	];
 
-	let [filtersVisible, setFiltersVisible] = useState(() => false);
-
 	let [filters, setFilters] = useState(() => []);
 
 	let [filterSearchState, setFilterSearchState] = useState(() => {
@@ -57,10 +55,6 @@ const Discover = () => {
 	let [filterItem, setFilterItem] = useState(() => {
 		return { currentFilter: "" };
 	});
-
-	let handleFiltersVisible = () => {
-		setFiltersVisible(() => (filtersVisible ? false : true));
-	};
 
 	let handleFilterButton = () => {
 		setFilterSearchState(() => ({
@@ -104,22 +98,8 @@ const Discover = () => {
 							</button>
 						</div>
 					</form>
-
-					<button
-						onClick={() => handleFiltersVisible()}
-						className={`light-icon-button ${discoverStyles.filterButton}`}
-					>
-						<span className="md-icon small-icon">sort</span>
-					</button>
 				</div>
-				<div
-					className={discoverStyles.filters}
-					className={`${
-						filtersVisible
-							? discoverStyles.filters
-							: discoverStyles.filtersInvisible
-					}`}
-				>
+				<div className={discoverStyles.filters}>
 					<div className={discoverStyles.filtersHeader}>
 						<p className={`ph ${discoverStyles.headerTitle}`}>Filters</p>
 
