@@ -114,33 +114,34 @@ const Discover = () => {
 							onSubmit={(submitEvent) => handleFilterSubmit(submitEvent)}
 							className={discoverStyles.filterForm}
 						>
-							<div className={`search-control`}>
+							<div
+								className={`search-control ${
+									filterSearchState.searchbarStatus &&
+									discoverStyles.filterSearch
+								}`}
+							>
 								<input
 									onChange={(changeEvent) => handleFilterInput(changeEvent)}
 									type="search"
 									value={filterItem.currentFilter}
 									placeholder="type keyword and press enter"
-									className={`search-input ${
-										filterSearchState.searchbarStatus
-											? discoverStyles.filterSearch
-											: discoverStyles.openFilterSearch
-									}`}
+									className={`search-input`}
 									ref={filterRef}
 								/>
-
-								<button
-									type="button"
-									onClick={() => handleFilterButton()}
-									className={`light-tab ${
-										filterSearchState.searchbarStatus
-											? discoverStyles.filterButton
-											: discoverStyles.hideFilterButton
-									}`}
-								>
-									<span className="md-icon small-icon">add</span>
-									<p className="px">Add filter</p>
-								</button>
 							</div>
+
+							<button
+								type="button"
+								onClick={() => handleFilterButton()}
+								className={`light-tab ${
+									filterSearchState.searchbarStatus
+										? discoverStyles.filterButton
+										: discoverStyles.hideFilterButton
+								}`}
+							>
+								<span className="md-icon small-icon">add</span>
+								<p className="px">Add filter</p>
+							</button>
 						</form>
 					</div>
 
