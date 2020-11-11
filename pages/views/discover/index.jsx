@@ -171,12 +171,14 @@ const Discover = () => {
 						{games.map((game) => (
 							<li className={discoverStyles.gameItem} key={game.gameKey}>
 								<div className="game-card">
-									<img
-										src={`/images/games/${game.imagePath}`}
-										alt="game"
-										className="game-image"
-										loading="lazy"
-									/>
+									<Link href={`/games/${game.gameKey}`}>
+										<img
+											src={`/images/games/${game.imagePath}`}
+											alt="game"
+											className="game-image"
+											loading="lazy"
+										/>
+									</Link>
 									<Link href={`/games/${game.gameKey}`}>
 										<a className="game-title plb">
 											{game.gameName.length > 14
