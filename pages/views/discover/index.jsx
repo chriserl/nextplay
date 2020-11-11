@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Navbar from "../../../components/Navbar/Navbar";
@@ -46,6 +46,8 @@ const Discover = () => {
 		},
 	];
 
+	let filterRef = useRef(null);
+
 	let [filters, setFilters] = useState(() => []);
 
 	let [filterSearchState, setFilterSearchState] = useState(() => {
@@ -56,7 +58,12 @@ const Discover = () => {
 		return { currentFilter: "" };
 	});
 
+	let setFilterFocus = () => {
+		filterRef.current.focus();
+	};
+
 	let handleFilterButton = () => {
+		setFilterFocus();
 		setFilterSearchState(() => ({
 			searchbarStatus: filterSearchState.searchbarStatus ? false : true,
 		}));
@@ -118,9 +125,11 @@ const Discover = () => {
 											? discoverStyles.filterSearch
 											: discoverStyles.openFilterSearch
 									}`}
+									ref={filterRef}
 								/>
 
 								<button
+									type="button"
 									onClick={() => handleFilterButton()}
 									className={`light-tab ${
 										filterSearchState.searchbarStatus
