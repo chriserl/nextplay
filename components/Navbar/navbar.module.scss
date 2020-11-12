@@ -60,13 +60,9 @@
 		margin-left: auto;
 		margin-right: $spacing-6;
 
-		.activeUsers {
-			margin-right: $spacing-4;
-
-			.activeUsers {
-				width: $spacing-10;
-				border-radius: $spacing-4;
-			}
+		.notifications {
+			margin-right: $spacing-6;
+			color: $dark-text;
 		}
 
 		.loggedInUser {

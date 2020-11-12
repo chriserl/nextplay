@@ -39,13 +39,8 @@ const Navbar = ({ activePath }) => {
 			</ul>
 
 			<div className={navbarStyles.userActions}>
-				<div className={navbarStyles.activeUsers}>
-					<img
-						src="/images/jade.jpg"
-						alt="jade"
-						className={navbarStyles.activeUsers}
-						layout="fill"
-					/>
+				<div className={navbarStyles.notifications}>
+					<span className="md-icon large-icon">notifications_none</span>
 				</div>
 				<div className={navbarStyles.loggedInUser}>
 					<Link href="/account/jade">
