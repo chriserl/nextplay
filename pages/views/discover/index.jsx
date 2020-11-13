@@ -15,7 +15,7 @@ const Discover = () => {
 
 	const getGames = () => {
 		axios
-			.post("http://localhost:3000/api/twitchapi/", {
+			.post("http://nextplay.vercel.app/api/twitchapi/", {
 				requestType: "games",
 				accessToken: user["userAccessToken"],
 			})
