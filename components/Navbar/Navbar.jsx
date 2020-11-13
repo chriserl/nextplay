@@ -16,7 +16,7 @@ const Navbar = ({ activePath }) => {
 		activePath: PropTypes.string,
 	};
 
-	let clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
+	let clientId = "g70cu3higz16c06vuvd98qw3tiuf3r";
 
 	let accessToken = useRouter().asPath.slice(15, 45) || null;
 
