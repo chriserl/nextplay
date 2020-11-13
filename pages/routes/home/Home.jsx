@@ -50,9 +50,11 @@ const Home = () => {
 						channel: gameActual[0]["channel"]["display_name"],
 						followers: gameActual[0]["channel"]["followers"],
 						logoUrl: gameActual[0]["channel"]["logo"],
+						channelUrl: gameActual[0]["channel"]["url"],
 					};
 					gamesList.push(gameData);
 				});
+				console.log(gamesList);
 				setGames(() => gamesList);
 			})
 			.catch((error) => console.log(error));
