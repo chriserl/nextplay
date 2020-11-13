@@ -42,7 +42,7 @@ const Home = () => {
 				requestType: "gameStreams",
 				accessToken: user["userAccessToken"],
 			})
-			.then((mandem) => mandem.data["gamesList"])
+			.then((mandem) => mandem.data["streamersList"])
 			.then((gamesActual) => {
 				let gamesList = [];
 				gamesActual.forEach((gameActual) => {
@@ -53,7 +53,6 @@ const Home = () => {
 					};
 					gamesList.push(gameData);
 				});
-				console.log(gamesList);
 				setGames(() => gamesList);
 			})
 			.catch((error) => console.log(error));

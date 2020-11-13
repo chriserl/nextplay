@@ -1,4 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
+import UserContext from "../../../Store.js/UserContext";
+import axios from "axios";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Navbar from "../../../components/Navbar/Navbar";
@@ -7,44 +9,32 @@ import discoverStyles from "./discover.module.scss";
 const Discover = () => {
 	let longPath = useRouter().route;
 	let shortPath = longPath.slice(7);
-	let games = [
-		{
-			gameName: "Call of Duty",
-			gameDowloads: "45k",
-			imagePath: "callofduty.jpg",
-			gameKey: "callofduty",
-		},
-		{
-			gameName: "Counter Strike",
-			gameDowloads: "10k",
-			imagePath: "counterstrike.jpg",
-			gameKey: "counterstrike",
-		},
-		{
-			gameName: "Fortnite",
-			gameDowloads: "150k",
-			imagePath: "fortnite.jpg",
-			gameKey: "fortnite",
-		},
-		{
-			gameName: "Ghost of Tsushima",
-			gameDowloads: "16k",
-			imagePath: "ghostoftsushima.jpg",
-			gameKey: "ghostoftsushima",
-		},
-		{
-			gameName: "Ghost Recon Breakpoint",
-			gameDowloads: "170k",
-			imagePath: "ghostreconbreakpoint.jpg",
-			gameKey: "ghostreconbreakpoint",
-		},
-		{
-			gameName: "Red Redemption Red",
-			gameDowloads: "15k",
-			imagePath: "redredemptionred.jpg",
-			gameKey: "redredemptionred",
-		},
-	];
+	let [user, setUser] = useContext(UserContext);
+
+	let [games, setGames] = useState(() => []);
+
+	const getGames = () => {
+		axios
+			.post("http://localhost:3000/api/twitchapi/", {
+				requestType: "games",
+				accessToken: user["userAccessToken"],
+			})
+			.then((gamesRes) => gamesRes.data["gamesList"])
+			.then((gamesList) => {
+				let gamesArray = [];
+				gamesList.forEach((game) => {
+					let gameData = {
+						gameName: game["name"],
+						gameLogo: game["box"]["large"],
+					};
+					gamesArray.push(gameData);
+				});
+				setGames(() => gamesArray);
+			})
+			.catch((error) => console.log(error));
+	};
+
+	useEffect(() => getGames());
 
 	let filterRef = useRef(null);
 
@@ -163,7 +153,7 @@ const Discover = () => {
 								<div className="game-card">
 									<Link href={`/games/${game.gameKey}`}>
 										<img
-											src={`/images/games/${game.imagePath}`}
+											src={game.gameLogo}
 											alt="game"
 											className="game-image"
 											loading="lazy"
@@ -176,7 +166,7 @@ const Discover = () => {
 												: game.gameName}
 										</a>
 									</Link>
-									<p className="game-downloads ps">{`${game.gameDowloads} Downloads`}</p>
+									{/* <p className="game-downloads ps">{`${game.gameDowloads} Downloads`}</p> */}
 								</div>
 							</li>
 						))}

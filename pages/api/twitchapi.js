@@ -3,6 +3,13 @@ import TwitchFunctions from "../../apiFunctions/TwitchFunctions";
 let clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
 
 export default async (request, response) => {
+	if (request.body["requestType"] === "games") {
+		let accessToken = request.body["accessToken"];
+		let TwitchFuncs = new TwitchFunctions(clientId, accessToken);
+		let games = await TwitchFuncs.getGames();
+		response.send(JSON.stringify({ gamesList: games }));
+	}
+
 	if (request.body["requestType"] === "liveStreams") {
 		let accessToken = request.body["accessToken"];
 		let TwitchFuncs = new TwitchFunctions(clientId, accessToken);
@@ -13,7 +20,7 @@ export default async (request, response) => {
 	if (request.body["requestType"] === "gameStreams") {
 		let accessToken = request.body["accessToken"];
 		let TwitchFuncs = new TwitchFunctions(clientId, accessToken);
-		let games = await TwitchFuncs.getGames();
-		response.send(JSON.stringify({ gamesList: games }));
+		let streamers = await TwitchFuncs.getTopStreamers();
+		response.send(JSON.stringify({ streamersList: streamers }));
 	}
 };

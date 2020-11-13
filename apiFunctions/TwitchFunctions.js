@@ -1,4 +1,4 @@
-import { ApiClient, Stream } from "twitch";
+import { ApiClient } from "twitch";
 import { StaticAuthProvider } from "twitch-auth";
 
 function TwitchFunctions(clientId, accessToken) {
@@ -15,7 +15,23 @@ function TwitchFunctions(clientId, accessToken) {
 	};
 
 	this.getGames = async () => {
-		let games = await apiClient
+		let games = [];
+
+		await apiClient
+			.callApi({
+				url: "games/top",
+			})
+			.then((gamesRes) => {
+				gamesRes["top"].forEach((gamesItem) => {
+					games.push(gamesItem["game"]);
+				});
+			});
+
+		return games;
+	};
+
+	this.getTopStreamers = async () => {
+		let streamers = await apiClient
 			.callApi({
 				url: "games/top",
 			})
@@ -26,19 +42,21 @@ function TwitchFunctions(clientId, accessToken) {
 				});
 				return rawGamesData;
 			})
-			.then(async (dataRaw) => {
-				let ming = [];
-				for (let mandem of dataRaw) {
-					let query = { game: mandem, limit: 1 };
-					await apiClient.callApi({ url: "streams", query }).then((damsel) => {
-						ming.push(damsel["streams"]);
-					});
+			.then(async (gamesData) => {
+				let streamersList = [];
+				for (let gameData of gamesData) {
+					let query = { game: gameData, limit: 1 };
+					await apiClient
+						.callApi({ url: "streams", query })
+						.then((streamerRes) => {
+							streamersList.push(streamerRes["streams"]);
+						});
 				}
-				return ming;
+				return streamersList;
 			})
 			.catch((error) => error);
 
-		return games;
+		return streamers;
 	};
 
 	this.liveStreams = async () => {
