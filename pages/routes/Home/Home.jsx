@@ -1,3 +1,4 @@
+import axios from "axios";
 import Navbar from "../../../components/Navbar/Navbar";
 import { useContext, useState, useEffect } from "react";
 import UserContext from "../../../Store.js/UserContext";
@@ -8,49 +9,60 @@ import NewsGrid from "../../../components/NewsGrid/NewsGrid";
 import homeStyles from "./home.module.scss";
 
 const Home = () => {
-	let streamers = [
-		"ninja",
-		"davelee",
-		"noisybutters",
-		"jake",
-		"yin",
-		"tom",
-		"oscar",
-	];
-
 	let [user, setUser] = useContext(UserContext);
 
-	let [streams, setStreams] = useState(() => []);
+	let [games, setGames] = useState(() => []);
 
-	const getStreams = async () => {
-		await fetch("http://localhost:3000/api/twitchapi/", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				requestType: "topStreamers",
+	let [liveStreams, setliveStreams] = useState(() => []);
+
+	const getLiveStreams = () => {
+		axios
+			.post("http://localhost:3000/api/twitchapi/", {
+				requestType: "liveStreams",
 				accessToken: user["userAccessToken"],
-			}),
-		})
-			.then((resource) => resource.json())
-			.then((resourceArray) => resourceArray["streams"])
-			.then((streamItems) => {
-				let streamArray = [];
-				streamItems.forEach((streamItem) => {
-					let streamInfo = {
-						channel: streamItem["_data"]["channel"]["display_name"],
-						followers: streamItem["_data"]["channel"]["followers"],
-						logoUrl: streamItem["_data"]["channel"].logo,
+			})
+			.then((liveStreamsRes) => liveStreamsRes.data["liveStreams"])
+			.then((liveStreamsList) => {
+				let livestreamsArray = [];
+				liveStreamsList.forEach((liveStream) => {
+					let liveStreamData = {
+						channel: liveStream["_data"]["channel"]["display_name"],
+						logoUrl: liveStream["_data"]["channel"]["logo"],
 					};
-					streamArray.push(streamInfo);
+					livestreamsArray.push(liveStreamData);
 				});
-				setStreams(() => streamArray);
+				setliveStreams(() => livestreamsArray);
 			})
 			.catch((error) => console.log(error));
 	};
 
-	useEffect(() => getStreams());
+	const getGameStreams = () => {
+		axios
+			.post("http://localhost:3000/api/twitchapi/", {
+				requestType: "gameStreams",
+				accessToken: user["userAccessToken"],
+			})
+			.then((mandem) => mandem.data["gamesList"])
+			.then((gamesActual) => {
+				let gamesList = [];
+				gamesActual.forEach((gameActual) => {
+					let gameData = {
+						channel: gameActual[0]["channel"]["display_name"],
+						followers: gameActual[0]["channel"]["followers"],
+						logoUrl: gameActual[0]["channel"]["logo"],
+					};
+					gamesList.push(gameData);
+				});
+				console.log(gamesList);
+				setGames(() => gamesList);
+			})
+			.catch((error) => console.log(error));
+	};
+
+	useEffect(() => {
+		getGameStreams();
+		getLiveStreams();
+	}, []);
 
 	return (
 		<div className={homeStyles.home}>
@@ -58,17 +70,20 @@ const Home = () => {
 			<main>
 				<div className={homeStyles.streamers}>
 					<StreamersSlider
-						sliderContent={streams}
+						sliderContent={games}
 						sliderComponent={(sliderData) => (
 							<StreamerCard cardData={sliderData} />
 						)}
 					/>
 				</div>
 				<div className={homeStyles.liveStreams}>
-					{/* <StreamersSlider
-						sliderComponent={() => <LivestreamCard />}
-						sliderTitle="livestreams"
-					/> */}
+					<StreamersSlider
+						sliderContent={liveStreams}
+						sliderComponent={(sliderData) => (
+							<LivestreamCard cardData={sliderData} />
+						)}
+						sliderTitle="Twitch livestreams"
+					/>
 				</div>
 				<div className={homeStyles.news}>
 					<NewsGrid gridTitle="News from the gaming world" moreLink="link" />

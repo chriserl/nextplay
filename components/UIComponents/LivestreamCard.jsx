@@ -1,4 +1,4 @@
-const LivestreamCard = () => {
+const LivestreamCard = ({ cardData }) => {
 	return (
 		<div className="livestream-card">
 			<div className="stream-stats">
@@ -8,13 +8,13 @@ const LivestreamCard = () => {
 				</p>
 			</div>
 			<img
-				src="/images/streams/strange.jpg"
+				src={cardData.logoUrl}
 				alt="stream"
 				className="stream-image"
 				loading="lazy"
 			/>
 			<div className="stream-card-body">
-				<p className="stream-channel plb">Ninja</p>
+				<p className="stream-channel plb">{cardData.channel}</p>
 				<button className="icon-button-shadowless">
 					<span className="small-icon mdo-icon">send</span>
 				</button>
