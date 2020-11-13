@@ -21,13 +21,17 @@ const Home = () => {
 				requestType: "liveStreams",
 				accessToken: user["userAccessToken"],
 			})
-			.then((liveStreamsRes) => liveStreamsRes.data["liveStreams"])
+			.then((liveStreamsRes) => {
+				console.log(liveStreamsRes.data["liveStreams"]);
+				return liveStreamsRes.data["liveStreams"];
+			})
 			.then((liveStreamsList) => {
 				let livestreamsArray = [];
 				liveStreamsList.forEach((liveStream) => {
 					let liveStreamData = {
 						channel: liveStream["_data"]["channel"]["display_name"],
-						logoUrl: liveStream["_data"]["channel"]["logo"],
+						channelUrl: liveStream["_data"]["channel"]["url"],
+						logoUrl: liveStream["_data"]["preview"]["large"],
 					};
 					livestreamsArray.push(liveStreamData);
 				});

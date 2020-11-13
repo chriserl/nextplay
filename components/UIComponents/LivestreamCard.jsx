@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const LivestreamCard = ({ cardData }) => {
 	return (
 		<div className="livestream-card">
@@ -15,9 +17,13 @@ const LivestreamCard = ({ cardData }) => {
 			/>
 			<div className="stream-card-body">
 				<p className="stream-channel plb">{cardData.channel}</p>
-				<button className="icon-button-shadowless">
-					<span className="small-icon mdo-icon">send</span>
-				</button>
+				<Link href={cardData.channelUrl}>
+					<a target="_blank">
+						<button className="icon-button-shadowless">
+							<span className="small-icon mdo-icon">send</span>
+						</button>
+					</a>
+				</Link>
 			</div>
 		</div>
 	);
