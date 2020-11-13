@@ -62,7 +62,7 @@ const Navbar = ({ activePath }) => {
 				</div>
 				<div className={navbarStyles.loggedInUser}>
 					<Link
-						href={`https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${clientId}&redirect_uri=http://nextplay.vercel.app/&scope=user:edit`}
+						href={`https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${clientId}&redirect_uri=https://nextplay.vercel.app/&scope=user:edit`}
 					>
 						<a>
 							<img
