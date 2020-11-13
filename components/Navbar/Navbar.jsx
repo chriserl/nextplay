@@ -61,18 +61,12 @@ const Navbar = ({ activePath }) => {
 					<span className="md-icon large-icon">notifications_none</span>
 				</div>
 				<div className={navbarStyles.loggedInUser}>
-					<Link
-						href={`https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${clientId}&redirect_uri=http://localhost:3000/&scope=user:edit`}
-					>
-						<a>
-							<img
-								src="/images/jade.jpg"
-								alt="jade"
-								className={navbarStyles.activeUser}
-								layout="fill"
-							/>
-						</a>
-					</Link>
+					<img
+						src="/images/jade.jpg"
+						alt="jade"
+						className={navbarStyles.activeUser}
+						layout="fill"
+					/>
 				</div>
 			</div>
 		</nav>
