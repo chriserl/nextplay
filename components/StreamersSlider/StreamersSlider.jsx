@@ -1,6 +1,6 @@
 import streamerssliderStyles from "./streamersslider.module.scss";
 
-const streamersSlider = ({ children, sliderTitle }) => {
+const streamersSlider = ({ sliderTitle, sliderContent, sliderComponent }) => {
 	let streamers = [
 		"ninja",
 		"davelee",
@@ -10,14 +10,15 @@ const streamersSlider = ({ children, sliderTitle }) => {
 		"tom",
 		"oscar",
 	];
+
 	return (
 		<div className={streamerssliderStyles.streamersSlider}>
 			<p className={`${streamerssliderStyles.sliderTitle} ph`}>{sliderTitle}</p>
 			<div className={streamerssliderStyles.sliderContainer}>
 				<ul className={streamerssliderStyles.sliderItems}>
-					{streamers.map((streamer) => (
-						<li className={streamerssliderStyles.sliderItem} key={streamer}>
-							{children}
+					{sliderContent.map((sliderData) => (
+						<li className={streamerssliderStyles.sliderItem}>
+							{sliderComponent(sliderData)}
 						</li>
 					))}
 				</ul>

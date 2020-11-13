@@ -1,14 +1,10 @@
-const StreamerCard = () => {
+const StreamerCard = ({ cardData }) => {
 	return (
 		<div className="streamer-card">
-			<img
-				src="/images/games/fortnite.jpg"
-				alt="streamer"
-				className="streamer-image"
-			/>
+			<img src={cardData.logoUrl} alt="streamer" className="streamer-image" />
 			<div className="streamer-card-info">
-				<p className="streamer-name psb">Ninja</p>
-				<p className="followers px">12k Followers</p>
+				<p className="streamer-name psb">{cardData.channel}</p>
+				<p className="followers px">{cardData.followers}</p>
 			</div>
 		</div>
 	);
