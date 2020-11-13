@@ -42,7 +42,7 @@ const Navbar = ({ activePath }) => {
 			<ul className={navbarStyles.navItems}>
 				{navbarRoutes.map((navbarRoute) => (
 					<li className={`${navbarStyles.navItem}`} key={navbarRoute.routePath}>
-						<Link href={`/views/${navbarRoute.routePath}`}>
+						<Link href={`/routes/${navbarRoute.routePath}`}>
 							<a
 								className={`pl ${navbarStyles.navLink} ${
 									navbarRoute.routePath === activePath &&
