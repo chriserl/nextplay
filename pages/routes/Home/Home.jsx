@@ -17,7 +17,7 @@ const Home = () => {
 
 	const getLiveStreams = () => {
 		axios
-			.post("http://nextplay.vercel.app/api/twitchapi/", {
+			.post("https://nextplay.vercel.app/api/twitchapi/", {
 				requestType: "liveStreams",
 				accessToken: user["userAccessToken"],
 			})
@@ -38,7 +38,7 @@ const Home = () => {
 
 	const getGameStreams = () => {
 		axios
-			.post("http://nextplay.vercel.app/api/twitchapi/", {
+			.post("https://nextplay.vercel.app/api/twitchapi/", {
 				requestType: "gameStreams",
 				accessToken: user["userAccessToken"],
 			})
