@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
 import Navbar from "../../../components/Navbar/Navbar";
+import LoadingScreen from "../../../components/LoadingScreen/LoadingScreen";
 import gamepageStyles from "./gamepage.module.scss";
 
 const GamePage = () => {
@@ -113,6 +114,7 @@ const GamePage = () => {
 		return (
 			<div className={gamepageStyles.gamePage}>
 				<Navbar />
+				<LoadingScreen />
 			</div>
 		);
 	}
