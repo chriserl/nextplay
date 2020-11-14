@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import TwitchFunctions from "../../apiFunctions/TwitchFunctions";
-let clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
+let clientId = process.env.CLIENT_ID;
 
 export default async (request, response) => {
 	if (request.body["requestType"] === "games") {

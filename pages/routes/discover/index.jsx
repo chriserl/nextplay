@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect, useContext } from "react";
-import UserContext from "../../../Store.js/UserContext";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -8,24 +7,24 @@ import discoverStyles from "./discover.module.scss";
 
 const Discover = () => {
 	let longPath = useRouter().route;
+
 	let shortPath = longPath.slice(7);
-	let [user, setUser] = useContext(UserContext);
 
 	let [games, setGames] = useState(() => []);
 
 	const getGames = () => {
 		axios
-			.post("http://localhost:3000/api/twitchapi/", {
+			.post("http://localhost:3000/api/rawgapi/", {
 				requestType: "games",
-				accessToken: user["userAccessToken"],
 			})
-			.then((gamesRes) => gamesRes.data["gamesList"])
+			.then((gamesRes) => gamesRes.data["gamesList"]["results"])
 			.then((gamesList) => {
 				let gamesArray = [];
 				gamesList.forEach((game) => {
 					let gameData = {
+						gameId: game["id"],
 						gameName: game["name"],
-						gameLogo: game["box"]["large"],
+						gameImage: game["background_image"],
 					};
 					gamesArray.push(gameData);
 				});
@@ -149,17 +148,17 @@ const Discover = () => {
 				<section className={discoverStyles.games}>
 					<ul className={discoverStyles.gamesList}>
 						{games.map((game) => (
-							<li className={discoverStyles.gameItem} key={game.gameName}>
+							<li className={discoverStyles.gameItem} key={game.gameId}>
 								<div className="game-card">
-									<Link href={`/games/${game.gameKey}`}>
+									<Link href={`/games/${game.gameId}`}>
 										<img
-											src={game.gameLogo}
+											src={game.gameImage}
 											alt="game"
 											className="game-image"
 											loading="lazy"
 										/>
 									</Link>
-									<Link href={`/games/${game.gameKey}`}>
+									<Link href={`/games/${game.gameId}`}>
 										<a className="game-title plb">
 											{game.gameName.length > 14
 												? `${game.gameName.slice(0, 14)}...`
