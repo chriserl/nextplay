@@ -42,7 +42,7 @@ const Navbar = ({ activePath }) => {
 			<ul className={navbarStyles.navItems}>
 				{navbarRoutes.map((navbarRoute) => (
 					<li className={`${navbarStyles.navItem}`} key={navbarRoute.routePath}>
-						<Link href={`/views/${navbarRoute.routePath}`}>
+						<Link href={`/routes/${navbarRoute.routePath}`}>
 							<a
 								className={`pl ${navbarStyles.navLink} ${
 									navbarRoute.routePath === activePath &&
@@ -61,18 +61,12 @@ const Navbar = ({ activePath }) => {
 					<span className="md-icon large-icon">notifications_none</span>
 				</div>
 				<div className={navbarStyles.loggedInUser}>
-					<Link
-						href={`https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${clientId}&redirect_uri=https://nextplay.vercel.app/&scope=user:edit`}
-					>
-						<a>
-							<img
-								src="/images/jade.jpg"
-								alt="jade"
-								className={navbarStyles.activeUser}
-								layout="fill"
-							/>
-						</a>
-					</Link>
+					<img
+						src="/images/jade.jpg"
+						alt="jade"
+						className={navbarStyles.activeUser}
+						layout="fill"
+					/>
 				</div>
 			</div>
 		</nav>

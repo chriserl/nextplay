@@ -27,7 +27,8 @@ const Home = () => {
 				liveStreamsList.forEach((liveStream) => {
 					let liveStreamData = {
 						channel: liveStream["_data"]["channel"]["display_name"],
-						logoUrl: liveStream["_data"]["channel"]["logo"],
+						channelUrl: liveStream["_data"]["channel"]["url"],
+						logoUrl: liveStream["_data"]["preview"]["large"],
 					};
 					livestreamsArray.push(liveStreamData);
 				});
@@ -50,6 +51,7 @@ const Home = () => {
 						channel: gameActual[0]["channel"]["display_name"],
 						followers: gameActual[0]["channel"]["followers"],
 						logoUrl: gameActual[0]["channel"]["logo"],
+						channelUrl: gameActual[0]["channel"]["url"],
 					};
 					gamesList.push(gameData);
 				});

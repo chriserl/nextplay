@@ -223,11 +223,17 @@
 	.game-details {
 		margin-top: $spacing-6;
 
+		.publishers-title {
+			margin-bottom: $spacing-2;
+			color: $light-text;
+		}
+
 		.game-company {
 			margin-bottom: $spacing-1;
 		}
 
 		.game-name {
+			margin-top: $spacing-4;
 			margin-bottom: $spacing-8;
 		}
 	}
