@@ -15,6 +15,8 @@ const Home = () => {
 
 	let [liveStreams, setliveStreams] = useState(() => []);
 
+	let [articles, setArticles] = useState(() => []);
+
 	const getLiveStreams = () => {
 		axios
 			.post("http://localhost:3000/api/twitchapi/", {
@@ -60,9 +62,21 @@ const Home = () => {
 			.catch((error) => console.log(error));
 	};
 
+	const getHeadlines = () => {
+		axios
+			.post("http://localhost:3000/api/gamespotapi/", {
+				requestType: "headlines",
+				articlesNumber: 20,
+			})
+			.then((rawArticles) => rawArticles.data["articles"])
+			.then((newsArticles) => setArticles(() => newsArticles))
+			.catch((error) => console.log(error));
+	};
+
 	useEffect(() => {
-		getGameStreams();
-		getLiveStreams();
+		//getGameStreams();
+		//getLiveStreams();
+		getHeadlines();
 	}, []);
 
 	return (
@@ -87,7 +101,11 @@ const Home = () => {
 					/>
 				</div>
 				<div className={homeStyles.news}>
-					<NewsGrid gridTitle="News from the gaming world" moreLink="link" />
+					<NewsGrid
+						gridData={articles}
+						gridTitle="News from the gaming world"
+						moreLink="link"
+					/>
 				</div>
 			</main>
 		</div>

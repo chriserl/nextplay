@@ -1,20 +1,20 @@
 import Link from "next/link";
 
-const NewsCard = () => {
+const NewsCard = ({ cardData }) => {
 	return (
 		<div className="news-card">
 			<div className="news-date">
 				<p className="px live-tab">21 . 12 . 2020</p>
 			</div>
 			<img
-				src="/images/streams/blackpanther.jpg"
+				src={cardData.image["original"]}
 				alt="news"
 				className="news-image"
 				loading="lazy"
 			/>
 			<div className="news-body">
 				<div className="news-info">
-					<p className="news-headline psb">Are we ready to launch?</p>
+					<p className="news-headline psb">{cardData.title}</p>
 				</div>
 				<Link href="/newsbulletin/bulletinpage">
 					<a className="light-icon-button">

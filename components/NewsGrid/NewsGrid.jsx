@@ -2,7 +2,7 @@ import Link from "next/link";
 import newsgridStyles from "./newsgrid.module.scss";
 import NewsCard from "../UIComponents/NewsCard";
 
-const NewsGrid = ({ gridTitle, moreLink }) => {
+const NewsGrid = ({ gridData, gridTitle, moreLink }) => {
 	let streamers = [
 		"ninja",
 		"davelee",
@@ -25,8 +25,8 @@ const NewsGrid = ({ gridTitle, moreLink }) => {
 				)}
 			</div>
 			<div className={newsgridStyles.gridContainer}>
-				{streamers.map((streamer) => (
-					<NewsCard key={streamer} />
+				{gridData.map((dataItem) => (
+					<NewsCard key={dataItem.id} cardData={dataItem} />
 				))}
 			</div>
 		</div>
