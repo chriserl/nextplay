@@ -13,7 +13,7 @@ const GamePage = () => {
 
 	let getGame = async () => {
 		axios
-			.post("http://localhost:3000/api/rawgapi/", {
+			.post("https://nextplay.vercel.app/api/rawgapi/", {
 				requestType: "gameDetails",
 				gameId,
 			})
