@@ -149,7 +149,7 @@ const Discover = () => {
 				<section className={discoverStyles.games}>
 					<ul className={discoverStyles.gamesList}>
 						{games.map((game) => (
-							<li className={discoverStyles.gameItem} key={game.gameKey}>
+							<li className={discoverStyles.gameItem} key={game.gameName}>
 								<div className="game-card">
 									<Link href={`/games/${game.gameKey}`}>
 										<img

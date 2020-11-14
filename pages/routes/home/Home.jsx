@@ -21,10 +21,7 @@ const Home = () => {
 				requestType: "liveStreams",
 				accessToken: user["userAccessToken"],
 			})
-			.then((liveStreamsRes) => {
-				console.log(liveStreamsRes.data["liveStreams"]);
-				return liveStreamsRes.data["liveStreams"];
-			})
+			.then((liveStreamsRes) => liveStreamsRes.data["liveStreams"])
 			.then((liveStreamsList) => {
 				let livestreamsArray = [];
 				liveStreamsList.forEach((liveStream) => {
@@ -58,7 +55,6 @@ const Home = () => {
 					};
 					gamesList.push(gameData);
 				});
-				console.log(gamesList);
 				setGames(() => gamesList);
 			})
 			.catch((error) => console.log(error));
