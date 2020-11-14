@@ -10,7 +10,7 @@ export default function RawgFunctions(rawgApiKey) {
 				params: {
 					key: rawgKey,
 					page: 1,
-					page_size: 12,
+					page_size: 20,
 				},
 			})
 			.then((gamesRaw) => gamesRaw.data)
