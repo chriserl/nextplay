@@ -8,7 +8,7 @@ export default function RawgFunctions(rawgApiKey) {
 		let games = await axios
 			.get(`${rawgBaseUrl}games`, {
 				params: {
-					key: rawgApiKey,
+					key: rawgKey,
 					page: 1,
 					page_size: 12,
 				},
@@ -17,5 +17,18 @@ export default function RawgFunctions(rawgApiKey) {
 			.catch((error) => error);
 
 		return games;
+	};
+
+	this.getGameDetails = async (gameId) => {
+		let gameDetails = await axios
+			.get(`${rawgBaseUrl}games/${gameId}`, {
+				params: {
+					key: rawgKey,
+				},
+			})
+			.then((gamesRaw) => gamesRaw.data)
+			.catch((error) => error);
+
+		return gameDetails;
 	};
 }
