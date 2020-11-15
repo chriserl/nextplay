@@ -1,9 +1,29 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Navbar from "../../../components/Navbar/Navbar";
 import NewsGrid from "../../../components/NewsGrid/NewsGrid";
 import newsStyles from "./news.module.scss";
 
 const News = () => {
 	let topics = ["action", "ubisoft"];
+
+	let [articles, setArticles] = useState(() => []);
+
+	const getHeadlines = () => {
+		axios
+			.post("http://localhost:3000/api/gamespotapi/", {
+				requestType: "headlines",
+				articlesNumber: 20,
+			})
+			.then((rawArticles) => rawArticles.data["articles"])
+			.then((newsArticles) => setArticles(() => newsArticles))
+			.catch((error) => console.log(error));
+	};
+
+	useEffect(() => {
+		getHeadlines();
+	}, []);
+
 	return (
 		<div className={newsStyles.newsPage}>
 			<Navbar activePath="news" />
@@ -24,8 +44,8 @@ const News = () => {
 					</div>
 				</div>
 			</div>
-			<div className={newsStyles.newsGrid}>
-				<NewsGrid />
+			<div gridData={articles} className={newsStyles.newsGrid}>
+				<NewsGrid gridData={articles} />
 			</div>
 		</div>
 	);

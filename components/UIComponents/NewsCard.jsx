@@ -16,7 +16,7 @@ const NewsCard = ({ cardData }) => {
 				<div className="news-info">
 					<p className="news-headline psb">{cardData.title}</p>
 				</div>
-				<Link href="/newsbulletin/bulletinpage">
+				<Link href={`/newsbulletin/${cardData.id}`}>
 					<a className="light-icon-button">
 						<span className="mdo-icon small-icon">link</span>
 					</a>

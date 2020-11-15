@@ -74,8 +74,8 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		//getGameStreams();
-		//getLiveStreams();
+		getGameStreams();
+		getLiveStreams();
 		getHeadlines();
 	}, []);
 
