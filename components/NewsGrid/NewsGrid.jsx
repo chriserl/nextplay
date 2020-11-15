@@ -10,7 +10,7 @@ const NewsGrid = ({ gridData, gridTitle, moreLink }) => {
 				<div className={`${newsgridStyles.gridTitle}`}>
 					<p className={`h1 ${newsgridStyles.titleText}`}>{gridTitle}</p>
 					{moreLink === "link" && (
-						<Link href="/views/news">
+						<Link href="/routes/news">
 							<a className={`primary-tab ps ${newsgridStyles.seemoreLink}`}>
 								See more
 							</a>

@@ -64,11 +64,11 @@ const Home = () => {
 
 	const getHeadlines = () => {
 		axios
-			.post("http://localhost:3000/api/gamespotapi/", {
+			.post("http://localhost:3000/api/guardianapi/", {
 				requestType: "headlines",
 				articlesNumber: 20,
 			})
-			.then((rawArticles) => rawArticles.data["articles"])
+			.then((rawArticles) => rawArticles.data["articles"]["results"])
 			.then((newsArticles) => setArticles(() => newsArticles))
 			.catch((error) => console.log(error));
 	};
