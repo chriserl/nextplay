@@ -4,12 +4,16 @@ import axios from "axios";
 import Navbar from "../../../components/Navbar/Navbar";
 import LoadingScreen from "../../../components/LoadingScreen/LoadingScreen";
 import bulletinStyles from "./bulletin.module.scss";
+import { NextPage } from "next";
 
-const NewsBulletin = () => {
+const NewsBulletin: NextPage = () => {
 	let pageId = useRouter().query["bulletinId"];
-	let [articleData, setArticleData] = useState(() => {});
+	let [articleData, setArticleData] = useState(() => ({
+		image: "",
+		title: "",
+	}));
 
-	const getArticle = () => {
+	const getArticle = (): void => {
 		axios
 			.post("http://localhost:3000/api/gamespotapi/", {
 				requestType: "articleDetails",
@@ -30,7 +34,7 @@ const NewsBulletin = () => {
 	if (articleData) {
 		return (
 			<div className={bulletinStyles.newsBulletin}>
-				<Navbar />
+				<Navbar activePath={""} />
 				<div className={bulletinStyles.newsArticle}>
 					<div className={bulletinStyles.imageContainer}>
 						<img
@@ -99,7 +103,7 @@ const NewsBulletin = () => {
 	} else {
 		return (
 			<div className={bulletinStyles.newsBulletin}>
-				<Navbar />
+				<Navbar activePath={""} />
 				<LoadingScreen />
 			</div>
 		);

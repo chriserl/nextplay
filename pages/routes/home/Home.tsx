@@ -1,6 +1,7 @@
+import { NextPage } from "next";
+import { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../../../components/Navbar/Navbar";
-import { useContext, useState, useEffect } from "react";
 import UserContext from "../../../Store.js/UserContext";
 import StreamersSlider from "../../../components/StreamersSlider/StreamersSlider";
 import LivestreamCard from "../../../components/UIComponents/LivestreamCard";
@@ -8,7 +9,7 @@ import StreamerCard from "../../../components/UIComponents/StreamerCard";
 import NewsGrid from "../../../components/NewsGrid/NewsGrid";
 import homeStyles from "./home.module.scss";
 
-const Home = () => {
+const Home: NextPage = () => {
 	let [user, setUser] = useContext(UserContext);
 
 	let [games, setGames] = useState(() => []);
@@ -17,21 +18,58 @@ const Home = () => {
 
 	let [articles, setArticles] = useState(() => []);
 
-	const getLiveStreams = () => {
+	interface TwitchRequestBody {
+		requestType: string;
+		accessToken: string;
+	}
+
+	interface HeadlinesRequestBody {
+		requestType: string;
+		articlesNumber: number;
+	}
+
+	interface ChannelInfo {
+		channelName: string;
+		channelUrl: string;
+		channelLogo: string;
+	}
+
+	interface GameInfo {
+		channel: string;
+		followers: string;
+		logoUrl: string;
+		channelUrl: string;
+	}
+
+	const destructureChannel = (rawInfo: object): ChannelInfo => {
+		return {
+			channelName: rawInfo["_data"]["channel"]["display_name"],
+			channelUrl: rawInfo["_data"]["channel"]["url"],
+			channelLogo: rawInfo["_data"]["preview"]["large"],
+		};
+	};
+
+	const destructureGame = (rawInfo: object): GameInfo => {
+		return {
+			channel: rawInfo[0]["channel"]["display_name"],
+			followers: rawInfo[0]["channel"]["followers"],
+			logoUrl: rawInfo[0]["channel"]["logo"],
+			channelUrl: rawInfo[0]["channel"]["url"],
+		};
+	};
+
+	const getLiveStreams = (): void => {
+		let requestBody: TwitchRequestBody = {
+			requestType: "liveStreams",
+			accessToken: user["userAccessToken"],
+		};
 		axios
-			.post("http://localhost:3000/api/twitchapi/", {
-				requestType: "liveStreams",
-				accessToken: user["userAccessToken"],
-			})
+			.post("http://localhost:3000/api/twitchapi/", requestBody)
 			.then((liveStreamsRes) => liveStreamsRes.data["liveStreams"])
 			.then((liveStreamsList) => {
-				let livestreamsArray = [];
-				liveStreamsList.forEach((liveStream) => {
-					let liveStreamData = {
-						channel: liveStream["_data"]["channel"]["display_name"],
-						channelUrl: liveStream["_data"]["channel"]["url"],
-						logoUrl: liveStream["_data"]["preview"]["large"],
-					};
+				let livestreamsArray: object[] = [];
+				liveStreamsList.forEach((liveStream: object) => {
+					let liveStreamData: ChannelInfo = destructureChannel(liveStream);
 					livestreamsArray.push(liveStreamData);
 				});
 				setliveStreams(() => livestreamsArray);
@@ -39,22 +77,18 @@ const Home = () => {
 			.catch((error) => console.log(error));
 	};
 
-	const getGameStreams = () => {
+	const getGameStreams = (): void => {
+		let requestBody: TwitchRequestBody = {
+			requestType: "gameStreams",
+			accessToken: user["userAccessToken"],
+		};
 		axios
-			.post("http://localhost:3000/api/twitchapi/", {
-				requestType: "gameStreams",
-				accessToken: user["userAccessToken"],
-			})
-			.then((mandem) => mandem.data["streamersList"])
+			.post("http://localhost:3000/api/twitchapi/", requestBody)
+			.then((gamesResponse) => gamesResponse.data["streamersList"])
 			.then((gamesActual) => {
-				let gamesList = [];
-				gamesActual.forEach((gameActual) => {
-					let gameData = {
-						channel: gameActual[0]["channel"]["display_name"],
-						followers: gameActual[0]["channel"]["followers"],
-						logoUrl: gameActual[0]["channel"]["logo"],
-						channelUrl: gameActual[0]["channel"]["url"],
-					};
+				let gamesList: object[] = [];
+				gamesActual.forEach((gameActual: object) => {
+					let gameData: GameInfo = destructureGame(gameActual);
 					gamesList.push(gameData);
 				});
 				setGames(() => gamesList);
@@ -62,12 +96,13 @@ const Home = () => {
 			.catch((error) => console.log(error));
 	};
 
-	const getHeadlines = () => {
+	const getHeadlines = (): void => {
+		let requestBody: HeadlinesRequestBody = {
+			requestType: "headlines",
+			articlesNumber: 20,
+		};
 		axios
-			.post("http://localhost:3000/api/guardianapi/", {
-				requestType: "headlines",
-				articlesNumber: 20,
-			})
+			.post("http://localhost:3000/api/guardianapi/", requestBody)
 			.then((rawArticles) => rawArticles.data["articles"]["results"])
 			.then((newsArticles) => setArticles(() => newsArticles))
 			.catch((error) => console.log(error));
@@ -85,6 +120,7 @@ const Home = () => {
 			<main>
 				<div className={homeStyles.streamers}>
 					<StreamersSlider
+						sliderTitle={""}
 						sliderContent={games}
 						sliderComponent={(sliderData) => (
 							<StreamerCard cardData={sliderData} />

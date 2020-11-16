@@ -1,20 +1,27 @@
+import { NextPage } from "next";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../../../components/Navbar/Navbar";
 import NewsGrid from "../../../components/NewsGrid/NewsGrid";
 import newsStyles from "./news.module.scss";
 
-const News = () => {
+const News: NextPage = () => {
 	let topics = ["action", "ubisoft"];
 
 	let [articles, setArticles] = useState(() => [1, 2, 3, 4, 5, 6]);
 
+	interface HeadlinesRequestBody {
+		requestType: string;
+		articlesNumber: number;
+	}
+
 	const getHeadlines = () => {
+		let requestBody: HeadlinesRequestBody = {
+			requestType: "headlines",
+			articlesNumber: 20,
+		};
 		axios
-			.post("http://localhost:3000/api/guardianapi/", {
-				requestType: "headlines",
-				articlesNumber: 20,
-			})
+			.post("http://localhost:3000/api/guardianapi/", requestBody)
 			.then((rawArticles) => rawArticles.data["articles"]["results"])
 			.then((newsArticles) => setArticles(() => newsArticles))
 			.catch((error) => console.log(error));
@@ -44,8 +51,8 @@ const News = () => {
 					</div>
 				</div>
 			</div>
-			<div gridData={articles} className={newsStyles.newsGrid}>
-				<NewsGrid gridData={articles} />
+			<div className={newsStyles.newsGrid}>
+				<NewsGrid gridTitle={""} moreLink={""} gridData={articles} />
 			</div>
 		</div>
 	);

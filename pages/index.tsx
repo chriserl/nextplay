@@ -1,7 +1,8 @@
+import { NextPage } from "next";
 import Head from "next/head";
 import Home from "./routes/home/Home";
 
-export default function IndexPage() {
+const IndexPage: NextPage = () => {
 	return (
 		<div className="index-page">
 			<Head>
@@ -11,4 +12,6 @@ export default function IndexPage() {
 			<Home />
 		</div>
 	);
-}
+};
+
+export default IndexPage;
