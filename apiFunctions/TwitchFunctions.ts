@@ -1,12 +1,12 @@
 import { ApiClient } from "twitch";
 import { StaticAuthProvider } from "twitch-auth";
 
-function TwitchFunctions(clientId, accessToken) {
+function TwitchFunctions(clientId: strinng, accessToken: string) {
 	const authProvider = new StaticAuthProvider(clientId, accessToken);
 	const apiClient = new ApiClient({ authProvider });
 
 	this.getName = async () => {
-		let userId = await apiClient
+		let userId: string = await apiClient
 			.getTokenInfo()
 			.then((tokenraw) => tokenraw.userName)
 			.catch((error) => error);
@@ -15,7 +15,7 @@ function TwitchFunctions(clientId, accessToken) {
 	};
 
 	this.getGames = async () => {
-		let games = [];
+		let games: object[] = [];
 
 		await apiClient
 			.callApi({
