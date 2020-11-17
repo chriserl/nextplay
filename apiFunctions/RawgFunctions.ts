@@ -1,11 +1,11 @@
 import axios from "axios";
 
-export default function RawgFunctions(rawgApiKey) {
-	let rawgKey = rawgApiKey;
-	let rawgBaseUrl = "https://api.rawg.io/api/";
+export default function RawgFunctions(rawgApiKey: string) {
+	let rawgKey: string = rawgApiKey;
+	let rawgBaseUrl: string = "https://api.rawg.io/api/";
 
 	this.getGames = async () => {
-		let games = await axios
+		let games: object[] = await axios
 			.get(`${rawgBaseUrl}games`, {
 				params: {
 					key: rawgKey,

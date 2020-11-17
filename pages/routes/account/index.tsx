@@ -1,10 +1,11 @@
+import { NextPage } from "next";
 import Navbar from "../../../components/Navbar/Navbar";
 import accountStyles from "./account.module.scss";
 
-const Account = () => {
+const Account: NextPage = () => {
 	return (
 		<div className={accountStyles.account}>
-			<Navbar />
+			<Navbar activePath={""} />
 			<main className={accountStyles.mainArea}>
 				<p className={`ph ${accountStyles.title}`}>Your nextPlay account</p>
 				<div className={accountStyles.accountSummary}>

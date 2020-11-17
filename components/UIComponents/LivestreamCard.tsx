@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 import Link from "next/link";
 
 const LivestreamCard = ({ cardData }) => {
@@ -10,7 +11,7 @@ const LivestreamCard = ({ cardData }) => {
 				</p>
 			</div>
 			<img
-				src={cardData.logoUrl}
+				src={cardData.channelLogo}
 				alt="stream"
 				className="stream-image"
 				loading="lazy"

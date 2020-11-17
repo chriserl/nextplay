@@ -12,11 +12,14 @@
     "axios": "^0.21.0",
     "next": "10.0.1",
     "next-fonts": "^1.4.0",
-    "prop-types": "^15.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "sass": "^1.29.0",
     "twitch": "^4.2.7"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/next": "^9.0.0",
+    "@types/react": "^16.9.56",
+    "typescript": "^4.0.5"
+  }
 }

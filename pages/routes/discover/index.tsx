@@ -1,3 +1,4 @@
+import { NextPage } from "next";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -6,12 +7,16 @@ import Navbar from "../../../components/Navbar/Navbar";
 import LoadingScreen from "../../../components/LoadingScreen/LoadingScreen";
 import discoverStyles from "./discover.module.scss";
 
-const Discover = () => {
-	let longPath = useRouter().route;
-
-	let shortPath = longPath.slice(7);
+const Discover: NextPage = () => {
+	let path = useRouter().route.slice(7);
 
 	let [games, setGames] = useState(() => []);
+
+	interface GameData {
+		gameId: number;
+		gameName: string;
+		gameImage: string;
+	}
 
 	const getGames = () => {
 		axios
@@ -22,7 +27,7 @@ const Discover = () => {
 			.then((gamesList) => {
 				let gamesArray = [];
 				gamesList.forEach((game) => {
-					let gameData = {
+					let gameData: GameData = {
 						gameId: game["id"],
 						gameName: game["name"],
 						gameImage: game["background_image"],
@@ -79,7 +84,7 @@ const Discover = () => {
 	if (games.length > 0) {
 		return (
 			<div>
-				<Navbar activePath={shortPath} />
+				<Navbar activePath={path} />
 
 				<main className={discoverStyles.discover}>
 					<div className={discoverStyles.header}>
@@ -179,7 +184,7 @@ const Discover = () => {
 	} else {
 		return (
 			<div>
-				<Navbar activePath={shortPath} />
+				<Navbar activePath={path} />
 				<LoadingScreen />
 			</div>
 		);

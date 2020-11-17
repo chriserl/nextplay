@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import PropTypes from "prop-types";
 import { useContext, useEffect } from "react";
 import UserContext from "../../Store.js/UserContext";
 import navbarStyles from "./navbar.module.scss";
@@ -11,10 +10,6 @@ const Navbar = ({ activePath }) => {
 		{ routePath: "news" },
 		{ routePath: "account" },
 	];
-
-	Navbar.propTypes = {
-		activePath: PropTypes.string,
-	};
 
 	let clientId = "g70cu3higz16c06vuvd98qw3tiuf3r";
 
@@ -65,7 +60,6 @@ const Navbar = ({ activePath }) => {
 						src="/images/jade.jpg"
 						alt="jade"
 						className={navbarStyles.activeUser}
-						layout="fill"
 					/>
 				</div>
 			</div>
