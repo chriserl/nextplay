@@ -64,7 +64,7 @@ const Home: FunctionComponent = () => {
 			accessToken: user["userAccessToken"],
 		};
 		axios
-			.post("http://localhost:3000/api/twitchapi/", requestBody)
+			.post("https://nextplay.vercel.app/api/twitchapi/", requestBody)
 			.then((liveStreamsRes) => liveStreamsRes.data["liveStreams"])
 			.then((liveStreamsList) => {
 				let livestreamsArray: object[] = [];
@@ -83,7 +83,7 @@ const Home: FunctionComponent = () => {
 			accessToken: user["userAccessToken"],
 		};
 		axios
-			.post("http://localhost:3000/api/twitchapi/", requestBody)
+			.post("https://nextplay.vercel.app/api/twitchapi/", requestBody)
 			.then((gamesResponse) => gamesResponse.data["streamersList"])
 			.then((gamesActual) => {
 				let gamesList: object[] = [];
@@ -102,7 +102,7 @@ const Home: FunctionComponent = () => {
 			articlesNumber: 20,
 		};
 		axios
-			.post("http://localhost:3000/api/guardianapi/", requestBody)
+			.post("https://nextplay.vercel.app/api/guardianapi/", requestBody)
 			.then((rawArticles) => rawArticles.data["articles"]["results"])
 			.then((newsArticles) => setArticles(() => newsArticles))
 			.catch((error) => console.log(error));
