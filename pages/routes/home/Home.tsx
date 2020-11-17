@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { FunctionComponent } from "react";
 import { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../../../components/Navbar/Navbar";
@@ -9,7 +9,7 @@ import StreamerCard from "../../../components/UIComponents/StreamerCard";
 import NewsGrid from "../../../components/NewsGrid/NewsGrid";
 import homeStyles from "./home.module.scss";
 
-const Home: NextPage = () => {
+const Home: FunctionComponent = () => {
 	let [user, setUser] = useContext(UserContext);
 
 	let [games, setGames] = useState(() => []);
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
 		channelLogo: string;
 	}
 
-	interface GameInfo {
+	interface StreamsInfo {
 		channel: string;
 		followers: string;
 		logoUrl: string;
@@ -49,7 +49,7 @@ const Home: NextPage = () => {
 		};
 	};
 
-	const destructureGame = (rawInfo: object): GameInfo => {
+	const destructureGame = (rawInfo: object): StreamsInfo => {
 		return {
 			channel: rawInfo[0]["channel"]["display_name"],
 			followers: rawInfo[0]["channel"]["followers"],
@@ -88,7 +88,7 @@ const Home: NextPage = () => {
 			.then((gamesActual) => {
 				let gamesList: object[] = [];
 				gamesActual.forEach((gameActual: object) => {
-					let gameData: GameInfo = destructureGame(gameActual);
+					let gameData: StreamsInfo = destructureGame(gameActual);
 					gamesList.push(gameData);
 				});
 				setGames(() => gamesList);
