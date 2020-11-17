@@ -1,7 +1,7 @@
 import { ApiClient } from "twitch";
 import { StaticAuthProvider } from "twitch-auth";
 
-function TwitchFunctions(clientId: strinng, accessToken: string) {
+function TwitchFunctions(clientId: string, accessToken: string) {
 	const authProvider = new StaticAuthProvider(clientId, accessToken);
 	const apiClient = new ApiClient({ authProvider });
 
