@@ -93,6 +93,7 @@ const Discover: NextPage = () => {
 									name="discoverSearch"
 									className="search-input"
 									placeholder="search for games"
+									autoComplete="off"
 								/>
 								<button className="icon-button">
 									<span className="md-icon small-icon">search</span>
@@ -121,6 +122,7 @@ const Discover: NextPage = () => {
 										placeholder="type keyword and press enter"
 										className={`search-input`}
 										ref={filterRef}
+										autoComplete="off"
 									/>
 								</div>
 
