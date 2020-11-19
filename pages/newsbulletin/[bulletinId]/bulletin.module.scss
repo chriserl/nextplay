@@ -33,7 +33,7 @@
 				}
 
 				.articleHeadline {
-					color: $dark-text;
+					color: $theme-100;
 				}
 
 				.headlineDetails {
@@ -46,7 +46,7 @@
 
 					.date {
 						@include flex;
-						color: $light-text;
+						color: $theme-500;
 
 						span {
 							margin-right: $spacing-2;
@@ -89,7 +89,7 @@
 				}
 
 				.passageText {
-					color: $dark-text;
+					color: $gray-300;
 
 					&::first-letter {
 						@include h1;

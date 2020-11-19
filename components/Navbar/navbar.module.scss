@@ -10,7 +10,7 @@
 
 	.brand {
 		@include flex;
-		color: $theme-primary;
+		color: $theme-main;
 
 		.brandText {
 			margin-left: $spacing-1;
@@ -30,7 +30,7 @@
 
 		.navItem {
 			margin: 0 $spacing-4;
-			color: $light-text;
+			color: $gray-400;
 
 			.navLink {
 				text-transform: capitalize;
@@ -38,7 +38,7 @@
 
 			.activeLink {
 				@include plb;
-				color: $dark-text;
+				color: $theme-200;
 				text-transform: capitalize;
 
 				&::before {
@@ -48,7 +48,7 @@
 					top: 26px;
 					width: 5px;
 					height: 5.2px;
-					background: $theme-primary;
+					background: $theme-main;
 					border-radius: $spacing-4;
 				}
 			}
@@ -62,14 +62,14 @@
 
 		.notifications {
 			margin-right: $spacing-6;
-			color: $dark-text;
+			color: $theme-200;
 		}
 
 		.loggedInUser {
 			.activeUser {
 				width: $spacing-10;
 				border-radius: $spacing-4;
-				box-shadow: 2px 8px 18px $primary-hover;
+				box-shadow: 2px 8px 18px $theme-800;
 			}
 		}
 	}

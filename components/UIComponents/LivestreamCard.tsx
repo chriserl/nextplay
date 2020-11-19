@@ -20,7 +20,7 @@ const LivestreamCard = ({ cardData }) => {
 				<p className="stream-channel plb">{cardData.channel}</p>
 				<Link href={cardData.channelUrl}>
 					<a target="_blank">
-						<button className="icon-button-shadowless">
+						<button className="light-icon-button">
 							<span className="small-icon mdo-icon">send</span>
 						</button>
 					</a>

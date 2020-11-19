@@ -26,7 +26,7 @@
 					margin: 0 $spacing-8;
 					padding: $spacing-1;
 					border-radius: 50%;
-					border: 2px solid $theme-primary;
+					border: 2px solid $theme-main;
 				}
 			}
 
@@ -37,11 +37,11 @@
 				text-align: center;
 
 				.accountName {
-					color: $dark-text;
+					color: $theme-100;
 				}
 
 				.accountLocation {
-					color: $light-text;
+					color: $gray-400;
 				}
 
 				.editButton {
