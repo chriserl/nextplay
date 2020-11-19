@@ -7,6 +7,5 @@ let TwitchFuncs = new TwitchFunctions(clientId, auth);
 
 export default async (request, response) => {
 	let channels: object[] = await TwitchFuncs.getTopGameChannels();
-	console.log(channels);
 	response.send(JSON.stringify({ channels }));
 };

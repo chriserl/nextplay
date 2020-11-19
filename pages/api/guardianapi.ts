@@ -10,10 +10,4 @@ export default async (request, response) => {
 		let articles: object[] = await guardian.getHeadlines(articlesNumber);
 		response.send(JSON.stringify({ articles }));
 	}
-
-	// if (request.body["requestType"] === "articleDetails") {
-	// 	let articleId = request.body["articleId"];
-	// 	let articleDetails = await gamespot.getHeadlines(articleId);
-	// 	response.send(JSON.stringify({ articleDetails }));
-	// }
 };

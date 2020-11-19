@@ -71,9 +71,12 @@ const Home: FunctionComponent = () => {
 					/>
 				</div>
 				<div className={homeStyles.redditPosts}>
-					{redditPosts.map((redditPost) => (
-						<RedditCard postData={redditPost} />
-					))}
+					<p className={`${homeStyles.title} ph`}>Posts from game subreddits</p>
+					<div className={homeStyles.postsContainer}>
+						{redditPosts.map((redditPost) => (
+							<RedditCard postData={redditPost} />
+						))}
+					</div>
 				</div>
 			</main>
 		</div>

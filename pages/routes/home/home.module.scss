@@ -24,12 +24,22 @@
 		}
 
 		.redditPosts {
-			width: 90%;
-			margin: 0 auto;
-			-moz-columns: auto 218px;
-			columns: auto 218px;
-			-moz-column-gap: $spacing-8;
-			column-gap: $spacing-8;
+			width: 100%;
+
+			.title {
+				text-align: center;
+				color: $theme-300;
+				margin-bottom: $spacing-14;
+			}
+
+			.postsContainer {
+				width: 90%;
+				margin: 0 auto;
+				-moz-columns: auto 218px;
+				columns: auto 218px;
+				-moz-column-gap: $spacing-8;
+				column-gap: $spacing-8;
+			}
 		}
 	}
 }

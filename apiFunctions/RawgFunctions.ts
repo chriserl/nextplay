@@ -45,7 +45,7 @@ export default function RawgFunctions(rawgApiKey: string) {
 	};
 
 	this.getRedditPosts = async () => {
-		let ids: number[] = await getGameIds(2);
+		let ids: number[] = await getGameIds(1);
 		let posts: object[] = [];
 
 		for await (let id of ids) {
