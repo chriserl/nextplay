@@ -348,6 +348,13 @@
 		max-width: 218px;
 	}
 
+	.date-created {
+		color: $theme-500;
+		width: $spacing-16;
+		margin-left: $spacing-2;
+		margin-bottom: $spacing-4;
+	}
+
 	.card-image {
 		width: 100%;
 		object-fit: cover;
@@ -366,17 +373,13 @@
 		margin: 0 auto;
 
 		.card-body__header {
-			@include flex($justify: space-between);
+			@include flex($align: flex-start, $justify: space-between);
 			width: 100%;
 			margin: 0 auto;
 			margin-bottom: $spacing-2;
 
 			.user-name {
 				color: $theme-200;
-			}
-
-			.date-created {
-				color: $theme-500;
 			}
 		}
 

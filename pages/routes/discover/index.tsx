@@ -18,9 +18,7 @@ const Discover: NextPage = () => {
 
 	const getGames = () => {
 		axios
-			.post("http://localhost:3000/api/rawgapi/", {
-				requestType: "games",
-			})
+			.post("http://localhost:3000/api/rawgapi/getgames", {})
 			.then((gamesRes) => gamesRes.data["gamesList"]["results"])
 			.then((gamesList) => {
 				let gamesArray = [];

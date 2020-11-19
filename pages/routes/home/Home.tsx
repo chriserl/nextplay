@@ -13,10 +13,16 @@ const Home: FunctionComponent = () => {
 
 	let [liveStreams, setliveStreams] = useState(() => []);
 
-	interface HeadlinesRequestBody {
-		requestType: string;
-		articlesNumber: number;
-	}
+	let [redditPosts, setRedditPosts] = useState(() => []);
+
+	const getRedditPosts = async () => {
+		await axios
+			.get("http://localhost:3000/api/rawgapi/getredditposts")
+			.then((gamesResponse) =>
+				setRedditPosts(() => gamesResponse.data["redditPosts"])
+			)
+			.catch((error) => console.log(error));
+	};
 
 	const getGameStreamers = async () => {
 		await axios
@@ -37,6 +43,7 @@ const Home: FunctionComponent = () => {
 	};
 
 	useEffect(() => {
+		getRedditPosts();
 		getGameStreamers();
 		getLiveStreams();
 	}, []);
@@ -64,16 +71,9 @@ const Home: FunctionComponent = () => {
 					/>
 				</div>
 				<div className={homeStyles.redditPosts}>
-					<RedditCard />
-					<RedditCard />
-					<RedditCard />
-					<RedditCard />
-					<RedditCard />
-					<RedditCard />
-					<RedditCard />
-					<RedditCard />
-					<RedditCard />
-					<RedditCard />
+					{redditPosts.map((redditPost) => (
+						<RedditCard postData={redditPost} />
+					))}
 				</div>
 			</main>
 		</div>
