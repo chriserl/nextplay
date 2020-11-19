@@ -11,14 +11,18 @@ const LivestreamCard = ({ cardData }) => {
 				</p>
 			</div>
 			<img
-				src={cardData.channelLogo}
+				src={cardData.streamerImage}
 				alt="stream"
 				className="stream-image"
 				loading="lazy"
 			/>
 			<div className="stream-card-body">
-				<p className="stream-channel plb">{cardData.channel}</p>
-				<Link href={cardData.channelUrl}>
+				<p className="stream-channel plb">
+					{cardData.streamerName.length > 8
+						? `${cardData.streamerName.slice(0, 8)}...`
+						: cardData.streamerName}
+				</p>
+				<Link href={cardData.streamerUrl}>
 					<a target="_blank">
 						<button className="light-icon-button">
 							<span className="small-icon mdo-icon">send</span>

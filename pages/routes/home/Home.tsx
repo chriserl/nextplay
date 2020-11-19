@@ -1,8 +1,7 @@
 import { FunctionComponent } from "react";
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../../../components/Navbar/Navbar";
-import UserContext from "../../../Store.js/UserContext";
 import StreamersSlider from "../../../components/StreamersSlider/StreamersSlider";
 import LivestreamCard from "../../../components/UIComponents/LivestreamCard";
 import StreamerCard from "../../../components/UIComponents/StreamerCard";
@@ -10,88 +9,31 @@ import NewsGrid from "../../../components/NewsGrid/NewsGrid";
 import homeStyles from "./home.module.scss";
 
 const Home: FunctionComponent = () => {
-	let [user, setUser] = useContext(UserContext);
-
 	let [games, setGames] = useState(() => []);
 
 	let [liveStreams, setliveStreams] = useState(() => []);
 
 	let [articles, setArticles] = useState(() => []);
 
-	interface TwitchRequestBody {
-		requestType: string;
-		accessToken: string;
-	}
-
 	interface HeadlinesRequestBody {
 		requestType: string;
 		articlesNumber: number;
 	}
 
-	interface ChannelInfo {
-		channelName: string;
-		channelUrl: string;
-		channelLogo: string;
-	}
-
-	interface StreamsInfo {
-		channel: string;
-		followers: string;
-		logoUrl: string;
-		channelUrl: string;
-	}
-
-	const destructureChannel = (rawInfo: object): ChannelInfo => {
-		return {
-			channelName: rawInfo["_data"]["channel"]["display_name"],
-			channelUrl: rawInfo["_data"]["channel"]["url"],
-			channelLogo: rawInfo["_data"]["preview"]["large"],
-		};
-	};
-
-	const destructureGame = (rawInfo: object): StreamsInfo => {
-		return {
-			channel: rawInfo[0]["channel"]["display_name"],
-			followers: rawInfo[0]["channel"]["followers"],
-			logoUrl: rawInfo[0]["channel"]["logo"],
-			channelUrl: rawInfo[0]["channel"]["url"],
-		};
-	};
-
-	const getLiveStreams = (): void => {
-		let requestBody: TwitchRequestBody = {
-			requestType: "liveStreams",
-			accessToken: user["userAccessToken"],
-		};
-		axios
-			.post("http://localhost:3000/api/twitchapi/", requestBody)
-			.then((liveStreamsRes) => liveStreamsRes.data["liveStreams"])
-			.then((liveStreamsList) => {
-				let livestreamsArray: object[] = [];
-				liveStreamsList.forEach((liveStream: object) => {
-					let liveStreamData: ChannelInfo = destructureChannel(liveStream);
-					livestreamsArray.push(liveStreamData);
-				});
-				setliveStreams(() => livestreamsArray);
+	const getGameStreamers = async () => {
+		await axios
+			.get("http://localhost:3000/api/twitchapi/gettopchannels")
+			.then((gamesResponse) => {
+				setGames(() => gamesResponse.data["channels"]);
 			})
 			.catch((error) => console.log(error));
 	};
 
-	const getGameStreams = (): void => {
-		let requestBody: TwitchRequestBody = {
-			requestType: "gameStreams",
-			accessToken: user["userAccessToken"],
-		};
-		axios
-			.post("http://localhost:3000/api/twitchapi/", requestBody)
-			.then((gamesResponse) => gamesResponse.data["streamersList"])
-			.then((gamesActual) => {
-				let gamesList: object[] = [];
-				gamesActual.forEach((gameActual: object) => {
-					let gameData: StreamsInfo = destructureGame(gameActual);
-					gamesList.push(gameData);
-				});
-				setGames(() => gamesList);
+	const getLiveStreams = async () => {
+		await axios
+			.get("http://localhost:3000/api/twitchapi/getlivestreams")
+			.then((streamsResponse) => {
+				setliveStreams(() => streamsResponse.data["livestreams"]);
 			})
 			.catch((error) => console.log(error));
 	};
@@ -109,9 +51,9 @@ const Home: FunctionComponent = () => {
 	};
 
 	useEffect(() => {
-		getGameStreams();
+		getGameStreamers();
 		getLiveStreams();
-		getHeadlines();
+		// getHeadlines();
 	}, []);
 
 	return (
@@ -130,19 +72,19 @@ const Home: FunctionComponent = () => {
 				<div className={homeStyles.liveStreams}>
 					<StreamersSlider
 						sliderContent={liveStreams}
-						sliderComponent={(sliderData) => (
+						sliderComponent={(sliderData: object) => (
 							<LivestreamCard cardData={sliderData} />
 						)}
 						sliderTitle="Twitch livestreams"
 					/>
 				</div>
-				<div className={homeStyles.news}>
+				{/* <div className={homeStyles.news}>
 					<NewsGrid
 						gridData={articles}
 						gridTitle="News from the gaming world"
 						moreLink="link"
 					/>
-				</div>
+				</div> */}
 			</main>
 		</div>
 	);

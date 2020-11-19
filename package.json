@@ -14,8 +14,7 @@
     "next-fonts": "^1.4.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "sass": "^1.29.0",
-    "twitch": "^4.2.7"
+    "sass": "^1.29.0"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
