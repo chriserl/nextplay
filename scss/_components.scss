@@ -336,3 +336,52 @@
 		@include flex($justify: space-between);
 	}
 }
+
+.reddit-card {
+	width: 96%;
+	margin: 0 auto;
+	margin-bottom: $spacing-12;
+	padding: $spacing-2 $spacing-1;
+	display: inline-block;
+
+	@include tab-screen {
+		max-width: 218px;
+	}
+
+	.card-image {
+		width: 100%;
+		object-fit: cover;
+		box-shadow: 2px 8px 40px $theme-700;
+		border-radius: $spacing-8;
+		margin-bottom: $spacing-6;
+		transition: all 0.25s ease;
+
+		&:hover {
+			box-shadow: 2px 8px 40px $theme-600;
+		}
+	}
+
+	.card-body {
+		width: 96%;
+		margin: 0 auto;
+
+		.card-body__header {
+			@include flex($justify: space-between);
+			width: 100%;
+			margin: 0 auto;
+			margin-bottom: $spacing-2;
+
+			.user-name {
+				color: $theme-200;
+			}
+
+			.date-created {
+				color: $theme-500;
+			}
+		}
+
+		.post-text {
+			color: $gray-200;
+		}
+	}
+}

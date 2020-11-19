@@ -23,8 +23,13 @@
 			}
 		}
 
-		.news {
-			margin-top: $spacing-8;
+		.redditPosts {
+			width: 90%;
+			margin: 0 auto;
+			-moz-columns: auto 218px;
+			columns: auto 218px;
+			-moz-column-gap: $spacing-8;
+			column-gap: $spacing-8;
 		}
 	}
 }
