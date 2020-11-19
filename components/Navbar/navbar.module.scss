@@ -62,7 +62,10 @@
 
 		.notifications {
 			margin-right: $spacing-6;
-			color: $theme-200;
+
+			span {
+				color: $theme-300;
+			}
 		}
 
 		.loggedInUser {
