@@ -8,8 +8,6 @@ import LoadingScreen from "../../../components/LoadingScreen/LoadingScreen";
 import discoverStyles from "./discover.module.scss";
 
 const Discover: NextPage = () => {
-	let path = useRouter().route.slice(7);
-
 	let [games, setGames] = useState(() => []);
 
 	interface GameData {
@@ -84,7 +82,7 @@ const Discover: NextPage = () => {
 	if (games.length > 0) {
 		return (
 			<div>
-				<Navbar activePath={path} />
+				<Navbar activePath={"discover"} />
 
 				<main className={discoverStyles.discover}>
 					<div className={discoverStyles.header}>
@@ -184,7 +182,7 @@ const Discover: NextPage = () => {
 	} else {
 		return (
 			<div>
-				<Navbar activePath={path} />
+				<Navbar activePath={"discover"} />
 				<LoadingScreen />
 			</div>
 		);

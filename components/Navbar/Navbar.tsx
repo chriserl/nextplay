@@ -1,7 +1,4 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
-import UserContext from "../../Store.js/UserContext";
 import navbarStyles from "./navbar.module.scss";
 
 const Navbar = ({ activePath }) => {
@@ -10,21 +7,6 @@ const Navbar = ({ activePath }) => {
 		{ routePath: "news" },
 		{ routePath: "account" },
 	];
-
-	let clientId = "g70cu3higz16c06vuvd98qw3tiuf3r";
-
-	let accessToken = useRouter().asPath.slice(15, 45) || null;
-
-	let [user, setUser] = useContext(UserContext);
-
-	useEffect(() => {
-		if (accessToken) {
-			setUser(() => ({
-				userStatus: "LoggedIn",
-				userAccessToken: accessToken,
-			}));
-		}
-	}, []);
 
 	return (
 		<nav className={navbarStyles.navbar}>
