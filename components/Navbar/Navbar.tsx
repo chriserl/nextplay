@@ -2,11 +2,7 @@ import Link from "next/link";
 import navbarStyles from "./navbar.module.scss";
 
 const Navbar = ({ activePath }) => {
-	let navbarRoutes = [
-		{ routePath: "discover" },
-		{ routePath: "news" },
-		{ routePath: "account" },
-	];
+	let navbarRoutes = [{ routePath: "discover" }, { routePath: "account" }];
 
 	return (
 		<nav className={navbarStyles.navbar}>
