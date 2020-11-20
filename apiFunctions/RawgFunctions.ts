@@ -10,8 +10,9 @@ export default function RawgFunctions(rawgApiKey: string) {
 	let rawgKey: string = rawgApiKey;
 	let rawgBaseUrl: string = "https://api.rawg.io/api/";
 
-	const formatGames = async (rawGames) => {
+	const formatGames = async (rawGames: any) => {
 		let formattedGames: object[] = [];
+
 		for (let game of rawGames) {
 			let gameData: GameData = {
 				gameId: game["id"],
@@ -20,6 +21,7 @@ export default function RawgFunctions(rawgApiKey: string) {
 			};
 			formattedGames.push(gameData);
 		}
+
 		return formattedGames;
 	};
 
@@ -33,7 +35,7 @@ export default function RawgFunctions(rawgApiKey: string) {
 				},
 			})
 			.then((gamesRaw) => gamesRaw.data)
-			.catch((error) => error);
+			.catch(() => "api error");
 
 		return games;
 	};
@@ -42,7 +44,7 @@ export default function RawgFunctions(rawgApiKey: string) {
 		searchQuery?: string | null,
 		searchTags?: string[] | null
 	) => {
-		let rawGames: object[] = await axios
+		let rawGames: object[] | string = await axios
 			.get(`${rawgBaseUrl}games`, {
 				params: {
 					key: rawgKey,
@@ -51,20 +53,28 @@ export default function RawgFunctions(rawgApiKey: string) {
 				},
 			})
 			.then((gamesRaw) => gamesRaw.data["results"])
-			.catch((error) => error);
+			.catch(() => "api error");
 
-		return formatGames(rawGames);
+		rawGames === "api error" ? "api error" : formatGames(rawGames);
+
+		return rawGames;
 	};
 
 	let getGameIds = async (idCount: number) => {
-		let idsList: number[] = [];
-		let games: object[] = await this.getGames(idCount).then(
+		let idsList: number[] | string = [];
+
+		let games: object[] | string = await this.getGames(idCount).then(
 			(rawGames) => rawGames["results"]
 		);
 
-		for await (let game of games) {
-			idsList.push(game["id"]);
+		if (games === "api error") {
+			idsList = "api error";
+		} else {
+			for await (let game of games) {
+				idsList.push(game["id"]);
+			}
 		}
+
 		return idsList;
 	};
 
@@ -76,23 +86,28 @@ export default function RawgFunctions(rawgApiKey: string) {
 				},
 			})
 			.then((gamesRaw) => gamesRaw.data)
-			.catch((error) => error);
+			.catch(() => "api error");
 
 		return gameDetails;
 	};
 
 	this.getRedditPosts = async () => {
-		let ids: number[] = await getGameIds(1);
-		let posts: object[] = [];
+		let ids: number[] | string = await getGameIds(1);
 
-		for await (let id of ids) {
-			await axios
-				.get(`${rawgBaseUrl}games/${id}/reddit`, {
-					params: {
-						key: rawgKey,
-					},
-				})
-				.then((idReturn) => posts.push(idReturn.data["results"][0]));
+		let posts: any = [];
+
+		if (ids === "api error") {
+			posts = "api error";
+		} else {
+			for await (let id of ids) {
+				await axios
+					.get(`${rawgBaseUrl}games/${id}/reddit`, {
+						params: {
+							key: rawgKey,
+						},
+					})
+					.then((idReturn) => posts.push(idReturn.data["results"][0]));
+			}
 		}
 
 		return posts;
