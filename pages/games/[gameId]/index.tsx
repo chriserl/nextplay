@@ -66,7 +66,7 @@ const GamePage = () => {
 											))}
 										<p className="game-name h1">{gameItem.gameName}</p>
 										<Link href={gameItem.gameWebsite}>
-											<a className="secondary-button">
+											<a className="primary-button">
 												<p className="ps">Official Website</p>
 												<span className="mdo-icon small-icon">
 													arrow_right_alt
