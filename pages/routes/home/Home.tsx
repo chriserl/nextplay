@@ -7,6 +7,7 @@ import LivestreamCard from "../../../components/UIComponents/LivestreamCard";
 import StreamerCard from "../../../components/UIComponents/StreamerCard";
 import RedditCard from "../../../components/UIComponents/RedditCard";
 import homeStyles from "./home.module.scss";
+import LoadingScreen from "../../../components/LoadingScreen/LoadingScreen";
 
 const Home: FunctionComponent = () => {
 	let [games, setGames] = useState(() => []);
@@ -60,34 +61,40 @@ const Home: FunctionComponent = () => {
 	return (
 		<div className={homeStyles.home}>
 			<Navbar activePath="home" />
-			<main>
-				<div className={homeStyles.streamers}>
-					<StreamersSlider
-						sliderTitle={""}
-						sliderContent={games}
-						sliderComponent={(sliderData) => (
-							<StreamerCard cardData={sliderData} />
-						)}
-					/>
-				</div>
-				<div className={homeStyles.liveStreams}>
-					<StreamersSlider
-						sliderContent={liveStreams}
-						sliderComponent={(sliderData: object) => (
-							<LivestreamCard cardData={sliderData} />
-						)}
-						sliderTitle="Twitch livestreams"
-					/>
-				</div>
-				<div className={homeStyles.redditPosts}>
-					<p className={`${homeStyles.title} ph`}>Posts from game subreddits</p>
-					<div className={homeStyles.postsContainer}>
-						{redditPosts.map((redditPost) => (
-							<RedditCard postData={redditPost} />
-						))}
+			{games.length > 0 || liveStreams.length > 0 || redditPosts.length > 0 ? (
+				<main>
+					<div className={homeStyles.streamers}>
+						<StreamersSlider
+							sliderTitle={""}
+							sliderContent={games}
+							sliderComponent={(sliderData) => (
+								<StreamerCard cardData={sliderData} />
+							)}
+						/>
 					</div>
-				</div>
-			</main>
+					<div className={homeStyles.liveStreams}>
+						<StreamersSlider
+							sliderContent={liveStreams}
+							sliderComponent={(sliderData: object) => (
+								<LivestreamCard cardData={sliderData} />
+							)}
+							sliderTitle="Twitch livestreams"
+						/>
+					</div>
+					<div className={homeStyles.redditPosts}>
+						<p className={`${homeStyles.title} ph`}>
+							Posts from game subreddits
+						</p>
+						<div className={homeStyles.postsContainer}>
+							{redditPosts.map((redditPost) => (
+								<RedditCard postData={redditPost} />
+							))}
+						</div>
+					</div>
+				</main>
+			) : (
+				<LoadingScreen />
+			)}
 		</div>
 	);
 };
