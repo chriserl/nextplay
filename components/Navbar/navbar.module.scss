@@ -18,11 +18,13 @@
 	}
 
 	.navItems {
+		width: 100%;
 		@include flex;
 		order: 3;
 		margin-top: $spacing-8;
 
 		@include tab-screen {
+			width: max-content;
 			order: initial;
 			margin-left: $spacing-12;
 			margin-top: 0;
