@@ -30,16 +30,23 @@ function TwitchFunctions(clientId: string, authorization: string) {
 				},
 				headers,
 			})
-			.then((games) => games.data["data"]);
+			.then((games) => games.data["data"])
+			.catch(() => "api error");
 	};
 
 	this.getGamesList = async (listCriteria: "name" | "id") => {
-		let gameNames: string[] = [];
-		await this.getGames().then((games) =>
-			games.forEach((game) => {
-				gameNames.push(game[listCriteria]);
-			})
-		);
+		let gameNames: any = [];
+
+		await this.getGames().then((games) => {
+			if (games === "api error") {
+				gameNames = "api error";
+			} else {
+				games.forEach((game) => {
+					gameNames.push(game[listCriteria]);
+				});
+			}
+		});
+
 		return gameNames;
 	};
 
@@ -70,7 +77,8 @@ function TwitchFunctions(clientId: string, authorization: string) {
 	};
 
 	this.getLivestreams = async () => {
-		let livestreams: object[] = [];
+		let livestreams: any = [];
+
 		await axios
 			.get(`${baseKrakenUrl}streams`, {
 				params: {
@@ -89,7 +97,8 @@ function TwitchFunctions(clientId: string, authorization: string) {
 					};
 					livestreams.push(streamInfo);
 				})
-			);
+			)
+			.catch(() => (livestreams = "api error"));
 
 		return livestreams;
 	};
