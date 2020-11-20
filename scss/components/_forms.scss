@@ -1,0 +1,23 @@
+.search-control {
+	@include flex;
+	border-radius: $spacing-4;
+	background-color: $theme-900;
+
+	.search-input {
+		width: 100%;
+		border: none;
+		padding: $spacing-3 0 $spacing-3 $spacing-6;
+		background: transparent;
+		color: $theme-100;
+		@include ps;
+
+		&::placeholder {
+			@include ps;
+			color: $theme-500;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+}

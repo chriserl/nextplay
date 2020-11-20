@@ -1,0 +1,119 @@
+//Tabs
+
+.primary-tab {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: $spacing-1 $spacing-6;
+	background: $theme-800;
+	color: $theme-400;
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	span {
+		margin-left: $spacing-2;
+	}
+
+	&:hover {
+		color: $theme-800;
+		background: $theme-main;
+	}
+}
+
+.light-tab {
+	@extend .button;
+	@include flex;
+	padding: $spacing-1 $spacing-6 $spacing-1 $spacing-4;
+	background: $theme-800;
+	color: $theme-500;
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	span {
+		margin-right: $spacing-2;
+	}
+
+	&:hover {
+		color: $theme-800;
+		background: $theme-main;
+	}
+}
+
+//Buttons
+.icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.32rem;
+	border-radius: $spacing-4;
+	color: $theme-900;
+	background: $theme-main;
+	transition: all 0.25s ease;
+
+	&:hover {
+		box-shadow: 2px 8px 18px $theme-500;
+	}
+}
+
+.light-icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.32rem;
+	border-radius: $spacing-4;
+	color: $theme-400;
+	background: $theme-800;
+	transition: all 0.25s ease;
+
+	&:hover {
+		background: $theme-700;
+	}
+}
+
+.link-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: $spacing-1 $spacing-5;
+	background: $theme-800;
+	color: $theme-400;
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	span {
+		margin-left: $spacing-2;
+	}
+
+	&:hover {
+		color: $theme-800;
+		background: $theme-main;
+	}
+}
+
+//Forms
+.search-control {
+	@include flex;
+	border-radius: $spacing-4;
+	background-color: $theme-900;
+
+	.search-input {
+		width: 100%;
+		border: none;
+		padding: $spacing-3 0 $spacing-3 $spacing-6;
+		background: transparent;
+		color: $theme-100;
+		@include ps;
+
+		&::placeholder {
+			@include ps;
+			color: $theme-500;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
