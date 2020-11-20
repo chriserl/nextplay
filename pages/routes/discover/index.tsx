@@ -1,7 +1,6 @@
 import { NextPage } from "next";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import Navbar from "../../../components/Navbar/Navbar";
 import LoadingScreen from "../../../components/LoadingScreen/LoadingScreen";
@@ -48,6 +47,8 @@ const Discover: NextPage = () => {
 
 	let [games, setGames] = useState(() => []);
 
+	let [searchState, setSearchState] = useState(() => "");
+
 	let filterRef = useRef(null);
 
 	let [filters, setFilters] = useState(() => []);
@@ -59,6 +60,11 @@ const Discover: NextPage = () => {
 	let [filterItem, setFilterItem] = useState(() => {
 		return { currentFilter: "" };
 	});
+
+	let handleSearchInput = (event) => {
+		event.preventDefault();
+		setSearchState(() => event.target.value);
+	};
 
 	let setFilterFocus = () => {
 		filterRef.current.focus();
@@ -86,6 +92,13 @@ const Discover: NextPage = () => {
 		}
 	};
 
+	const searchByTextQuery = async (event) => {
+		event.preventDefault();
+		let newGames: object[] = await searchGames(searchState);
+		setSearchState(() => "");
+		setGames(() => newGames);
+	};
+
 	const searchByFilter = async () => {
 		let newGames: object[] = await searchGames(null, filters);
 		setGames(() => newGames);
@@ -105,7 +118,10 @@ const Discover: NextPage = () => {
 
 			<main className={discoverStyles.discover}>
 				<div className={discoverStyles.header}>
-					<form className={discoverStyles.headerForm}>
+					<form
+						onSubmit={(event) => searchByTextQuery(event)}
+						className={discoverStyles.headerForm}
+					>
 						<div className="search-control">
 							<input
 								type="search"
@@ -113,6 +129,8 @@ const Discover: NextPage = () => {
 								className="search-input"
 								placeholder="search for games"
 								autoComplete="off"
+								onChange={(event) => handleSearchInput(event)}
+								value={searchState}
 							/>
 							<button className="sp-icon-button">
 								<span className="md-icon small-icon">search</span>
