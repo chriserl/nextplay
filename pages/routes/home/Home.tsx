@@ -21,7 +21,10 @@ const Home: FunctionComponent = () => {
 			.then((gamesResponse) =>
 				setRedditPosts(() => gamesResponse.data["redditPosts"])
 			)
-			.catch((error) => console.log(error));
+			.catch((error) => {
+				setRedditPosts(() => []);
+				console.error(error);
+			});
 	};
 
 	const getGameStreamers = async () => {
@@ -30,7 +33,10 @@ const Home: FunctionComponent = () => {
 			.then((gamesResponse) => {
 				setGames(() => gamesResponse.data["channels"]);
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => {
+				setGames(() => []);
+				console.error(error);
+			});
 	};
 
 	const getLiveStreams = async () => {
@@ -39,7 +45,10 @@ const Home: FunctionComponent = () => {
 			.then((streamsResponse) => {
 				setliveStreams(() => streamsResponse.data["livestreams"]);
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => {
+				setliveStreams(() => []);
+				console.error(error);
+			});
 	};
 
 	useEffect(() => {

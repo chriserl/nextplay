@@ -29,7 +29,10 @@ const Discover: NextPage = () => {
 				});
 				setGames(() => gamesArray);
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => {
+				setGames(() => []);
+				console.error(error);
+			});
 	};
 
 	const searchGames = async (
@@ -42,7 +45,10 @@ const Discover: NextPage = () => {
 				searchTags,
 			})
 			.then((resman) => resman.data["gamesList"])
-			.catch((error) => console.log(error));
+			.catch((error) => {
+				[];
+				console.error(error);
+			});
 	};
 
 	let [games, setGames] = useState(() => []);

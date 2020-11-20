@@ -34,7 +34,10 @@ const GamePage = () => {
 				};
 				setGame(() => [gameInfo]);
 			})
-			.catch((error) => console.error(error));
+			.catch((error) => {
+				setGame(() => []);
+				console.error(error);
+			});
 	};
 
 	useEffect(() => {

@@ -7,5 +7,7 @@ let TwitchFuncs = new TwitchFunctions(clientId, auth);
 
 export default async (request, response) => {
 	let livestreams: object[] | string = await TwitchFuncs.getLivestreams();
-	response.send(JSON.stringify({ livestreams }));
+	livestreams === "api error"
+		? response.status(500).json({ Error: "api error" })
+		: response.send(JSON.stringify({ livestreams }));
 };

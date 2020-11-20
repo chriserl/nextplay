@@ -7,5 +7,7 @@ let TwitchFuncs = new TwitchFunctions(clientId, auth);
 
 export default async (request, response) => {
 	let channels: object[] | string = await TwitchFuncs.getTopGameChannels();
-	response.send(JSON.stringify({ channels }));
+	channels === "api error"
+		? response.status(500)
+		: response.send(JSON.stringify({ channels }));
 };
