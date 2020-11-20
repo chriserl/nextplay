@@ -6,6 +6,6 @@ let auth: string = process.env.TWITCH_AUTH_TOKEN;
 let TwitchFuncs = new TwitchFunctions(clientId, auth);
 
 export default async (request, response) => {
-	let channels: object[] = await TwitchFuncs.getTopGameChannels();
+	let channels: object[] | string = await TwitchFuncs.getTopGameChannels();
 	response.send(JSON.stringify({ channels }));
 };

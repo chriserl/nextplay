@@ -6,6 +6,6 @@ let auth: string = process.env.TWITCH_AUTH_TOKEN;
 let TwitchFuncs = new TwitchFunctions(clientId, auth);
 
 export default async (request, response) => {
-	let livestreams: object[] = await TwitchFuncs.getLivestreams();
+	let livestreams: object[] | string = await TwitchFuncs.getLivestreams();
 	response.send(JSON.stringify({ livestreams }));
 };
