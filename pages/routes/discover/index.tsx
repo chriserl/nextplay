@@ -46,8 +46,8 @@ const Discover: NextPage = () => {
 			})
 			.then((resman) => resman.data["gamesList"])
 			.catch((error) => {
-				[];
 				console.error(error);
+				return [];
 			});
 	};
 

@@ -16,6 +16,7 @@ export default async (request, response) => {
 		searchQuery,
 		searchTags
 	);
-
-	response.send(JSON.stringify({ gamesList: games }));
+	games === "api error"
+		? response.status(500)
+		: response.send(JSON.stringify({ gamesList: games }));
 };
