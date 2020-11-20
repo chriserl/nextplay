@@ -219,3 +219,72 @@
 		}
 	}
 }
+
+//User Account
+.accountHidden {
+	@include d-none;
+}
+
+.accountVisible {
+	position: absolute;
+	top: 18%;
+	bottom: 45%;
+	left: 45%;
+	right: 45%;
+	width: 14rem;
+	height: 19.2rem;
+	background: white;
+	border-radius: $spacing-8;
+	padding: $spacing-2 $spacing-4;
+	box-shadow: 2px 18px 28px $theme-800;
+
+	.close-icon {
+		width: max-content;
+		padding: $spacing-1;
+		position: relative;
+		left: 100%;
+		bottom: $spacing-3;
+	}
+
+	.image-container {
+		width: max-content;
+		margin: 0 auto;
+
+		.account-image {
+			width: 6.4rem;
+			height: 6.4rem;
+			margin: 0 auto;
+			padding: $spacing-2;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 2px solid $theme-700;
+		}
+	}
+
+	.card-body {
+		width: max-content;
+		margin: 0 auto;
+		margin-top: $spacing-4;
+		text-align: center;
+
+		.account-name {
+			color: $theme-main;
+			margin-bottom: $spacing-1;
+		}
+
+		.account-location {
+			color: $gray-400;
+		}
+
+		.ctas {
+			width: max-content;
+			margin: 0 auto;
+			margin-top: $spacing-6;
+			@include flex(column, center, center);
+
+			.edit {
+				margin-bottom: $spacing-6;
+			}
+		}
+	}
+}

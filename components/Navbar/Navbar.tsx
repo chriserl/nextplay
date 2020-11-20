@@ -1,8 +1,20 @@
 import Link from "next/link";
+import { useState } from "react";
+import UserAccount from "../UIComponents/UserAccount";
 import navbarStyles from "./navbar.module.scss";
 
 const Navbar = ({ activePath }) => {
-	let navbarRoutes = [{ routePath: "discover" }, { routePath: "account" }];
+	let navbarRoutes = [{ routePath: "discover" }];
+
+	let [accountState, setAccountState] = useState("accountHidden");
+
+	const toggleAccount = () => {
+		setAccountState(
+			() =>
+				(accountState =
+					accountState === "accountHidden" ? "accountVisible" : "accountHidden")
+		);
+	};
 
 	return (
 		<nav className={navbarStyles.navbar}>
@@ -35,14 +47,21 @@ const Navbar = ({ activePath }) => {
 						<span className="md-icon">notifications_none</span>
 					</button>
 				</div>
-				<div className={navbarStyles.loggedInUser}>
+				<div
+					className={navbarStyles.loggedInUser}
+					onClick={() => toggleAccount()}
+				>
 					<img
-						src="/images/jade.jpg"
+						src="/images/games/fortnite.jpg"
 						alt="jade"
 						className={navbarStyles.activeUser}
 					/>
 				</div>
 			</div>
+			<UserAccount
+				userAccountState={accountState}
+				toggleAccountVisibility={() => toggleAccount()}
+			/>
 		</nav>
 	);
 };
