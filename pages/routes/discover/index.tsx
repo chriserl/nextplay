@@ -92,6 +92,10 @@ const Discover: NextPage = () => {
 		}
 	};
 
+	const removeFilter = (filterValue) => {
+		setFilters(() => filters.filter((filter) => filter !== filterValue));
+	};
+
 	const searchByTextQuery = async (event) => {
 		event.preventDefault();
 		let newGames: object[] = await searchGames(searchState);
@@ -181,15 +185,21 @@ const Discover: NextPage = () => {
 					<div className={discoverStyles.filterItems}>
 						{filters.map((filterItem) => (
 							<div className={discoverStyles.filterItem} key={filterItem}>
-								<button className="secondary-tab">
-									<p className="ps">{filterItem}</p>
+								<button className="secondary-button">
+									<p className="ps">{filterItem}</p>{" "}
+									<span
+										onClick={() => removeFilter(filterItem)}
+										className="md-icon small-icon"
+									>
+										close
+									</span>
 								</button>
 							</div>
 						))}
 					</div>
 				</div>
 
-				{games.length > 0 ? (
+				{games && games.length > 0 ? (
 					<section className={discoverStyles.games}>
 						<ul className={discoverStyles.gamesList}>
 							{games.map((game) => (
