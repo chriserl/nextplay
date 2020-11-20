@@ -93,7 +93,7 @@ const Discover: NextPage = () => {
 									placeholder="search for games"
 									autoComplete="off"
 								/>
-								<button className="icon-button">
+								<button className="sp-icon-button">
 									<span className="md-icon small-icon">search</span>
 								</button>
 							</div>
@@ -127,14 +127,14 @@ const Discover: NextPage = () => {
 								<button
 									type="button"
 									onClick={() => handleFilterButton()}
-									className={`light-tab ${
+									className={`secondary-button ${
 										filterSearchState.searchbarStatus
 											? discoverStyles.filterButton
 											: discoverStyles.hideFilterButton
 									}`}
 								>
-									<span className="md-icon small-icon">add</span>
 									<p className="px">Add filter</p>
+									<span className="md-icon small-icon">add</span>
 								</button>
 							</form>
 						</div>
@@ -142,7 +142,7 @@ const Discover: NextPage = () => {
 						<div className={discoverStyles.filterItems}>
 							{filters.map((filterItem) => (
 								<div className={discoverStyles.filterItem} key={filterItem}>
-									<button className="primary-tab">
+									<button className="secondary-tab">
 										<p className="ps">{filterItem}</p>
 									</button>
 								</div>

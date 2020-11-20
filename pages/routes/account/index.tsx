@@ -10,7 +10,7 @@ const Account: NextPage = () => {
 				<p className={`ph ${accountStyles.title}`}>Your nextPlay account</p>
 				<div className={accountStyles.accountSummary}>
 					<div className={accountStyles.imageContainer}>
-						<p className="light-icon-button">
+						<p className="sl-icon-button">
 							<span className="md-icon small-icon">edit</span>
 						</p>
 						<img
@@ -18,7 +18,7 @@ const Account: NextPage = () => {
 							alt="jade"
 							className={accountStyles.accountImage}
 						/>
-						<p className="light-icon-button">
+						<p className="sl-icon-button">
 							<span className="md-icon small-icon">edit</span>
 						</p>
 					</div>
@@ -27,7 +27,9 @@ const Account: NextPage = () => {
 						<p className={`${accountStyles.accountLocation} psb`}>
 							Berlin, Germany
 						</p>
-						<button className={`${accountStyles.editButton} primary-tab psb`}>
+						<button
+							className={`${accountStyles.editButton} primary-button psb`}
+						>
 							Edit
 						</button>
 					</div>

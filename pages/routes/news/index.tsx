@@ -43,7 +43,7 @@ const News: NextPage = () => {
 					<div className={newsStyles.topics}>
 						{topics.map((topic) => (
 							<div className={newsStyles.topicItem} key={topic}>
-								<button className="primary-tab">
+								<button className="secondary-button">
 									<p className="ps">{topic}</p>
 								</button>
 							</div>

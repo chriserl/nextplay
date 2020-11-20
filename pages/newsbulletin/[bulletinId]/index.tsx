@@ -49,7 +49,7 @@ const NewsBulletin: NextPage = () => {
 								{articleData.title}
 							</p>
 							<div className={`${bulletinStyles.headlineDetails}`}>
-								<p className={`pl primary-tab ${bulletinStyles.source}`}>
+								<p className={`pl secondary-tab ${bulletinStyles.source}`}>
 									verge
 								</p>
 								<p className={`pl ${bulletinStyles.date}`}>

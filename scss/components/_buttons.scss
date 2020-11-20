@@ -1,48 +1,6 @@
-//Tabs
-
-.primary-tab {
-	@extend .button;
-	@include flex;
-	width: max-content;
-	padding: $spacing-1 $spacing-6;
-	background: $theme-800;
-	color: $theme-400;
-	border-radius: $spacing-12;
-	cursor: pointer;
-	transition: all 0.25s ease;
-
-	span {
-		margin-left: $spacing-2;
-	}
-
-	&:hover {
-		color: $theme-800;
-		background: $theme-main;
-	}
-}
-
-.light-tab {
-	@extend .button;
-	@include flex;
-	padding: $spacing-1 $spacing-6 $spacing-1 $spacing-4;
-	background: $theme-800;
-	color: $theme-500;
-	border-radius: $spacing-12;
-	cursor: pointer;
-	transition: all 0.25s ease;
-
-	span {
-		margin-right: $spacing-2;
-	}
-
-	&:hover {
-		color: $theme-800;
-		background: $theme-main;
-	}
-}
-
-//Buttons
-.icon-button {
+//Icon Buttons
+//Primary Icon Buttons
+.sp-icon-button {
 	@extend .button;
 	@include flex;
 	width: max-content;
@@ -52,12 +10,56 @@
 	background: $theme-main;
 	transition: all 0.25s ease;
 
+	span {
+		@include small-icon;
+	}
+
 	&:hover {
 		box-shadow: 2px 8px 18px $theme-500;
 	}
 }
 
-.light-icon-button {
+.rp-icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.12rem;
+	border-radius: $spacing-4;
+	color: $theme-900;
+	background: $theme-main;
+	transition: all 0.25s ease;
+
+	span {
+		@include regular-icon;
+	}
+
+	&:hover {
+		box-shadow: 2px 8px 18px $theme-500;
+	}
+}
+
+.lp-icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.12rem;
+	border-radius: $spacing-4;
+	color: $theme-900;
+	background: $theme-main;
+	transition: all 0.25s ease;
+
+	span {
+		@include large-icon;
+	}
+
+	&:hover {
+		box-shadow: 2px 8px 18px $theme-500;
+	}
+}
+
+//Icon Buttons
+//Light Icon Button
+.sl-icon-button {
 	@extend .button;
 	@include flex;
 	width: max-content;
@@ -67,18 +69,86 @@
 	background: $theme-800;
 	transition: all 0.25s ease;
 
+	span {
+		@include small-icon;
+	}
+
 	&:hover {
-		background: $theme-700;
+		color: $theme-main;
+		background: $theme-900;
+		box-shadow: 0 12px 14px $theme-800;
 	}
 }
 
-.link-button {
+.rl-icon-button {
 	@extend .button;
 	@include flex;
 	width: max-content;
-	padding: $spacing-1 $spacing-5;
-	background: $theme-800;
+	padding: 0.12rem;
+	border-radius: $spacing-4;
 	color: $theme-400;
+	background: $theme-800;
+	transition: all 0.25s ease;
+
+	span {
+		@include regular-icon;
+	}
+
+	&:hover {
+		color: $theme-main;
+		background: $theme-900;
+		box-shadow: 0 12px 14px $theme-800;
+	}
+}
+
+.ll-icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.12rem;
+	border-radius: $spacing-4;
+	color: $theme-400;
+	background: $theme-800;
+	transition: all 0.25s ease;
+
+	span {
+		@include large-icon;
+	}
+
+	&:hover {
+		color: $theme-main;
+		background: $theme-900;
+		box-shadow: 0 12px 14px $theme-800;
+	}
+}
+
+//Link Icon Button
+
+.link-icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.24rem;
+	border-radius: $spacing-4;
+	color: $theme-400;
+	background: $theme-900;
+	transition: all 0.25s ease;
+
+	&:hover {
+		color: $theme-main;
+		background: $theme-800;
+	}
+}
+
+//Text Buttons
+
+.primary-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: $spacing-1 $spacing-6;
+	background: $theme-main;
+	color: $theme-900;
 	border-radius: $spacing-12;
 	cursor: pointer;
 	transition: all 0.25s ease;
@@ -88,32 +158,71 @@
 	}
 
 	&:hover {
-		color: $theme-800;
-		background: $theme-main;
+		box-shadow: 12px 14px 24px $theme-600;
 	}
 }
 
-//Forms
-.search-control {
+.secondary-button {
+	@extend .button;
 	@include flex;
-	border-radius: $spacing-4;
-	background-color: $theme-900;
+	width: max-content;
+	padding: $spacing-1 $spacing-6;
+	background: $theme-800;
+	color: $theme-main;
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
 
-	.search-input {
-		width: 100%;
-		border: none;
-		padding: $spacing-3 0 $spacing-3 $spacing-6;
-		background: transparent;
-		color: $theme-100;
-		@include ps;
+	span {
+		margin-left: $spacing-2;
+	}
 
-		&::placeholder {
-			@include ps;
-			color: $theme-500;
-		}
+	&:hover {
+		color: $theme-900;
+		background: $theme-main;
+		box-shadow: 8px 12px 24px $theme-600;
+	}
+}
 
-		&:focus {
-			outline: none;
-		}
+//Tabs
+
+.primary-tab {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: $spacing-1 $spacing-6;
+	background: $theme-main;
+	color: $theme-900;
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	span {
+		margin-right: $spacing-2;
+	}
+
+	&:hover {
+		color: $theme-main;
+		background: $theme-900;
+	}
+}
+
+.secondary-tab {
+	@extend .button;
+	@include flex;
+	padding: $spacing-1 $spacing-6;
+	background: $theme-800;
+	color: $theme-main;
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	span {
+		margin-right: $spacing-2;
+	}
+
+	&:hover {
+		color: $theme-500;
+		background: $theme-900;
 	}
 }

@@ -35,7 +35,9 @@ const Navbar = ({ activePath }) => {
 
 			<div className={navbarStyles.userActions}>
 				<div className={navbarStyles.notifications}>
-					<span className="md-icon large-icon">notifications_none</span>
+					<button className="rl-icon-button">
+						<span className="md-icon">notifications_none</span>
+					</button>
 				</div>
 				<div className={navbarStyles.loggedInUser}>
 					<img
