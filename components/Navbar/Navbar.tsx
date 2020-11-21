@@ -4,7 +4,7 @@ import UserAccount from "../UIComponents/UserAccount";
 import navbarStyles from "./navbar.module.scss";
 
 const Navbar = ({ activePath }) => {
-	let navbarRoutes = [{ routePath: "discover" }];
+	let navbarRoutes = [{ routePath: "discover" }, { routePath: "twitch" }];
 
 	let [accountState, setAccountState] = useState("accountHidden");
 

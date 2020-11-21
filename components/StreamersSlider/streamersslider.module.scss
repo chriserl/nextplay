@@ -15,6 +15,7 @@
 		overflow-x: scroll;
 		overflow-y: hidden;
 		@include scroll-hide;
+		margin-top: $spacing-8;
 
 		.sliderItems {
 			@include flex;
