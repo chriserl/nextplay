@@ -53,9 +53,8 @@ export default function RawgFunctions(rawgApiKey: string) {
 				},
 			})
 			.then((gamesRaw) => gamesRaw.data["results"])
+			.then((gamesResults) => formatGames(gamesResults))
 			.catch(() => "api error");
-
-		rawGames === "api error" ? "api error" : formatGames(rawGames);
 
 		return rawGames;
 	};

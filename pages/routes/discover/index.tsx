@@ -221,7 +221,7 @@ const Discover: NextPage = () => {
 										</Link>
 										<Link href={`/games/${game.gameId}`}>
 											<a className="game-title plb">
-												{game.gameName.length > 14
+												{game.gameName && game.gameName.length > 14
 													? `${game.gameName.slice(0, 14)}...`
 													: game.gameName}
 											</a>
