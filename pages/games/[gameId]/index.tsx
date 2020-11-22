@@ -44,7 +44,7 @@ const GamePage = () => {
 		getGame();
 	}, []);
 
-	if (game !== undefined) {
+	if (game.length > 0) {
 		return (
 			<div className={gamepageStyles.gamePage}>
 				<Navbar activePath="discover" />
@@ -61,12 +61,11 @@ const GamePage = () => {
 									/>
 									<div className="game-details">
 										<p className="publishers-title pxb">Publishers</p>
-										{game["gamePublishers"] &&
-											game["gamePublishers"].map((publisher) => (
-												<p key={publisher} className="game-company ps">
-													{publisher}
-												</p>
-											))}
+										{gameItem["gamePublishers"].map((publisher) => (
+											<p key={publisher} className="game-company ps">
+												{publisher}
+											</p>
+										))}
 										<p className="game-name h1">{gameItem.gameName}</p>
 										<Link href={gameItem.gameWebsite}>
 											<a className="primary-button">
