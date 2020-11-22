@@ -1,12 +1,30 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState, useEffect } from "react";
+import axios from "axios";
 import Navbar from "../../../components/Navbar/Navbar";
 import TwitchGame from "../../../components/UIComponents/TwitchGame";
 import StreamerSlider from "../../../components/StreamersSlider/StreamersSlider";
-import VideoCard from "../../../components/UIComponents/VideoCard";
+import VideosGrid from "../../../components/VideoGrid/VideosGrid";
 import twitchStyles from "./twitch.module.scss";
 
 const Twitch: FunctionComponent = () => {
 	let sliderdata = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+	let [games, setGames] = useState(() => []);
+
+	const getGames = async () => {
+		let games = await axios
+			.get("/api/twitchapi/getgames")
+			.then((rawGames) => {
+				console.log(rawGames.data["games"]);
+				setGames(() => rawGames.data["games"]);
+			})
+			.catch((error) => console.error(error));
+	};
+
+	useEffect(() => {
+		getGames();
+	}, []);
+
 	return (
 		<div className={twitchStyles.twitch}>
 			<Navbar activePath="twitch" />
@@ -14,13 +32,18 @@ const Twitch: FunctionComponent = () => {
 			<main>
 				<div className={twitchStyles.gamesSlider}>
 					<StreamerSlider
-						sliderContent={sliderdata}
-						sliderComponent={TwitchGame}
+						sliderContent={games.length > 0 && games}
+						sliderComponent={(gameData) => <TwitchGame gameData={gameData} />}
 						sliderTitle="Top games on twitch"
 					/>
 				</div>
 
-				<VideoCard />
+				<div className={twitchStyles.videosSlider}>
+					<VideosGrid
+						gridData={sliderdata}
+						gridTitle="Twitch streams on GTA V"
+					/>
+				</div>
 			</main>
 		</div>
 	);

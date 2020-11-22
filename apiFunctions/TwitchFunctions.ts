@@ -14,6 +14,12 @@ interface streamInfo {
 	viewerCount: number;
 }
 
+interface GameData {
+	gameId: number;
+	gameName: string;
+	gameImage: string;
+}
+
 function TwitchFunctions(clientId: string, authorization: string) {
 	let baseUrl: string = "https://api.twitch.tv/helix/";
 	let baseKrakenUrl: string = "https://api.twitch.tv/kraken/";
@@ -32,6 +38,32 @@ function TwitchFunctions(clientId: string, authorization: string) {
 			})
 			.then((games) => games.data["data"])
 			.catch(() => "api error");
+	};
+
+	this.getKrakenGames = async () => {
+		let games: any = [];
+
+		await axios
+			.get(`${baseKrakenUrl}games/top`, {
+				params: {
+					limit: 12,
+				},
+				headers: { ...headers, Accept: "application/vnd.twitchtv.v5+json" },
+			})
+			.then((rawResponse) => rawResponse.data["top"])
+			.then((gamesRaw) => {
+				gamesRaw.forEach((game) => {
+					let gameData: GameData = {
+						gameId: game["game"]["name"],
+						gameName: game["game"]["name"],
+						gameImage: game["game"]["box"]["large"],
+					};
+					games.push(gameData);
+				});
+			})
+			.catch(() => (games = "api error"));
+
+		return games;
 	};
 
 	this.getGamesList = async (listCriteria: "name" | "id") => {
