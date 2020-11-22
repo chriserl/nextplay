@@ -51,7 +51,7 @@ const Twitch: FunctionComponent = () => {
 					{livestreams.map((livestream) => (
 						<VideosGrid
 							gridData={livestream}
-							gridTitle={`Twitch streams for ${livestream[0]["game"]}`}
+							gridTitle={`Streams for ${livestream[0]["game"]}`}
 						/>
 					))}
 				</div>

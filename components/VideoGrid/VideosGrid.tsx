@@ -8,9 +8,9 @@ const NewsGrid = ({ gridData, gridTitle }) => {
 		return (
 			<div className={newsgridStyles.newsGrid}>
 				<p className={`${newsgridStyles.gridTitle} pl`}>
-					{gridTitle.slice(0, 18)}
+					{gridTitle.slice(0, 12)}
 					<span className={`${newsgridStyles.titleEmphasis} plb`}>
-						{gridTitle.slice(18)}
+						{gridTitle.slice(12)}
 					</span>
 				</p>
 				<div className={newsgridStyles.gridContainer}>

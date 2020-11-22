@@ -9,7 +9,7 @@ const TwitchGame: FunctionComponent<{ gameData: object }> = ({ gameData }) => {
 				className="game-image"
 			/>
 			<div className="card-body">
-				<p className="game-name plb">{gameData && gameData["gameName"]}</p>
+				<p className="game-name ps">{gameData && gameData["gameName"]}</p>
 			</div>
 		</div>
 	);
