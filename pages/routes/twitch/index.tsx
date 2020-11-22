@@ -48,12 +48,13 @@ const Twitch: FunctionComponent = () => {
 				</div>
 
 				<div className={twitchStyles.videosSlider}>
-					{livestreams.map((livestream) => (
-						<VideosGrid
-							gridData={livestream}
-							gridTitle={`Streams for ${livestream[0]["game"]}`}
-						/>
-					))}
+					{livestreams.length > 0 &&
+						livestreams.map((livestream) => (
+							<VideosGrid
+								gridData={livestream}
+								gridTitle={`Streams for ${livestream[0]["game"]}`}
+							/>
+						))}
 				</div>
 			</main>
 		</div>
