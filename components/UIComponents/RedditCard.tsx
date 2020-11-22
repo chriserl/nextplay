@@ -29,6 +29,8 @@ const RedditCard: FunctionComponent<{ postData: object }> = ({ postData }) => {
 				</div>
 			</div>
 		);
+	} else {
+		return <div className="reddit-card"></div>;
 	}
 };
 
