@@ -15,7 +15,7 @@ const NewsBulletin: NextPage = () => {
 
 	const getArticle = (): void => {
 		axios
-			.post("http://localhost:3000/api/gamespotapi/", {
+			.post("/api/gamespotapi/", {
 				requestType: "articleDetails",
 				articleId: pageId,
 			})

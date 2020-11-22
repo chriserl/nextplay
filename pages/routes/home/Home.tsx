@@ -18,7 +18,7 @@ const Home: FunctionComponent = () => {
 
 	const getRedditPosts = async () => {
 		await axios
-			.get("http://localhost:3000/api/rawgapi/getredditposts")
+			.get("/api/rawgapi/getredditposts")
 			.then((gamesResponse) =>
 				setRedditPosts(() => gamesResponse.data["redditPosts"])
 			)
@@ -30,7 +30,7 @@ const Home: FunctionComponent = () => {
 
 	const getGameStreamers = async () => {
 		await axios
-			.get("http://localhost:3000/api/twitchapi/gettopchannels")
+			.get("/api/twitchapi/gettopchannels")
 			.then((gamesResponse) => {
 				setGames(() => gamesResponse.data["channels"]);
 			})
@@ -42,7 +42,7 @@ const Home: FunctionComponent = () => {
 
 	const getLiveStreams = async () => {
 		await axios
-			.get("http://localhost:3000/api/twitchapi/getlivestreams")
+			.get("/api/twitchapi/getlivestreams")
 			.then((streamsResponse) => {
 				setliveStreams(() => streamsResponse.data["livestreams"]);
 			})

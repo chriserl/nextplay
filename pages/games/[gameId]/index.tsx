@@ -15,7 +15,7 @@ const GamePage = () => {
 
 	let getGame = async () => {
 		await axios
-			.post("http://localhost:3000/api/rawgapi/getgamedetails", {
+			.post("/api/rawgapi/getgamedetails", {
 				gameId,
 			})
 			.then((rawgameData) => rawgameData.data["gameDetails"])
