@@ -91,7 +91,7 @@ export default function RawgFunctions(rawgApiKey: string) {
 	};
 
 	this.getRedditPosts = async () => {
-		let ids: number[] | string = await getGameIds(12);
+		let ids: number[] | string = await getGameIds(5);
 
 		let posts: any = [];
 
