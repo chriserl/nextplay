@@ -19,9 +19,8 @@ const Home: FunctionComponent = () => {
 	const getRedditPosts = async () => {
 		await axios
 			.get("/api/rawgapi/getredditposts")
-			.then((gamesResponse) =>
-				setRedditPosts(() => gamesResponse.data["redditPosts"])
-			)
+			.then((rawPosts) => rawPosts.data["redditPosts"])
+			.then((gamesResponse) => setRedditPosts(() => gamesResponse))
 			.catch((error) => {
 				setRedditPosts(() => []);
 				console.error(error);
