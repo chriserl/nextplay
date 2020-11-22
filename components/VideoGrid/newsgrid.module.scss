@@ -3,22 +3,19 @@
 
 .newsGrid {
 	width: 96%;
-	margin: 0 auto;
+	margin: $spacing-18 auto;
 
 	.gridTitle {
+		@include flex;
 		width: 100%;
-		text-align: center;
+		margin-left: $spacing-4;
 		margin-bottom: $spacing-12;
 		text-transform: capitalize;
-		color: $dark-text;
+		color: $theme-100;
 
-		.titleText {
-			margin-bottom: $spacing-8;
-		}
-
-		.seemoreLink {
-			width: max-content;
-			margin: 0 auto;
+		.titleEmphasis {
+			margin-left: $spacing-2;
+			color: $theme-400;
 		}
 	}
 
@@ -26,6 +23,6 @@
 		@include grid;
 		grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
 		column-gap: $spacing-12;
-		row-gap: $spacing-8;
+		row-gap: $spacing-16;
 	}
 }

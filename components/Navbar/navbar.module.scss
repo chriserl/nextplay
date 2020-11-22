@@ -10,7 +10,7 @@
 
 	.brand {
 		@include flex;
-		color: $theme-primary;
+		color: $theme-main;
 
 		.brandText {
 			margin-left: $spacing-1;
@@ -18,11 +18,13 @@
 	}
 
 	.navItems {
+		width: 100%;
 		@include flex;
 		order: 3;
 		margin-top: $spacing-8;
 
 		@include tab-screen {
+			width: max-content;
 			order: initial;
 			margin-left: $spacing-12;
 			margin-top: 0;
@@ -30,7 +32,7 @@
 
 		.navItem {
 			margin: 0 $spacing-4;
-			color: $light-text;
+			color: $gray-400;
 
 			.navLink {
 				text-transform: capitalize;
@@ -38,7 +40,7 @@
 
 			.activeLink {
 				@include plb;
-				color: $dark-text;
+				color: $theme-200;
 				text-transform: capitalize;
 
 				&::before {
@@ -48,8 +50,8 @@
 					top: 26px;
 					width: 5px;
 					height: 5.2px;
-					background: $theme-primary;
-					border-radius: $spacing-4;
+					background: $theme-main;
+					border-radius: 50%;
 				}
 			}
 		}
@@ -62,14 +64,18 @@
 
 		.notifications {
 			margin-right: $spacing-6;
-			color: $dark-text;
 		}
 
 		.loggedInUser {
 			.activeUser {
 				width: $spacing-10;
 				border-radius: $spacing-4;
-				box-shadow: 2px 8px 18px $primary-hover;
+				box-shadow: 2px 8px 18px $theme-800;
+				transition: all 0.25s ease;
+
+				&:hover {
+					box-shadow: 2px 12px 24px $theme-600;
+				}
 			}
 		}
 	}

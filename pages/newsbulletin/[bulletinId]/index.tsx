@@ -15,7 +15,7 @@ const NewsBulletin: NextPage = () => {
 
 	const getArticle = (): void => {
 		axios
-			.post("https://nextplay.vercel.app/api/gamespotapi/", {
+			.post("/api/gamespotapi/", {
 				requestType: "articleDetails",
 				articleId: pageId,
 			})
@@ -49,7 +49,7 @@ const NewsBulletin: NextPage = () => {
 								{articleData.title}
 							</p>
 							<div className={`${bulletinStyles.headlineDetails}`}>
-								<p className={`pl primary-tab ${bulletinStyles.source}`}>
+								<p className={`pl secondary-tab ${bulletinStyles.source}`}>
 									verge
 								</p>
 								<p className={`pl ${bulletinStyles.date}`}>

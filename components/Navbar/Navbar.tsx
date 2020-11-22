@@ -1,30 +1,20 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
-import UserContext from "../../Store.js/UserContext";
+import { useState } from "react";
+import UserAccount from "../UIComponents/UserAccount";
 import navbarStyles from "./navbar.module.scss";
 
 const Navbar = ({ activePath }) => {
-	let navbarRoutes = [
-		{ routePath: "discover" },
-		{ routePath: "news" },
-		{ routePath: "account" },
-	];
+	let navbarRoutes = [{ routePath: "discover" }, { routePath: "twitch" }];
 
-	let clientId = "g70cu3higz16c06vuvd98qw3tiuf3r";
+	let [accountState, setAccountState] = useState("accountHidden");
 
-	let accessToken = useRouter().asPath.slice(15, 45) || null;
-
-	let [user, setUser] = useContext(UserContext);
-
-	useEffect(() => {
-		if (accessToken) {
-			setUser(() => ({
-				userStatus: "LoggedIn",
-				userAccessToken: accessToken,
-			}));
-		}
-	}, []);
+	const toggleAccount = () => {
+		setAccountState(
+			() =>
+				(accountState =
+					accountState === "accountHidden" ? "accountVisible" : "accountHidden")
+		);
+	};
 
 	return (
 		<nav className={navbarStyles.navbar}>
@@ -53,16 +43,25 @@ const Navbar = ({ activePath }) => {
 
 			<div className={navbarStyles.userActions}>
 				<div className={navbarStyles.notifications}>
-					<span className="md-icon large-icon">notifications_none</span>
+					<button className="rl-icon-button">
+						<span className="md-icon">notifications_none</span>
+					</button>
 				</div>
-				<div className={navbarStyles.loggedInUser}>
+				<div
+					className={navbarStyles.loggedInUser}
+					onClick={() => toggleAccount()}
+				>
 					<img
-						src="/images/jade.jpg"
+						src="/images/games/fortnite.jpg"
 						alt="jade"
 						className={navbarStyles.activeUser}
 					/>
 				</div>
 			</div>
+			<UserAccount
+				userAccountState={accountState}
+				toggleAccountVisibility={() => toggleAccount()}
+			/>
 		</nav>
 	);
 };

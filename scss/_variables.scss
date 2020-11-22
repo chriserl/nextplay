@@ -1,18 +1,23 @@
-$theme-primary: hsl(16, 100%, 50%);
-$theme-light: hsl(16, 100%, 96%);
+$theme-100: hsl(248, 80%, 8%);
+$theme-200: hsl(248, 80%, 16%);
+$theme-300: hsl(248, 80%, 24%);
+$theme-400: hsl(248, 80%, 40%);
+$theme-main: hsl(248, 96%, 56%);
+$theme-500: hsl(248, 80%, 72%);
+$theme-600: hsl(248, 80%, 80%);
+$theme-700: hsl(248, 80%, 90%);
+$theme-800: hsl(248, 80%, 96%);
+$theme-900: hsl(248, 96%, 99%);
 
-$theme-live: hsl(0, 12%, 20%);
-
-$component-light: hsl(16, 16%, 96%);
-$component-white: hsl(16, 16%, 98%);
-
-$dark-text: hsl(16, 16%, 24%);
-$light-text: hsl(16, 16%, 52%);
-$lighter-text: hsl(16, 16%, 64%);
-
-$primary-shadow: hsl(16, 100%, 80%);
-$dark-shadow: hsl(16, 32%, 88%);
-$primary-hover: hsl(16, 100%, 92%);
+$gray-100: hsl(248, 8%, 4%);
+$gray-200: hsl(248, 8%, 16%);
+$gray-300: hsl(248, 8%, 24%);
+$gray-400: hsl(248, 8%, 40%);
+$gray-500: hsl(248, 8%, 72%);
+$gray-600: hsl(248, 8%, 80%);
+$gray-700: hsl(248, 8%, 88%);
+$gray-800: hsl(248, 8%, 94%);
+$gray-900: hsl(248, 8%, 99%);
 
 //Spacing
 $spacing-1: 0.2rem;

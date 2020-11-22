@@ -1,0 +1,228 @@
+//Icon Buttons
+//Primary Icon Buttons
+.sp-icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.32rem;
+	border-radius: $spacing-4;
+	color: $theme-900;
+	background: $theme-main;
+	transition: all 0.25s ease;
+
+	span {
+		@include small-icon;
+	}
+
+	&:hover {
+		box-shadow: 2px 8px 18px $theme-500;
+	}
+}
+
+.rp-icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.12rem;
+	border-radius: $spacing-4;
+	color: $theme-900;
+	background: $theme-main;
+	transition: all 0.25s ease;
+
+	span {
+		@include regular-icon;
+	}
+
+	&:hover {
+		box-shadow: 2px 8px 18px $theme-500;
+	}
+}
+
+.lp-icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.12rem;
+	border-radius: $spacing-4;
+	color: $theme-900;
+	background: $theme-main;
+	transition: all 0.25s ease;
+
+	span {
+		@include large-icon;
+	}
+
+	&:hover {
+		box-shadow: 2px 8px 18px $theme-500;
+	}
+}
+
+//Icon Buttons
+//Light Icon Button
+.sl-icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.32rem;
+	border-radius: $spacing-4;
+	color: $theme-400;
+	background: $theme-800;
+	transition: all 0.25s ease;
+
+	span {
+		@include small-icon;
+	}
+
+	&:hover {
+		color: $theme-main;
+		background: $theme-900;
+		box-shadow: 0 12px 14px $theme-800;
+	}
+}
+
+.rl-icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.12rem;
+	border-radius: $spacing-4;
+	color: $theme-400;
+	background: $theme-800;
+	transition: all 0.25s ease;
+
+	span {
+		@include regular-icon;
+	}
+
+	&:hover {
+		color: $theme-main;
+		background: $theme-900;
+		box-shadow: 0 12px 14px $theme-800;
+	}
+}
+
+.ll-icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.12rem;
+	border-radius: $spacing-4;
+	color: $theme-400;
+	background: $theme-800;
+	transition: all 0.25s ease;
+
+	span {
+		@include large-icon;
+	}
+
+	&:hover {
+		color: $theme-main;
+		background: $theme-900;
+		box-shadow: 0 12px 14px $theme-800;
+	}
+}
+
+//Link Icon Button
+
+.link-icon-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: 0.24rem;
+	border-radius: $spacing-4;
+	color: $theme-400;
+	background: $theme-900;
+	transition: all 0.25s ease;
+
+	&:hover {
+		color: $theme-main;
+		background: $theme-800;
+	}
+}
+
+//Text Buttons
+
+.primary-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: $spacing-1 $spacing-6;
+	background: $theme-main;
+	color: $theme-900;
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	span {
+		margin-left: $spacing-2;
+	}
+
+	&:hover {
+		box-shadow: 12px 14px 24px $theme-600;
+	}
+}
+
+.secondary-button {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: $spacing-1 $spacing-6;
+	background: $theme-800;
+	color: $theme-main;
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	span {
+		margin-left: $spacing-2;
+	}
+
+	&:hover {
+		color: $theme-900;
+		background: $theme-main;
+		box-shadow: 8px 12px 24px $theme-600;
+	}
+}
+
+//Tabs
+
+.primary-tab {
+	@extend .button;
+	@include flex;
+	width: max-content;
+	padding: $spacing-1 $spacing-6;
+	background: $theme-main;
+	color: $theme-900;
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	span {
+		margin-right: $spacing-2;
+	}
+
+	&:hover {
+		color: $theme-main;
+		background: $theme-900;
+	}
+}
+
+.secondary-tab {
+	@extend .button;
+	@include flex;
+	padding: $spacing-1 $spacing-6;
+	background: $theme-800;
+	color: $theme-main;
+	border-radius: $spacing-12;
+	cursor: pointer;
+	transition: all 0.25s ease;
+
+	span {
+		margin-right: $spacing-2;
+	}
+
+	&:hover {
+		color: $theme-500;
+		background: $theme-900;
+	}
+}

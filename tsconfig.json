@@ -21,7 +21,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", "pages/games/[gameId]/index.jsx", "pages/_app.js", "apiFunctions/TwitchFunctions.js"
+    "**/*.tsx", "pages/games/[gameId]/index.tsx", "pages/_app.js"
   ],
   "exclude": [
     "node_modules"

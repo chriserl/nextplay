@@ -1,0 +1,382 @@
+.game-card {
+	width: 100%;
+	color: $theme-100;
+
+	.game-image {
+		width: 100%;
+		height: 242px;
+		object-fit: cover;
+		border-radius: $spacing-6;
+		margin-bottom: $spacing-4;
+		cursor: pointer;
+		transition: all 0.45s ease;
+
+		&:hover {
+			box-shadow: 4px 16px 56px $theme-600;
+		}
+	}
+}
+
+.large-game-card {
+	.game-image {
+		max-width: 248px;
+		height: 296px;
+		object-fit: cover;
+		border-radius: $spacing-6;
+		cursor: pointer;
+		transition: all 0.45s ease;
+
+		&:hover {
+			box-shadow: 4px 16px 56px $theme-700;
+		}
+	}
+
+	.game-details {
+		margin-top: $spacing-6;
+
+		.publishers-title {
+			margin-bottom: $spacing-2;
+			color: $theme-500;
+		}
+
+		.game-company {
+			margin-bottom: $spacing-1;
+			color: $theme-400;
+		}
+
+		.game-name {
+			margin-top: $spacing-4;
+			margin-bottom: $spacing-8;
+			color: $theme-100;
+		}
+	}
+}
+
+.streamer-card {
+	@include flex;
+	max-width: 196px;
+	padding: $spacing-4 $spacing-8 $spacing-4 $spacing-4;
+	background: $theme-900;
+	border-radius: $spacing-6;
+	transition: all 0.25s ease;
+
+	&:hover {
+		box-shadow: 2px 8px 24px $theme-700;
+	}
+
+	.streamer-image {
+		width: 2.8rem;
+		height: 2.8rem;
+		object-fit: cover;
+		border-radius: $spacing-5;
+	}
+
+	.streamer-card-info {
+		margin-left: $spacing-4;
+
+		.streamer-name {
+			color: $theme-100;
+			margin-bottom: $spacing-1;
+		}
+
+		.followers {
+			color: $theme-main;
+		}
+	}
+}
+
+.livestream-card {
+	max-width: 160px;
+
+	.stream-stats {
+		width: 86%;
+		margin: 0 auto;
+		position: relative;
+		top: $spacing-11;
+		@include flex($justify: space-between);
+
+		.watching {
+			@include flex;
+			color: $theme-800;
+
+			span {
+				margin-right: $spacing-1;
+			}
+		}
+	}
+
+	width: 100%;
+
+	.stream-image {
+		width: 100%;
+		height: 16rem;
+		border-radius: $spacing-8;
+		object-fit: cover;
+		transition: all 0.25s ease;
+
+		&:hover {
+			box-shadow: 24px 38px 48px $theme-800;
+		}
+	}
+
+	.stream-card-body {
+		width: 100%;
+		padding: $spacing-6 $spacing-7;
+		position: relative;
+		bottom: $spacing-16;
+		border-radius: 0 0 $spacing-8 $spacing-8;
+		@include flex($justify: space-between);
+		color: white;
+		background: linear-gradient(
+			to bottom,
+			rgba(16, 0, 0, 0),
+			rgba(16, 0, 0, 0.2),
+			rgba(16, 0, 0, 0.56),
+			rgba(16, 0, 0, 0.72),
+			hsl(16, 0%, 0%)
+		);
+	}
+}
+
+.news-card {
+	@include flex($direction: column, $align: space-between);
+	width: 100%;
+	margin: 0 auto;
+	padding: $spacing-6;
+	border-radius: $spacing-12 $spacing-4 $spacing-12 $spacing-4;
+	border: 1.8px solid $theme-900;
+
+	@include tab-screen {
+		max-width: 264px;
+		height: 12rem;
+	}
+
+	.news-body {
+		.news-info {
+			width: 100%;
+			margin-bottom: $spacing-8;
+
+			.news-headline {
+				color: $theme-100;
+			}
+		}
+	}
+
+	.body-bottom {
+		justify-self: end;
+		@include flex($justify: space-between);
+	}
+}
+
+.reddit-card {
+	width: 96%;
+	margin: 0 auto;
+	margin-bottom: $spacing-12;
+	padding: $spacing-2 $spacing-1;
+	display: inline-block;
+
+	@include tab-screen {
+		max-width: 218px;
+	}
+
+	.date-created {
+		color: $theme-500;
+		width: $spacing-16;
+		margin-left: $spacing-2;
+		margin-bottom: $spacing-4;
+	}
+
+	.card-image {
+		width: 100%;
+		object-fit: cover;
+		box-shadow: 2px 8px 40px $theme-700;
+		border-radius: $spacing-8;
+		margin-bottom: $spacing-6;
+		transition: all 0.25s ease;
+
+		&:hover {
+			box-shadow: 2px 8px 40px $theme-600;
+		}
+	}
+
+	.card-body {
+		width: 96%;
+		margin: 0 auto;
+
+		.card-body__header {
+			@include flex($align: flex-start, $justify: space-between);
+			width: 100%;
+			margin: 0 auto;
+			margin-bottom: $spacing-2;
+
+			.user-name {
+				color: $theme-200;
+			}
+		}
+
+		.post-text {
+			color: $gray-200;
+		}
+	}
+}
+
+//User Account
+.accountHidden {
+	@include d-none;
+}
+
+.accountVisible {
+	position: absolute;
+	top: 18%;
+	bottom: 45%;
+	left: 45%;
+	right: 45%;
+	width: 14rem;
+	height: 19.2rem;
+	background: white;
+	border-radius: $spacing-8;
+	padding: $spacing-2 $spacing-4;
+	box-shadow: 2px 18px 28px $theme-800;
+
+	.close-icon {
+		width: max-content;
+		padding: $spacing-1;
+		position: relative;
+		left: 100%;
+		bottom: $spacing-3;
+	}
+
+	.image-container {
+		width: max-content;
+		margin: 0 auto;
+
+		.account-image {
+			width: 6.4rem;
+			height: 6.4rem;
+			margin: 0 auto;
+			padding: $spacing-2;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 2px solid $theme-700;
+		}
+	}
+
+	.card-body {
+		width: max-content;
+		margin: 0 auto;
+		margin-top: $spacing-4;
+		text-align: center;
+
+		.account-name {
+			color: $theme-main;
+			margin-bottom: $spacing-1;
+		}
+
+		.account-location {
+			color: $gray-400;
+		}
+
+		.ctas {
+			width: max-content;
+			margin: 0 auto;
+			margin-top: $spacing-6;
+			@include flex(column, center, center);
+
+			.edit {
+				margin-bottom: $spacing-6;
+			}
+		}
+	}
+}
+
+.twitch-game {
+	max-width: 140px;
+	margin: 0 auto;
+	padding-bottom: $spacing-2;
+	border-radius: $spacing-3 $spacing-10;
+	background: $theme-900;
+	transition: all 0.25s ease;
+
+	&:hover {
+		box-shadow: 2px 12px 40px $theme-600;
+	}
+
+	.game-image {
+		width: 100%;
+		height: 11.6rem;
+		object-fit: cover;
+		border-radius: $spacing-3 $spacing-10;
+	}
+
+	.card-body {
+		width: 100%;
+
+		.game-name {
+			width: 90%;
+			margin: 0 auto;
+			padding-top: $spacing-2;
+			text-align: center;
+		}
+	}
+}
+
+.video-card {
+	width: 96%;
+	margin: 0 auto;
+	background: $theme-900;
+
+	@include tab-screen {
+		max-width: 256px;
+	}
+
+	.video-thumbnail {
+		width: 100%;
+		height: 9.6rem;
+		border-radius: $spacing-2;
+		object-fit: cover;
+		transition: all 0.25s ease;
+
+		&:hover {
+			box-shadow: 2px 8px 48px $theme-600;
+		}
+	}
+
+	.video-info {
+		width: 100%;
+		margin: $spacing-4 auto;
+		@include flex(row, flex-end, space-between);
+
+		.main-info {
+			width: 100%;
+
+			.video-title {
+				color: $gray-200;
+			}
+
+			.video-channel {
+				color: $gray-200;
+				margin-top: $spacing-1;
+			}
+
+			.views-likes {
+				@include flex;
+
+				.views {
+					@include flex;
+
+					.views-count {
+						color: $gray-200;
+					}
+				}
+
+				.likes {
+					margin-left: $spacing-4;
+
+					.video-age {
+						color: $gray-200;
+					}
+				}
+			}
+		}
+	}
+}
