@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 
-const VideoCard: FunctionComponent = ({ videoData }) => {
+const VideoCard: FunctionComponent<{ videoData: object }> = ({ videoData }) => {
 	return (
 		<div className="video-card">
 			<a href={videoData["channel"]["url"]}>
