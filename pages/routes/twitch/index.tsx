@@ -7,7 +7,7 @@ import VideosGrid from "../../../components/VideoGrid/VideosGrid";
 import twitchStyles from "./twitch.module.scss";
 
 const Twitch: FunctionComponent = () => {
-	let sliderdata = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+	let sliderdata = [1, 2, 3, 4];
 
 	let [games, setGames] = useState(() => []);
 

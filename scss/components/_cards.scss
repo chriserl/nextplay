@@ -358,13 +358,11 @@
 
 			.views-likes {
 				@include flex;
-				margin-top: 0;
 
 				.views {
 					@include flex;
 
 					.views-count {
-						margin-left: $spacing-2;
 						color: $gray-200;
 					}
 				}
