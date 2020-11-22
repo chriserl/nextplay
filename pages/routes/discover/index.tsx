@@ -13,6 +13,22 @@ const Discover: NextPage = () => {
 		gameImage: string;
 	}
 
+	let [games, setGames] = useState(() => []);
+
+	let [searchState, setSearchState] = useState(() => "");
+
+	let filterRef = useRef(null);
+
+	let [filters, setFilters] = useState(() => []);
+
+	let [filterSearchState, setFilterSearchState] = useState(() => {
+		return { searchbarStatus: true };
+	});
+
+	let [filterItem, setFilterItem] = useState(() => {
+		return { currentFilter: "" };
+	});
+
 	const getGames = async () => {
 		await axios
 			.post("/api/rawgapi/getgames", {})
@@ -50,22 +66,6 @@ const Discover: NextPage = () => {
 				return [];
 			});
 	};
-
-	let [games, setGames] = useState(() => []);
-
-	let [searchState, setSearchState] = useState(() => "");
-
-	let filterRef = useRef(null);
-
-	let [filters, setFilters] = useState(() => []);
-
-	let [filterSearchState, setFilterSearchState] = useState(() => {
-		return { searchbarStatus: true };
-	});
-
-	let [filterItem, setFilterItem] = useState(() => {
-		return { currentFilter: "" };
-	});
 
 	let handleSearchInput = (event) => {
 		event.preventDefault();

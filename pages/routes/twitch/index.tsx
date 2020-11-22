@@ -7,22 +7,31 @@ import VideosGrid from "../../../components/VideoGrid/VideosGrid";
 import twitchStyles from "./twitch.module.scss";
 
 const Twitch: FunctionComponent = () => {
-	let sliderdata = [1, 2, 3, 4];
-
 	let [games, setGames] = useState(() => []);
+	let [livestreams, setLivestreams] = useState(() => []);
 
 	const getGames = async () => {
-		let games = await axios
+		await axios
 			.get("/api/twitchapi/getgames")
 			.then((rawGames) => {
-				console.log(rawGames.data["games"]);
 				setGames(() => rawGames.data["games"]);
+			})
+			.catch((error) => console.error(error));
+	};
+
+	let getStreams = async () => {
+		await axios
+			.get("/api/twitchapi/getgamelivestreams")
+			.then((rawStreams) => {
+				console.log("found");
+				setLivestreams(rawStreams.data["livestreams"]);
 			})
 			.catch((error) => console.error(error));
 	};
 
 	useEffect(() => {
 		getGames();
+		getStreams();
 	}, []);
 
 	return (
@@ -39,10 +48,12 @@ const Twitch: FunctionComponent = () => {
 				</div>
 
 				<div className={twitchStyles.videosSlider}>
-					<VideosGrid
-						gridData={sliderdata}
-						gridTitle="Twitch streams on GTA V"
-					/>
+					{livestreams.map((livestream) => (
+						<VideosGrid
+							gridData={livestream}
+							gridTitle={`Twitch streams for ${livestream[0]["game"]}`}
+						/>
+					))}
 				</div>
 			</main>
 		</div>

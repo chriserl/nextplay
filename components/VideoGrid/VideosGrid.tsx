@@ -8,14 +8,14 @@ const NewsGrid = ({ gridData, gridTitle }) => {
 		return (
 			<div className={newsgridStyles.newsGrid}>
 				<p className={`${newsgridStyles.gridTitle} pl`}>
-					{gridTitle.slice(0, 17)}
-					<p className={`${newsgridStyles.titleEmphasis} plb`}>
-						{gridTitle.slice(17)}
-					</p>
+					{gridTitle.slice(0, 18)}
+					<span className={`${newsgridStyles.titleEmphasis} plb`}>
+						{gridTitle.slice(18)}
+					</span>
 				</p>
 				<div className={newsgridStyles.gridContainer}>
 					{gridData.map((dataItem) => (
-						<VideoCard />
+						<VideoCard videoData={dataItem} />
 					))}
 				</div>
 			</div>

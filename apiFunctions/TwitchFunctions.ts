@@ -9,9 +9,10 @@ interface channelInfo {
 
 interface streamInfo {
 	streamerName: string;
-	streamerImage: string;
+	streamerImage?: string;
 	streamerUrl: string;
 	viewerCount: number;
+	[key: string]: any;
 }
 
 interface GameData {
@@ -28,11 +29,23 @@ function TwitchFunctions(clientId: string, authorization: string) {
 		"client-id": clientId,
 	};
 
-	this.getGames = async () => {
+	this.formatKrakenGames = (streamItem: object) => {
+		let livestream: streamInfo = {
+			streamerName: streamItem["channel"]["display_name"],
+			streamerImage: streamItem["preview"]["large"],
+			streamerUrl: streamItem["channel"]["url"],
+			streamTime: streamItem["created_at"],
+			viewerCount: streamItem["viewers"],
+		};
+
+		return livestream;
+	};
+
+	this.getGames = async (limit?: number) => {
 		return await axios
 			.get(`${baseUrl}games/top`, {
 				params: {
-					first: 12,
+					first: limit ? limit : 12,
 				},
 				headers,
 			})
@@ -40,13 +53,13 @@ function TwitchFunctions(clientId: string, authorization: string) {
 			.catch(() => "api error");
 	};
 
-	this.getKrakenGames = async () => {
+	this.getKrakenGames = async (limit?: number) => {
 		let games: any = [];
 
 		await axios
 			.get(`${baseKrakenUrl}games/top`, {
 				params: {
-					limit: 12,
+					limit: limit ? limit : 12,
 				},
 				headers: { ...headers, Accept: "application/vnd.twitchtv.v5+json" },
 			})
@@ -66,10 +79,10 @@ function TwitchFunctions(clientId: string, authorization: string) {
 		return games;
 	};
 
-	this.getGamesList = async (listCriteria: "name" | "id") => {
+	this.getGamesList = async (listCriteria: "name" | "id", limit?: number) => {
 		let gameNames: any = [];
 
-		await this.getGames().then((games) => {
+		await this.getGames(limit && limit).then((games) => {
 			if (games === "api error") {
 				gameNames = "api error";
 			} else {
@@ -131,6 +144,27 @@ function TwitchFunctions(clientId: string, authorization: string) {
 				})
 			)
 			.catch(() => (livestreams = "api error"));
+
+		return livestreams;
+	};
+
+	this.getGameLivestreams = async () => {
+		let livestreams: any = [];
+
+		let gameNames: any = await this.getGamesList("name");
+
+		for await (let gameName of gameNames) {
+			await axios
+				.get(`${baseKrakenUrl}streams`, {
+					params: {
+						limit: 4,
+						game: gameName,
+					},
+					headers: { ...headers, Accept: "application/vnd.twitchtv.v5+json" },
+				})
+				.then((rawResponse) => livestreams.push(rawResponse.data["streams"]))
+				.catch(() => (livestreams = "api error"));
+		}
 
 		return livestreams;
 	};
