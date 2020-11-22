@@ -86,9 +86,10 @@ const Home: FunctionComponent = () => {
 							Posts from game subreddits
 						</p>
 						<div className={homeStyles.postsContainer}>
-							{redditPosts.map((redditPost) => (
-								<RedditCard postData={redditPost} />
-							))}
+							{redditPosts.length > 0 &&
+								redditPosts.map((redditPost) => (
+									<RedditCard postData={redditPost} />
+								))}
 						</div>
 					</div>
 				</main>
