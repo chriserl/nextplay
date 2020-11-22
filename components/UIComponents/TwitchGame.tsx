@@ -1,15 +1,15 @@
 import { FunctionComponent } from "react";
 
-const TwitchGame: FunctionComponent = () => {
+const TwitchGame: FunctionComponent<{ gameData: object }> = ({ gameData }) => {
 	return (
 		<div className="twitch-game">
 			<img
-				src="/images/games/fortnite.jpg"
+				src={gameData && gameData["gameImage"]}
 				alt="twitch game"
 				className="game-image"
 			/>
 			<div className="card-body">
-				<p className="game-name plb">Fortnite</p>
+				<p className="game-name plb">{gameData && gameData["gameName"]}</p>
 			</div>
 		</div>
 	);

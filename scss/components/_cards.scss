@@ -290,7 +290,7 @@
 }
 
 .twitch-game {
-	width: 96%;
+	max-width: 140px;
 	margin: 0 auto;
 	padding-bottom: $spacing-2;
 	border-radius: $spacing-3 $spacing-10;
@@ -299,10 +299,6 @@
 
 	&:hover {
 		box-shadow: 2px 12px 40px $theme-600;
-	}
-
-	@include tab-screen {
-		max-width: 140px;
 	}
 
 	.game-image {
@@ -318,6 +314,69 @@
 		.game-name {
 			padding-top: $spacing-2;
 			text-align: center;
+		}
+	}
+}
+
+.video-card {
+	width: 96%;
+	margin: 0 auto;
+	background: $theme-900;
+
+	@include tab-screen {
+		max-width: 256px;
+	}
+
+	.video-thumbnail {
+		width: 100%;
+		height: 9.6rem;
+		border-radius: $spacing-2;
+		object-fit: cover;
+		transition: all 0.25s ease;
+
+		&:hover {
+			box-shadow: 2px 8px 48px $theme-600;
+		}
+	}
+
+	.video-info {
+		width: 100%;
+		margin: $spacing-4 auto;
+		@include flex(row, flex-end, space-between);
+
+		.main-info {
+			width: 100%;
+
+			.video-title {
+				color: $gray-200;
+			}
+
+			.video-channel {
+				color: $gray-200;
+				margin-top: $spacing-1;
+			}
+
+			.views-likes {
+				@include flex;
+				margin-top: 0;
+
+				.views {
+					@include flex;
+
+					.views-count {
+						margin-left: $spacing-2;
+						color: $gray-200;
+					}
+				}
+
+				.likes {
+					margin-left: $spacing-4;
+
+					.video-age {
+						color: $gray-200;
+					}
+				}
+			}
 		}
 	}
 }
