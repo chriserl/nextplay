@@ -6,19 +6,16 @@
 	margin: 0 auto;
 
 	.gridTitle {
+		@include flex;
 		width: 100%;
-		text-align: center;
+		margin-left: $spacing-4;
 		margin-bottom: $spacing-12;
 		text-transform: capitalize;
 		color: $theme-100;
 
-		.titleText {
-			margin-bottom: $spacing-8;
-		}
-
-		.seemoreLink {
-			width: max-content;
-			margin: 0 auto;
+		.titleEmphasis {
+			margin-left: $spacing-2;
+			color: $theme-400;
 		}
 	}
 
