@@ -42,11 +42,6 @@ const Navbar = ({ activePath }) => {
 			</ul>
 
 			<div className={navbarStyles.userActions}>
-				<div className={navbarStyles.notifications}>
-					<button className="rl-icon-button">
-						<span className="md-icon">notifications_none</span>
-					</button>
-				</div>
 				<div
 					className={navbarStyles.loggedInUser}
 					onClick={() => toggleAccount()}

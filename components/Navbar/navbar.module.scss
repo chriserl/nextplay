@@ -58,13 +58,8 @@
 	}
 
 	.userActions {
-		@include flex;
 		margin-left: auto;
 		margin-right: $spacing-6;
-
-		.notifications {
-			margin-right: $spacing-6;
-		}
 
 		.loggedInUser {
 			.activeUser {
