@@ -138,36 +138,6 @@
 	}
 }
 
-.news-card {
-	@include flex($direction: column, $align: space-between);
-	width: 100%;
-	margin: 0 auto;
-	padding: $spacing-6;
-	border-radius: $spacing-12 $spacing-4 $spacing-12 $spacing-4;
-	border: 1.8px solid $theme-900;
-
-	@include tab-screen {
-		max-width: 264px;
-		height: 12rem;
-	}
-
-	.news-body {
-		.news-info {
-			width: 100%;
-			margin-bottom: $spacing-8;
-
-			.news-headline {
-				color: $theme-100;
-			}
-		}
-	}
-
-	.body-bottom {
-		justify-self: end;
-		@include flex($justify: space-between);
-	}
-}
-
 .reddit-card {
 	width: 96%;
 	margin: 0 auto;
