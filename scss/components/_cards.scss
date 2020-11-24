@@ -226,17 +226,22 @@
 }
 
 .accountVisible {
+	z-index: 1;
 	position: absolute;
 	top: 18%;
-	bottom: 45%;
-	left: 45%;
-	right: 45%;
+	left: 14vw;
+	right: auto;
 	width: 14rem;
 	height: 19.2rem;
 	background: white;
 	border-radius: $spacing-8;
 	padding: $spacing-2 $spacing-4;
 	box-shadow: 2px 18px 28px $theme-800;
+
+	@include tab-screen {
+		top: 18%;
+		left: 42vw;
+	}
 
 	.close-icon {
 		width: max-content;
