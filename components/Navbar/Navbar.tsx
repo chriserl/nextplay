@@ -2,21 +2,32 @@ import Link from "next/link";
 import { useState, useContext } from "react";
 import UserContext from "../../Contexts/UserContext";
 import UserAccount from "../UIComponents/UserAccount";
+import UserLogin from "../UIComponents/UserLogin";
 import navbarStyles from "./navbar.module.scss";
 
 const Navbar = ({ activePath }) => {
 	let navbarRoutes = [{ routePath: "discover" }, { routePath: "twitch" }];
 
-	let [accountStatus, setAccountStatus] = useContext(UserContext);
+	let [{ accountStatus }, setAccountStatus] = useContext(UserContext);
 
 	let [accountState, setAccountState] = useState("accountHidden");
 
 	const toggleAccount = () => {
-		setAccountState(
-			() =>
-				(accountState =
-					accountState === "accountHidden" ? "accountVisible" : "accountHidden")
-		);
+		accountStatus === "loggedIn"
+			? setAccountState(
+					() =>
+						(accountState =
+							accountState === "accountHidden"
+								? "accountVisible"
+								: "accountHidden")
+			  )
+			: setAccountState(
+					() =>
+						(accountState =
+							accountState === "accountHidden"
+								? "accountLogin"
+								: "accountHidden")
+			  );
 	};
 
 	return (
@@ -56,10 +67,17 @@ const Navbar = ({ activePath }) => {
 					/>
 				</div>
 			</div>
-			<UserAccount
-				userAccountState={accountState}
-				toggleAccountVisibility={() => toggleAccount()}
-			/>
+			{accountStatus === "loggedIn" ? (
+				<UserAccount
+					userAccountState={accountState}
+					toggleAccountVisibility={() => toggleAccount()}
+				/>
+			) : (
+				<UserLogin
+					userAccountState={accountState}
+					toggleAccountVisibility={() => toggleAccount()}
+				/>
+			)}
 		</nav>
 	);
 };
