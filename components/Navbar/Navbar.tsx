@@ -1,10 +1,13 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext from "../../Contexts/UserContext";
 import UserAccount from "../UIComponents/UserAccount";
 import navbarStyles from "./navbar.module.scss";
 
 const Navbar = ({ activePath }) => {
 	let navbarRoutes = [{ routePath: "discover" }, { routePath: "twitch" }];
+
+	let [accountStatus, setAccountStatus] = useContext(UserContext);
 
 	let [accountState, setAccountState] = useState("accountHidden");
 
