@@ -1,6 +1,6 @@
 import "../scss/main.scss";
 import { useState } from "react";
-import UserContext from "../Store.js/UserContext";
+import UserContext from "../Contexts/UserContext";
 
 function MyApp({ Component, pageProps }) {
 	let [user, setUser] = useState(() => ({
