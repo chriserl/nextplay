@@ -264,6 +264,55 @@
 	}
 }
 
+.accountLogin {
+	@include flex(column);
+	z-index: 1;
+	position: absolute;
+	top: 18%;
+	left: 50%;
+	margin-left: -140px;
+	right: auto;
+	width: 17rem;
+	height: 25.4rem;
+	background: white;
+	border-radius: $spacing-8;
+	padding: $spacing-10 $spacing-8;
+	box-shadow: 2px 18px 28px $theme-800;
+
+	@include tab-screen {
+		top: 18%;
+		left: 40vw;
+		margin-left: 0;
+	}
+
+	.form-title {
+		margin-bottom: $spacing-12;
+	}
+
+	.email-control {
+		margin-bottom: $spacing-8;
+	}
+
+	.password-control {
+		margin-bottom: $spacing-12;
+	}
+
+	.form-submit {
+		width: max-content;
+		margin: 0 auto;
+		margin-bottom: $spacing-6;
+	}
+
+	.sign-up {
+		@include flex;
+		margin-top: $spacing-5;
+
+		.sign-up-button {
+			margin-left: $spacing-5;
+		}
+	}
+}
+
 .twitch-game {
 	max-width: 140px;
 	margin: 0 auto;
