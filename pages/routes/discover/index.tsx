@@ -6,13 +6,13 @@ import Navbar from "../../../components/Navbar/Navbar";
 import LoadingScreen from "../../../components/LoadingScreen/LoadingScreen";
 import discoverStyles from "./discover.module.scss";
 
-const Discover: NextPage = () => {
-	interface GameData {
-		gameId: number;
-		gameName: string;
-		gameImage: string;
-	}
+interface GameData {
+	gameId: number;
+	gameName: string;
+	gameImage: string;
+}
 
+const Discover: NextPage<{ gamesList: object[] }> = ({ gamesList }) => {
 	let [games, setGames] = useState(() => []);
 
 	let [searchState, setSearchState] = useState(() => "");
@@ -30,25 +30,7 @@ const Discover: NextPage = () => {
 	});
 
 	const getGames = async () => {
-		await axios
-			.post("/api/rawgapi/getgames", {})
-			.then((gamesRes) => gamesRes.data["gamesList"]["results"])
-			.then((gamesList) => {
-				let gamesArray = [];
-				gamesList.forEach((game) => {
-					let gameData: GameData = {
-						gameId: game["id"],
-						gameName: game["name"],
-						gameImage: game["background_image"],
-					};
-					gamesArray.push(gameData);
-				});
-				setGames(() => gamesArray);
-			})
-			.catch((error) => {
-				setGames(() => []);
-				console.error(error);
-			});
+		gamesList ? setGames(() => gamesList) : setGames(() => []);
 	};
 
 	const searchGames = async (
@@ -240,3 +222,25 @@ const Discover: NextPage = () => {
 };
 
 export default Discover;
+
+export async function getServerSideProps(context) {
+	let gamesList = await axios
+		.post("http://localhost:3000/api/rawgapi/getgames", {})
+		.then((gamesRes) => gamesRes.data["gamesList"]["results"])
+		.then((gamesList) => {
+			let gamesArray = [];
+			gamesList.forEach((game) => {
+				let gameData: GameData = {
+					gameId: game["id"],
+					gameName: game["name"],
+					gameImage: game["background_image"],
+				};
+				gamesArray.push(gameData);
+			});
+			return gamesArray;
+		})
+		.catch((error) => "server error");
+	return {
+		props: { gamesList },
+	};
+}
