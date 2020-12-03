@@ -2,6 +2,7 @@
 
 #dev page
 /pages/devpage.tsx
+/pages/devpage.module.scss
 
 # dependencies
 /node_modules
