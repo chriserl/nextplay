@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../../../components/Navbar/Navbar";
 import TwitchGame from "../../../components/UIComponents/TwitchGame";
@@ -6,32 +6,14 @@ import StreamerSlider from "../../../components/StreamersSlider/StreamersSlider"
 import VideosGrid from "../../../components/VideoGrid/VideosGrid";
 import twitchStyles from "./twitch.module.scss";
 
-const Twitch: FunctionComponent = () => {
+function Twitch({ gamesList, livestreamsList }) {
 	let [games, setGames] = useState(() => []);
+
 	let [livestreams, setLivestreams] = useState(() => []);
 
-	const getGames = async () => {
-		await axios
-			.get("/api/twitchapi/getgames")
-			.then((rawGames) => {
-				setGames(() => rawGames.data["games"]);
-			})
-			.catch((error) => console.error(error));
-	};
-
-	let getStreams = async () => {
-		await axios
-			.get("/api/twitchapi/getgamelivestreams")
-			.then((rawStreams) => {
-				console.log("found");
-				setLivestreams(rawStreams.data["livestreams"]);
-			})
-			.catch((error) => console.error(error));
-	};
-
 	useEffect(() => {
-		getGames();
-		getStreams();
+		gamesList && setGames(() => gamesList);
+		livestreamsList && setLivestreams(() => livestreamsList);
 	}, []);
 
 	return (
@@ -58,6 +40,22 @@ const Twitch: FunctionComponent = () => {
 			</main>
 		</div>
 	);
-};
+}
 
 export default Twitch;
+
+export async function getServerSideProps(context) {
+	let gamesList = await axios
+		.get("http://localhost:3000/api/twitchapi/getgames")
+		.then((rawGames) => rawGames.data["games"])
+		.catch((error) => "server error");
+
+	let livestreamsList = await axios
+		.get("http://localhost:3000/api/twitchapi/getgamelivestreams")
+		.then((rawStreams) => rawStreams.data["livestreams"])
+		.catch((error) => "server error");
+
+	return {
+		props: { gamesList, livestreamsList },
+	};
+}
