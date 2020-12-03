@@ -1,3 +1,89 @@
+.page-card {
+	@include flex(column, center, center);
+	width: 100%;
+	margin: 0 auto;
+	padding: $spacing-10 0 $spacing-4;
+	border-radius: $spacing-6;
+	background: white;
+	transition: all 0.25s ease;
+
+	@include laptop-large {
+		min-width: 280px;
+		max-width: 400px;
+	}
+
+	.card-link {
+		width: max-content;
+		margin: 0 auto;
+
+		button {
+			@extend .secondary-button;
+		}
+	}
+
+	&:hover {
+		box-shadow: 8px 24px 48px $gray-700;
+		margin-top: -2.4rem;
+
+		.page-image-container {
+			.page-image {
+				margin-top: -4.8rem;
+				box-shadow: 8px 24px 40px $theme-800;
+			}
+		}
+
+		.card-link {
+			button {
+				@extend .primary-button;
+			}
+		}
+	}
+
+	.page-image-container {
+		width: 80%;
+		margin: 0 auto;
+
+		@include tab-screen {
+			width: 64%;
+		}
+
+		.page-image {
+			width: 100%;
+			height: 16rem;
+			margin: 0 auto;
+			object-fit: cover;
+			border-radius: $spacing-4;
+
+			@include tab-screen {
+				height: 13rem;
+			}
+
+			@include laptop-large {
+				height: 18rem;
+			}
+		}
+	}
+
+	.card-body {
+		width: 80%;
+		margin: $spacing-8 auto;
+		text-align: center;
+
+		.card-text {
+			margin-bottom: $spacing-8;
+
+			.page-title {
+				margin-bottom: $spacing-2;
+				color: $gray-200;
+			}
+
+			.page-description {
+				color: $theme-300;
+			}
+		}
+	}
+}
+
 .game-card {
 	width: 100%;
 	color: $theme-100;
