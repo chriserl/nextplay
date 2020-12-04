@@ -371,6 +371,14 @@
 		margin-left: 0;
 	}
 
+	.close-icon {
+		width: max-content;
+		padding: $spacing-1;
+		position: relative;
+		left: 62%;
+		bottom: $spacing-11;
+	}
+
 	.form-title {
 		margin-bottom: $spacing-12;
 	}

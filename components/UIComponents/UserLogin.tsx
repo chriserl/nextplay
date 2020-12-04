@@ -1,6 +1,13 @@
 const UserLogin = ({ userAccountState, toggleAccountVisibility }) => {
 	return (
 		<div className={userAccountState}>
+			<span
+				onClick={() => toggleAccountVisibility()}
+				className="md-icon secondary-tab close-icon"
+			>
+				close
+			</span>
+
 			<p className="ps form-title">Please enter your account details</p>
 			<form className="login-form">
 				<div className="search-control email-control">
