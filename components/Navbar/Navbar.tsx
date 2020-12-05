@@ -1,3 +1,4 @@
+import axios from "axios";
 import Link from "next/link";
 import { useState, useContext } from "react";
 import UserContext from "../../Contexts/UserContext";
@@ -5,12 +6,39 @@ import UserAccount from "../UIComponents/UserAccount";
 import UserLogin from "../UIComponents/UserLogin";
 import navbarStyles from "./navbar.module.scss";
 
+interface loginData {
+	userEmail: string;
+	userPassword: string;
+}
+
 const Navbar = ({ activePath }) => {
 	let navbarRoutes = [{ routePath: "discover" }, { routePath: "twitch" }];
 
 	let [{ accountStatus }, setAccountStatus] = useContext(UserContext);
 
 	let [accountState, setAccountState] = useState("accountHidden");
+
+	const loginUser = async (submitEvent, userCredentials: loginData) => {
+		submitEvent.preventDefault();
+
+		await axios
+			.post("http://localhost:3000/api/faunadbapi/login", {
+				userCredentials,
+			})
+			.then((apiresponse) => console.log(apiresponse))
+			.catch((autherror) => console.log(autherror));
+	};
+
+	const signUpUser = async (submitEvent, userData) => {
+		submitEvent.preventDefault();
+
+		await axios
+			.post("http://localhost:3000/api/faunadbapi/signup", {
+				userData,
+			})
+			.then((apiresponse) => console.log(apiresponse))
+			.catch((autherror) => console.log(autherror));
+	};
 
 	const toggleAccount = () => {
 		accountStatus === "loggedIn"
@@ -76,6 +104,12 @@ const Navbar = ({ activePath }) => {
 				<UserLogin
 					userAccountState={accountState}
 					toggleAccountVisibility={() => toggleAccount()}
+					loginAction={(submitEvent, userCredentials: loginData) =>
+						loginUser(submitEvent, userCredentials)
+					}
+					signupAction={(submitEvent, userData) =>
+						signUpUser(submitEvent, userData)
+					}
 				/>
 			)}
 		</nav>
