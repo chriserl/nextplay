@@ -15,7 +15,7 @@ const NewsBulletin: NextPage = () => {
 
 	const getArticle = (): void => {
 		axios
-			.post("/api/gamespotapi/", {
+			.post("https://nextplay.vercel.app/api/gamespotapi/", {
 				requestType: "articleDetails",
 				articleId: pageId,
 			})
@@ -53,7 +53,7 @@ const NewsBulletin: NextPage = () => {
 									verge
 								</p>
 								<p className={`pl ${bulletinStyles.date}`}>
-									<span className="md-icon">date_range</span>
+									<span className="material-icons">date_range</span>
 									12 . 09 . 2020
 								</p>
 							</div>

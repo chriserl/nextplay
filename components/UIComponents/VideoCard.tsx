@@ -20,7 +20,7 @@ const VideoCard: FunctionComponent<{ videoData: object }> = ({ videoData }) => {
 					</a>
 					<div className="views-likes">
 						<div className="views">
-							<span className="md-icon small-icon">visibility</span>
+							<span className="material-icons small-icon">visibility</span>
 							<p className="views-count ps">{videoData["viewers"]}</p>
 						</div>
 						<div className="likes">

@@ -38,7 +38,7 @@ const Discover: NextPage<{ gamesList: object[] }> = ({ gamesList }) => {
 		searchTags?: string[] | null
 	) => {
 		return await axios
-			.post("/api/rawgapi/searchgames", {
+			.post("https://nextplay.vercel.app/api/rawgapi/searchgames", {
 				searchQuery,
 				searchTags,
 			})
@@ -125,7 +125,7 @@ const Discover: NextPage<{ gamesList: object[] }> = ({ gamesList }) => {
 								value={searchState}
 							/>
 							<button className="sp-icon-button">
-								<span className="md-icon small-icon">search</span>
+								<span className="material-icons small-icon">search</span>
 							</button>
 						</div>
 					</form>
@@ -165,7 +165,7 @@ const Discover: NextPage<{ gamesList: object[] }> = ({ gamesList }) => {
 								}`}
 							>
 								<p className="px">Add filter</p>
-								<span className="md-icon small-icon">add</span>
+								<span className="material-icons small-icon">add</span>
 							</button>
 						</form>
 					</div>
@@ -177,7 +177,7 @@ const Discover: NextPage<{ gamesList: object[] }> = ({ gamesList }) => {
 									<p className="ps">{filterItem}</p>{" "}
 									<span
 										onClick={() => removeFilter(filterItem)}
-										className="md-icon small-icon"
+										className="material-icons small-icon"
 									>
 										close
 									</span>
@@ -225,7 +225,7 @@ export default Discover;
 
 export async function getServerSideProps(context) {
 	let gamesList = await axios
-		.post("http://localhost:3000/api/rawgapi/getgames", {})
+		.post("https://nextplay.vercel.app/api/rawgapi/getgames", {})
 		.then((gamesRes) => gamesRes.data["gamesList"]["results"])
 		.then((gamesList) => {
 			let gamesArray = [];

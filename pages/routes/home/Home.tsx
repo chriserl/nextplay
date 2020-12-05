@@ -63,7 +63,7 @@ const Home: FunctionComponent = () => {
 									<a className="card-link">
 										<button className="ps">
 											{card.pageTitle}{" "}
-											<span className="md-icon small-icon">
+											<span className="material-icons small-icon">
 												arrow_right_alt
 											</span>
 										</button>

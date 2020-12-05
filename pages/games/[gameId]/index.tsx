@@ -15,7 +15,7 @@ const GamePage = () => {
 
 	let getGame = async () => {
 		await axios
-			.post("/api/rawgapi/getgamedetails", {
+			.post("https://nextplay.vercel.app/api/rawgapi/getgamedetails", {
 				gameId,
 			})
 			.then((rawgameData) => rawgameData.data["gameDetails"])
@@ -70,7 +70,7 @@ const GamePage = () => {
 										<Link href={gameItem.gameWebsite}>
 											<a className="primary-button">
 												<p className="ps">Official Website</p>
-												<span className="mdo-icon small-icon">
+												<span className="material-icon small-icon">
 													arrow_right_alt
 												</span>
 											</a>

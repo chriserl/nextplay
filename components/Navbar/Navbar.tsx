@@ -22,7 +22,7 @@ const Navbar = ({ activePath }) => {
 		submitEvent.preventDefault();
 
 		await axios
-			.post("http://localhost:3000/api/faunadbapi/login", {
+			.post("https://nextplay.vercel.app/api/faunadbapi/login", {
 				userCredentials,
 			})
 			.then((apiresponse) => console.log(apiresponse))
@@ -33,7 +33,7 @@ const Navbar = ({ activePath }) => {
 		submitEvent.preventDefault();
 
 		await axios
-			.post("http://localhost:3000/api/faunadbapi/signup", {
+			.post("https://nextplay.vercel.app/api/faunadbapi/signup", {
 				userData,
 			})
 			.then((apiresponse) => console.log(apiresponse))

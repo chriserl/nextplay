@@ -47,12 +47,12 @@ export default Twitch;
 
 export async function getServerSideProps(context) {
 	let gamesList = await axios
-		.get("http://localhost:3000/api/twitchapi/getgames")
+		.get("https://nextplay.vercel.app/api/twitchapi/getgames")
 		.then((rawGames) => rawGames.data["games"])
 		.catch((error) => "server error");
 
 	let livestreamsList = await axios
-		.get("http://localhost:3000/api/twitchapi/getgamelivestreams")
+		.get("https://nextplay.vercel.app/api/twitchapi/getgamelivestreams")
 		.then((rawStreams) => rawStreams.data["livestreams"])
 		.catch((error) => "server error");
 

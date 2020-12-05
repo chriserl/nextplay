@@ -64,7 +64,7 @@ const UserLogin = ({
 		<div className={userAccountState}>
 			<span
 				onClick={() => toggleAccountVisibility()}
-				className="md-icon secondary-tab close-icon"
+				className="material-icons secondary-tab close-icon"
 			>
 				close
 			</span>
@@ -141,7 +141,7 @@ function SignUpModal({
 		<div className={userAccountState}>
 			<span
 				onClick={() => toggleAccountVisibility()}
-				className="md-icon secondary-tab close-icon"
+				className="material-icons secondary-tab close-icon"
 			>
 				close
 			</span>

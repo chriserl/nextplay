@@ -8,7 +8,7 @@ const Account: FunctionComponent<{
 		<div className={userAccountState}>
 			<span
 				onClick={() => toggleAccountVisibility()}
-				className="md-icon secondary-tab close-icon"
+				className="material-icons secondary-tab close-icon"
 			>
 				close
 			</span>

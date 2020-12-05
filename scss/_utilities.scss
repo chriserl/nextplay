@@ -51,19 +51,19 @@
 //Text
 @mixin h1 {
 	font-size: 1.6rem;
-	font-family: PoppinsBold;
+	font-weight: 700;
 	line-height: calc(1.6rem * 1.5);
 }
 
 @mixin ph {
 	font-size: 1.24rem;
-	font-family: PoppinsMedium;
+	font-weight: 500;
 	line-height: calc(1.24rem * 1.5);
 }
 
 @mixin phb {
 	@include ph;
-	font-family: PoppinsSemibold;
+	font-weight: 600;
 }
 
 @mixin pl {
@@ -73,7 +73,7 @@
 
 @mixin plb {
 	@include pl;
-	font-family: PoppinsMedium;
+	font-weight: 500;
 }
 
 @mixin ps {
@@ -83,7 +83,7 @@
 
 @mixin psb {
 	@include ps;
-	font-family: PoppinsMedium;
+	font-weight: 500;
 }
 
 @mixin px {
@@ -93,7 +93,7 @@
 
 @mixin pxb {
 	@include px;
-	font-family: PoppinsMedium;
+	font-weight: 500;
 }
 
 //Icons

@@ -7,7 +7,7 @@ const LivestreamCard = ({ cardData }) => {
 			<div className="stream-stats">
 				<p className="pxb live-tab">Live</p>
 				<p className="psb watching">
-					<span className="mdo-icon">account_circle</span> 15k
+					<span className="material-icon">account_circle</span> 15k
 				</p>
 			</div>
 			<img
@@ -25,7 +25,7 @@ const LivestreamCard = ({ cardData }) => {
 				<Link href={cardData.streamerUrl}>
 					<a target="_blank">
 						<button className="link-icon-button">
-							<span className="small-icon mdo-icon">send</span>
+							<span className="small-icon material-icon">send</span>
 						</button>
 					</a>
 				</Link>
