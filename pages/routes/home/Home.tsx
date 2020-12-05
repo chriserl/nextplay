@@ -26,7 +26,7 @@ const Home: FunctionComponent = () => {
 		},
 		{
 			pageTitle: "Account",
-			pageDescription: "Sign up with us",
+			pageDescription: "This feature will be availavle soon",
 			pageUrl: "/account",
 			pageImage: "ghostoftsushima.jpg",
 		},
