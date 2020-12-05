@@ -1,102 +1,79 @@
 import { FunctionComponent } from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import Link from "next/link";
 import Navbar from "../../../components/Navbar/Navbar";
-import StreamersSlider from "../../../components/StreamersSlider/StreamersSlider";
-import LivestreamCard from "../../../components/UIComponents/LivestreamCard";
-import StreamerCard from "../../../components/UIComponents/StreamerCard";
-import RedditCard from "../../../components/UIComponents/RedditCard";
 import homeStyles from "./home.module.scss";
-import LoadingScreen from "../../../components/LoadingScreen/LoadingScreen";
+
+interface pageCard {
+	pageTitle: string;
+	pageDescription: string;
+	pageUrl: string;
+	pageImage: string;
+}
 
 const Home: FunctionComponent = () => {
-	let [games, setGames] = useState(() => []);
-
-	let [liveStreams, setliveStreams] = useState(() => []);
-
-	let [redditPosts, setRedditPosts] = useState(() => []);
-
-	const getRedditPosts = async () => {
-		await axios
-			.get("/api/rawgapi/getredditposts")
-			.then((rawPosts) => rawPosts.data["redditPosts"])
-			.then((gamesResponse) => {
-				setRedditPosts(() => gamesResponse);
-			})
-			.catch((error) => {
-				setRedditPosts(() => []);
-				console.error(error);
-			});
-	};
-
-	const getGameStreamers = async () => {
-		await axios
-			.get("/api/twitchapi/gettopchannels")
-			.then((gamesResponse) => {
-				setGames(() => gamesResponse.data["channels"]);
-			})
-			.catch((error) => {
-				setGames(() => []);
-				console.error(error);
-			});
-	};
-
-	const getLiveStreams = async () => {
-		await axios
-			.get("/api/twitchapi/getlivestreams")
-			.then((streamsResponse) => {
-				setliveStreams(() => streamsResponse.data["livestreams"]);
-			})
-			.catch((error) => {
-				setliveStreams(() => []);
-				console.error(error);
-			});
-	};
-
-	useEffect(() => {
-		getRedditPosts();
-		getGameStreamers();
-		getLiveStreams();
-	}, []);
+	let cardsList: pageCard[] = [
+		{
+			pageTitle: "Discover",
+			pageDescription: "Explore all games",
+			pageUrl: "/discover",
+			pageImage: "fortnite.jpg",
+		},
+		{
+			pageTitle: "Twitch",
+			pageDescription: "Twitch gaming world",
+			pageUrl: "/twitch",
+			pageImage: "callofduty.jpg",
+		},
+		{
+			pageTitle: "Account",
+			pageDescription: "This feature will be availavle soon",
+			pageUrl: "/account",
+			pageImage: "ghostoftsushima.jpg",
+		},
+	];
 
 	return (
 		<div className={homeStyles.home}>
-			<Navbar activePath="home" />
-			{games.length > 0 || liveStreams.length > 0 || redditPosts.length > 0 ? (
-				<main>
-					<div className={homeStyles.streamers}>
-						<StreamersSlider
-							sliderTitle={""}
-							sliderContent={games}
-							sliderComponent={(sliderData) => (
-								<StreamerCard cardData={sliderData} />
-							)}
-						/>
-					</div>
-					<div className={homeStyles.liveStreams}>
-						<StreamersSlider
-							sliderContent={liveStreams}
-							sliderComponent={(sliderData: object) => (
-								<LivestreamCard cardData={sliderData} />
-							)}
-							sliderTitle="Twitch livestreams"
-						/>
-					</div>
-					<div className={homeStyles.redditPosts}>
-						<p className={`${homeStyles.title} ph`}>
-							Posts from game subreddits
-						</p>
-						<div className={homeStyles.postsContainer}>
-							{redditPosts.length > 0 &&
-								redditPosts.map((redditPost) => (
-									<RedditCard postData={redditPost} />
-								))}
-						</div>
-					</div>
-				</main>
-			) : (
-				<LoadingScreen />
-			)}
+			<Navbar activePath="/" />
+
+			<main className={homeStyles.main}>
+				<div className={homeStyles.title}>
+					<p className={`pl ${homeStyles.welcome}`}>Welcome</p>
+					<p className={`h1 ${homeStyles.mainTitle}`}>
+						Explore the world of games
+					</p>
+				</div>
+
+				<ul className={homeStyles.categoriesList}>
+					{cardsList.map((card) => (
+						<li className="page-card" key={card.pageTitle}>
+							<div className="page-image-container">
+								<img
+									src={`/images/games/${card.pageImage}`}
+									alt="page"
+									className="page-image"
+								/>
+							</div>
+							<div className="card-body">
+								<div className="card-text">
+									<p className="page-title phb">{card.pageTitle}</p>
+									<p className="page-description ps">{card.pageDescription}</p>
+								</div>
+								<Link href={`routes${card.pageUrl}`}>
+									<a className="card-link">
+										<button className="ps">
+											{card.pageTitle}{" "}
+											<span className="md-icon small-icon">
+												arrow_right_alt
+											</span>
+										</button>
+									</a>
+								</Link>
+							</div>
+						</li>
+					))}
+				</ul>
+			</main>
 		</div>
 	);
 };

@@ -1,19 +1,61 @@
+import axios from "axios";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext from "../../Contexts/UserContext";
 import UserAccount from "../UIComponents/UserAccount";
+import UserLogin from "../UIComponents/UserLogin";
 import navbarStyles from "./navbar.module.scss";
+
+interface loginData {
+	userEmail: string;
+	userPassword: string;
+}
 
 const Navbar = ({ activePath }) => {
 	let navbarRoutes = [{ routePath: "discover" }, { routePath: "twitch" }];
 
+	let [{ accountStatus }, setAccountStatus] = useContext(UserContext);
+
 	let [accountState, setAccountState] = useState("accountHidden");
 
+	const loginUser = async (submitEvent, userCredentials: loginData) => {
+		submitEvent.preventDefault();
+
+		await axios
+			.post("http://localhost:3000/api/faunadbapi/login", {
+				userCredentials,
+			})
+			.then((apiresponse) => console.log(apiresponse))
+			.catch((autherror) => console.log(autherror));
+	};
+
+	const signUpUser = async (submitEvent, userData) => {
+		submitEvent.preventDefault();
+
+		await axios
+			.post("http://localhost:3000/api/faunadbapi/signup", {
+				userData,
+			})
+			.then((apiresponse) => console.log(apiresponse))
+			.catch((autherror) => console.log(autherror));
+	};
+
 	const toggleAccount = () => {
-		setAccountState(
-			() =>
-				(accountState =
-					accountState === "accountHidden" ? "accountVisible" : "accountHidden")
-		);
+		accountStatus === "loggedIn"
+			? setAccountState(
+					() =>
+						(accountState =
+							accountState === "accountHidden"
+								? "accountVisible"
+								: "accountHidden")
+			  )
+			: setAccountState(
+					() =>
+						(accountState =
+							accountState === "accountHidden"
+								? "accountLogin"
+								: "accountHidden")
+			  );
 	};
 
 	return (
@@ -42,11 +84,6 @@ const Navbar = ({ activePath }) => {
 			</ul>
 
 			<div className={navbarStyles.userActions}>
-				<div className={navbarStyles.notifications}>
-					<button className="rl-icon-button">
-						<span className="md-icon">notifications_none</span>
-					</button>
-				</div>
 				<div
 					className={navbarStyles.loggedInUser}
 					onClick={() => toggleAccount()}
@@ -58,10 +95,23 @@ const Navbar = ({ activePath }) => {
 					/>
 				</div>
 			</div>
-			<UserAccount
-				userAccountState={accountState}
-				toggleAccountVisibility={() => toggleAccount()}
-			/>
+			{accountStatus === "loggedIn" ? (
+				<UserAccount
+					userAccountState={accountState}
+					toggleAccountVisibility={() => toggleAccount()}
+				/>
+			) : (
+				<UserLogin
+					userAccountState={accountState}
+					toggleAccountVisibility={() => toggleAccount()}
+					loginAction={(submitEvent, userCredentials: loginData) =>
+						loginUser(submitEvent, userCredentials)
+					}
+					signupAction={(submitEvent, userData) =>
+						signUpUser(submitEvent, userData)
+					}
+				/>
+			)}
 		</nav>
 	);
 };

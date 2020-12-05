@@ -151,7 +151,7 @@ function TwitchFunctions(clientId: string, authorization: string) {
 	this.getGameLivestreams = async () => {
 		let livestreams: any = [];
 
-		let gameNames: any = await this.getGamesList("name");
+		let gameNames: any = await this.getGamesList("name", 1);
 
 		for await (let gameName of gameNames) {
 			await axios

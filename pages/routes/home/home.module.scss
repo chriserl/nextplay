@@ -3,42 +3,63 @@
 
 .home {
 	width: 100%;
+	background: $theme-900;
 
-	main {
-		margin: $spacing-8 $spacing-2;
+	@include tab-screen {
+		height: 100vh;
+		overflow: hidden;
+	}
+
+	.main {
+		width: 80%;
+		height: max-content;
+		margin: $spacing-12 auto;
 
 		@include tab-screen {
-			margin: 0 $spacing-12;
-		}
-
-		.streamers {
-			margin: $spacing-8 0;
-		}
-
-		.liveStreams {
+			@include flex(column, center, center);
+			width: 90%;
+			height: 80vh;
+			margin: auto;
 			margin-top: $spacing-8;
-			@include tab-screen {
-				width: 90%;
-				margin: $spacing-8 auto;
+		}
+
+		.title {
+			margin-bottom: $spacing-12;
+
+			@include laptop-small {
+				text-align: center;
+			}
+
+			.welcome {
+				margin-bottom: $spacing-2;
+				color: $gray-300;
+			}
+
+			.mainTitle {
+				margin-bottom: $spacing-2;
+				color: $gray-200;
 			}
 		}
 
-		.redditPosts {
+		.categoriesList {
 			width: 100%;
+			height: max-content;
+			margin-top: $spacing-8;
+			@include grid(center, space-between);
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			column-gap: $spacing-12;
+			row-gap: $spacing-20;
+			padding-bottom: $spacing-24;
 
-			.title {
-				text-align: center;
-				color: $theme-300;
-				margin-bottom: $spacing-14;
+			@include tab-screen {
+				margin-top: $spacing-4;
+				padding-bottom: 0;
 			}
 
-			.postsContainer {
-				width: 90%;
+			@include laptop-small {
+				width: 80%;
 				margin: 0 auto;
-				-moz-columns: auto 218px;
-				columns: auto 218px;
-				-moz-column-gap: $spacing-8;
-				column-gap: $spacing-8;
+				margin-top: $spacing-8;
 			}
 		}
 	}

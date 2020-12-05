@@ -1,3 +1,89 @@
+.page-card {
+	@include flex(column, center, center);
+	width: 100%;
+	margin: 0 auto;
+	padding: $spacing-10 0 $spacing-4;
+	border-radius: $spacing-6;
+	background: white;
+	transition: all 0.25s ease;
+
+	@include laptop-large {
+		min-width: 280px;
+		max-width: 400px;
+	}
+
+	.card-link {
+		width: max-content;
+		margin: 0 auto;
+
+		button {
+			@extend .secondary-button;
+		}
+	}
+
+	&:hover {
+		box-shadow: 8px 24px 48px $gray-700;
+		margin-top: -2.4rem;
+
+		.page-image-container {
+			.page-image {
+				margin-top: -4.8rem;
+				box-shadow: 8px 24px 40px $theme-800;
+			}
+		}
+
+		.card-link {
+			button {
+				@extend .primary-button;
+			}
+		}
+	}
+
+	.page-image-container {
+		width: 80%;
+		margin: 0 auto;
+
+		@include tab-screen {
+			width: 64%;
+		}
+
+		.page-image {
+			width: 100%;
+			height: 16rem;
+			margin: 0 auto;
+			object-fit: cover;
+			border-radius: $spacing-4;
+
+			@include tab-screen {
+				height: 13rem;
+			}
+
+			@include laptop-large {
+				height: 18rem;
+			}
+		}
+	}
+
+	.card-body {
+		width: 80%;
+		margin: $spacing-8 auto;
+		text-align: center;
+
+		.card-text {
+			margin-bottom: $spacing-8;
+
+			.page-title {
+				margin-bottom: $spacing-2;
+				color: $gray-200;
+			}
+
+			.page-description {
+				color: $theme-300;
+			}
+		}
+	}
+}
+
 .game-card {
 	width: 100%;
 	color: $theme-100;
@@ -12,7 +98,7 @@
 		transition: all 0.45s ease;
 
 		&:hover {
-			box-shadow: 4px 16px 56px $theme-600;
+			box-shadow: 4px 16px 56px $theme-800;
 		}
 	}
 }
@@ -61,7 +147,7 @@
 	transition: all 0.25s ease;
 
 	&:hover {
-		box-shadow: 2px 8px 24px $theme-700;
+		box-shadow: 2px 8px 24px $theme-800;
 	}
 
 	.streamer-image {
@@ -138,36 +224,6 @@
 	}
 }
 
-.news-card {
-	@include flex($direction: column, $align: space-between);
-	width: 100%;
-	margin: 0 auto;
-	padding: $spacing-6;
-	border-radius: $spacing-12 $spacing-4 $spacing-12 $spacing-4;
-	border: 1.8px solid $theme-900;
-
-	@include tab-screen {
-		max-width: 264px;
-		height: 12rem;
-	}
-
-	.news-body {
-		.news-info {
-			width: 100%;
-			margin-bottom: $spacing-8;
-
-			.news-headline {
-				color: $theme-100;
-			}
-		}
-	}
-
-	.body-bottom {
-		justify-self: end;
-		@include flex($justify: space-between);
-	}
-}
-
 .reddit-card {
 	width: 96%;
 	margin: 0 auto;
@@ -226,17 +282,22 @@
 }
 
 .accountVisible {
+	z-index: 1;
 	position: absolute;
 	top: 18%;
-	bottom: 45%;
-	left: 45%;
-	right: 45%;
+	left: 14vw;
+	right: auto;
 	width: 14rem;
 	height: 19.2rem;
 	background: white;
 	border-radius: $spacing-8;
 	padding: $spacing-2 $spacing-4;
 	box-shadow: 2px 18px 28px $theme-800;
+
+	@include tab-screen {
+		top: 18%;
+		left: 42vw;
+	}
 
 	.close-icon {
 		width: max-content;
@@ -289,6 +350,64 @@
 	}
 }
 
+.accountLogin {
+	@include flex(column);
+	z-index: 1;
+	position: absolute;
+	top: 18%;
+	left: 50%;
+	margin-left: -140px;
+	right: auto;
+	width: 17rem;
+	height: 28.4rem;
+	background: white;
+	border-radius: $spacing-8;
+	padding: $spacing-10 $spacing-8;
+	box-shadow: 2px 18px 28px $theme-800;
+
+	@include tab-screen {
+		top: 18%;
+		left: 40vw;
+		margin-left: 0;
+	}
+
+	.close-icon {
+		width: max-content;
+		padding: $spacing-1;
+		position: relative;
+		left: 62%;
+		bottom: $spacing-11;
+	}
+
+	.form-title {
+		margin-bottom: $spacing-12;
+	}
+
+	.name-control,
+	.email-control {
+		margin-bottom: $spacing-8;
+	}
+
+	.password-control {
+		margin-bottom: $spacing-12;
+	}
+
+	.form-submit {
+		width: max-content;
+		margin: 0 auto;
+		margin-bottom: $spacing-6;
+	}
+
+	.sign-up {
+		@include flex;
+		margin-top: $spacing-5;
+
+		.sign-up-button {
+			margin-left: $spacing-5;
+		}
+	}
+}
+
 .twitch-game {
 	max-width: 140px;
 	margin: 0 auto;
@@ -298,7 +417,7 @@
 	transition: all 0.25s ease;
 
 	&:hover {
-		box-shadow: 2px 12px 40px $theme-600;
+		box-shadow: 2px 12px 40px $theme-800;
 	}
 
 	.game-image {
@@ -337,7 +456,7 @@
 		transition: all 0.25s ease;
 
 		&:hover {
-			box-shadow: 2px 8px 48px $theme-600;
+			box-shadow: 2px 8px 48px $theme-800;
 		}
 	}
 
